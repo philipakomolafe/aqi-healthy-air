@@ -5,6 +5,6 @@ services:
     plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn pipelines.inference_pipeline:create_app --factory --port 4200
-    envVars:
+    envVars:                                                                    
       - key: PYTHONUNBUFFERED
         value: "1"

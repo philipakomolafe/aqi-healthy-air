@@ -59,7 +59,7 @@ def create_app():
         )
 
     @app.get("/")
-    def root(summary="Root endpoint for AQI web API"):
+    def root():
         return {'message': "Welcome to the Air Quality prediction system..."}
 
 
@@ -91,6 +91,6 @@ def create_app():
 
 def main():
     # Runs app instance using uvicorn and factory pattern.
-    uvicorn.run("pipelines.inference_pipeline:create_app", factory=True, port=4200, reload=True)
-    # NOTE: url: http://localhost:4200/aqi/online-prediction with this you get the prediction result.
+    uvicorn.run("pipelines.inference_pipeline:create_app", factory=True, host='0.0.0.0', port=10000, reload=True)
+    # NOTE: url: http://localhost:10000/aqi/online-prediction with this you get the prediction result.
 

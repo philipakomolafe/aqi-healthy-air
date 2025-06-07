@@ -9,3 +9,4 @@ pydantic
 requests
 neptune-client
 python-dotenv
+streamlit

@@ -1,0 +1,32 @@
+openweather:
+  base_url: "http://api.openweathermap.org/data/2.5/air_pollution/history"  #"http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={API_key}"
+  params:
+    lat: 7.2508
+    lon: 5.2105
+    appid: "1d85f39596a8b705518e2b728a680936"
+    start: "{{start_ts}}"
+    end: "{{end_ts}}" 
+
+neptune:
+  project_name: "philipakomolafe/Air-Quality-Index"
+  api_token: "eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiJmMjY1MTY1ZS1hNjg0LTRjY2EtOGY3Yy02ZmI1ZDE2ZjI2MzAifQ=="
+  
+
+dataset:
+  raw: "C:/Users/user/Desktop/startups/aqi_mvp/data/raw"
+  processed: 
+    train: C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train
+    test: C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test
+    val: C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val
+    
+  cache: C:/Users/user/Desktop/startups/aqi_mvp/data/cache
+
+cv_result: "C:/Users/user/Desktop/startups/aqi_mvp/cv_results"
+
+model_registry:
+  model_path: "C:/Users/user/Desktop/startups/aqi_mvp/models"
+
+
+other_setting: true
+
+    

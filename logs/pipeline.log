@@ -1,0 +1,1515 @@
+2025-05-11 22:02:39.878 | INFO     | __main__:<module>:25 - Starting feature pipeline...
+2025-05-11 22:02:39.972 | INFO     | __main__:<module>:29 - Data Loading & Cleaning...
+2025-05-11 22:02:44.484 | INFO     | __main__:<module>:33 - Data Loading & Cleaning Completed.
+2025-05-11 22:02:44.492 | INFO     | __main__:<module>:35 - Feature Engineering...
+2025-05-11 22:02:46.420 | INFO     | __main__:<module>:38 - Feature Engineering Completed.
+2025-05-11 22:02:46.420 | INFO     | __main__:<module>:40 - Feature Selection...
+2025-05-11 22:02:46.420 | INFO     | __main__:<module>:42 - Performing correlation analysis...
+2025-05-11 22:02:47.019 | INFO     | __main__:<module>:45 - Dropped highly correlated features: 
+['pm2_5', 'pm10', 'nh3', 'aqi_above_3_count_24h']
+2025-05-11 22:02:47.019 | INFO     | __main__:<module>:46 - Correlation analysis completed.
+2025-05-11 22:02:47.019 | INFO     | __main__:<module>:50 - Feature importance analysis...
+2025-05-11 22:03:08.124 | INFO     | __main__:<module>:53 - Top feature importances: 
+co                      0.173785
+aqi_hazardous_flag      0.132705
+aqi_rolling_mean_24h    0.127294
+so2                     0.098767
+no2                     0.098690
+pm2_5_pm10_ratio        0.077048
+aqi_rolling_max_24h     0.076474
+o3                      0.058212
+aqi_trend               0.039545
+hour                    0.037325
+day                     0.026045
+month                   0.023247
+weekday                 0.017071
+season                  0.013791
+dtype: float64
+2025-05-11 22:03:08.617 | INFO     | __main__:<module>:54 - Feature importance analysis completed.
+2025-05-11 22:03:08.620 | INFO     | __main__:<module>:57 - Splitting data into train, validation, and test sets...
+2025-05-11 22:03:08.895 | INFO     | __main__:<module>:60 - Train shape: (26443, 20)
+ Val shape: (5667, 20)
+ Test shape: (5667, 20)
+2025-05-11 22:03:08.911 | INFO     | __main__:<module>:61 - Data splitting completed.
+2025-05-11 22:03:09.095 | INFO     | __main__:<module>:64 - Saving features to CSV files...
+2025-05-11 22:03:13.496 | INFO     | __main__:<module>:68 - Features saved successfully.
+2025-05-11 22:15:57.687 | INFO     | __main__:<module>:25 - Starting feature pipeline...
+2025-05-11 22:15:57.692 | INFO     | __main__:<module>:29 - Data Loading & Cleaning...
+2025-05-11 22:15:59.628 | INFO     | src.data_cleaner:clean_data:82 - 
+Data Quality Report:
+2025-05-11 22:15:59.628 | INFO     | src.data_cleaner:clean_data:83 - Total rows: 37777
+2025-05-11 22:15:59.628 | INFO     | src.data_cleaner:clean_data:84 - Total columns: 9
+2025-05-11 22:15:59.628 | INFO     | src.data_cleaner:clean_data:85 - 
+Missing values after cleaning:
+2025-05-11 22:16:00.003 | INFO     | src.data_cleaner:clean_data:86 - timestamp    0
+aqi          0
+pm2_5        0
+pm10         0
+co           0
+no2          0
+so2          0
+o3           0
+nh3          0
+dtype: int64
+2025-05-11 22:16:00.511 | INFO     | src.data_cleaner:clean_data:87 - 
+Data types:
+2025-05-11 22:16:00.675 | INFO     | src.data_cleaner:clean_data:88 - timestamp    datetime64[ns]
+aqi                   int64
+pm2_5               float64
+pm10                float64
+co                  float64
+no2                 float64
+so2                 float64
+o3                  float64
+nh3                 float64
+dtype: object
+2025-05-11 22:16:01.586 | INFO     | __main__:<module>:33 - Data Loading & Cleaning Completed.
+2025-05-11 22:16:01.597 | INFO     | __main__:<module>:35 - Feature Engineering...
+2025-05-11 22:16:03.398 | INFO     | __main__:<module>:38 - Feature Engineering Completed.
+2025-05-11 22:16:03.398 | INFO     | __main__:<module>:40 - Feature Selection...
+2025-05-11 22:16:03.556 | INFO     | __main__:<module>:42 - Performing correlation analysis...
+2025-05-11 22:16:04.175 | INFO     | __main__:<module>:45 - Dropped highly correlated features: 
+['pm2_5', 'pm10', 'nh3', 'aqi_above_3_count_24h']
+2025-05-11 22:16:04.190 | INFO     | __main__:<module>:46 - Correlation analysis completed.
+2025-05-11 22:16:04.190 | INFO     | __main__:<module>:50 - Feature importance analysis...
+2025-05-11 22:16:29.478 | INFO     | __main__:<module>:53 - Top feature importances: 
+co                      0.173785
+aqi_hazardous_flag      0.132705
+aqi_rolling_mean_24h    0.127294
+so2                     0.098767
+no2                     0.098690
+pm2_5_pm10_ratio        0.077048
+aqi_rolling_max_24h     0.076474
+o3                      0.058212
+aqi_trend               0.039545
+hour                    0.037325
+day                     0.026045
+month                   0.023247
+weekday                 0.017071
+season                  0.013791
+dtype: float64
+2025-05-11 22:16:29.795 | INFO     | __main__:<module>:54 - Feature importance analysis completed.
+2025-05-11 22:16:29.936 | INFO     | __main__:<module>:57 - Splitting data into train, validation, and test sets...
+2025-05-11 22:16:30.145 | INFO     | __main__:<module>:60 - Train shape: 
+(26443, 20)
+ Val shape: (5667, 20)
+ Test shape: (5667, 20)
+2025-05-11 22:16:30.145 | INFO     | __main__:<module>:61 - Data splitting completed.
+2025-05-11 22:16:30.472 | INFO     | __main__:<module>:64 - Saving features to CSV files...
+2025-05-11 22:16:34.091 | INFO     | __main__:<module>:68 - Features saved successfully.
+2025-05-11 22:23:49.536 | INFO     | __main__:<module>:26 - Starting feature pipeline...
+2025-05-11 22:23:49.566 | INFO     | __main__:<module>:30 - Data Loading & Cleaning...
+2025-05-11 22:23:50.847 | INFO     | src.data_cleaner:clean_data:82 - 
+Data Quality Report:  
+Total rows: 37777
+Total columns: 9
+2025-05-11 22:23:50.862 | INFO     | src.data_cleaner:clean_data:83 - 
+Missing values after cleaning:  
+timestamp    0
+aqi          0
+pm2_5        0
+pm10         0
+co           0
+no2          0
+so2          0
+o3           0
+nh3          0
+dtype: int64
+2025-05-11 22:23:51.025 | INFO     | src.data_cleaner:clean_data:84 - 
+Data types: 
+timestamp    datetime64[ns]
+aqi                   int64
+pm2_5               float64
+pm10                float64
+co                  float64
+no2                 float64
+so2                 float64
+o3                  float64
+nh3                 float64
+dtype: object
+2025-05-11 22:23:51.321 | INFO     | __main__:<module>:34 - Data Loading & Cleaning Completed.
+2025-05-11 22:23:51.432 | INFO     | __main__:<module>:36 - Feature Engineering...
+2025-05-11 22:23:52.893 | INFO     | __main__:<module>:39 - Feature Engineering Completed.
+2025-05-11 22:23:53.410 | INFO     | __main__:<module>:41 - Feature Selection...
+2025-05-11 22:23:53.743 | INFO     | __main__:<module>:43 - Performing correlation analysis...
+2025-05-11 22:23:54.253 | INFO     | __main__:<module>:46 - Dropped highly correlated features: 
+['pm2_5', 'pm10', 'nh3', 'aqi_above_3_count_24h']
+2025-05-11 22:23:54.284 | INFO     | __main__:<module>:47 - Correlation analysis completed.
+2025-05-11 22:23:54.478 | INFO     | __main__:<module>:51 - Feature importance analysis...
+2025-05-11 22:24:12.801 | INFO     | __main__:<module>:54 - Top feature importances: 
+co                      0.173785
+aqi_hazardous_flag      0.132705
+aqi_rolling_mean_24h    0.127294
+so2                     0.098767
+no2                     0.098690
+pm2_5_pm10_ratio        0.077048
+aqi_rolling_max_24h     0.076474
+o3                      0.058212
+aqi_trend               0.039545
+hour                    0.037325
+day                     0.026045
+month                   0.023247
+weekday                 0.017071
+season                  0.013791
+dtype: float64
+2025-05-11 22:24:12.853 | INFO     | __main__:<module>:55 - Feature importance analysis completed.
+2025-05-11 22:24:12.858 | INFO     | __main__:<module>:58 - Splitting data into train, validation, and test sets...
+2025-05-11 22:24:13.507 | INFO     | __main__:<module>:61 - Train shape: 
+(26443, 20)
+ Val shape: (5667, 20)
+ Test shape: (5667, 20)
+2025-05-11 22:24:13.539 | INFO     | __main__:<module>:62 - Data splitting completed.
+2025-05-11 22:24:13.549 | INFO     | __main__:<module>:65 - Saving features to CSV files...
+2025-05-11 22:24:16.034 | INFO     | __main__:<module>:69 - Features saved successfully.
+2025-05-12 09:58:16.222 | INFO     | __main__:<module>:26 - Starting feature pipeline...
+2025-05-12 09:58:16.247 | INFO     | __main__:<module>:30 - Data Loading & Cleaning...
+2025-05-12 09:58:18.675 | INFO     | src.data_cleaner:clean_data:82 - 
+Data Quality Report:  
+Total rows: 37777
+Total columns: 9
+2025-05-12 09:58:18.724 | INFO     | src.data_cleaner:clean_data:83 - 
+Missing values after cleaning:  
+timestamp    0
+aqi          0
+pm2_5        0
+pm10         0
+co           0
+no2          0
+so2          0
+o3           0
+nh3          0
+dtype: int64
+2025-05-12 09:58:19.765 | INFO     | src.data_cleaner:clean_data:84 - 
+Data types: 
+timestamp    datetime64[ns]
+aqi                   int64
+pm2_5               float64
+pm10                float64
+co                  float64
+no2                 float64
+so2                 float64
+o3                  float64
+nh3                 float64
+dtype: object
+2025-05-12 09:58:19.987 | INFO     | __main__:<module>:34 - Data Loading & Cleaning Completed.
+2025-05-12 09:58:20.002 | INFO     | __main__:<module>:36 - Feature Engineering...
+2025-05-12 09:58:21.784 | INFO     | __main__:<module>:39 - Feature Engineering Completed.
+2025-05-12 09:58:21.800 | INFO     | __main__:<module>:41 - Feature Selection...
+2025-05-12 09:58:21.800 | INFO     | __main__:<module>:43 - Performing correlation analysis...
+2025-05-12 09:58:22.629 | INFO     | __main__:<module>:46 - Dropped highly correlated features: 
+['pm2_5', 'pm10', 'nh3', 'aqi_above_3_count_24h']
+2025-05-12 09:58:22.863 | INFO     | __main__:<module>:47 - Correlation analysis completed.
+2025-05-12 09:58:22.863 | INFO     | __main__:<module>:51 - Feature importance analysis...
+2025-05-12 09:58:40.941 | INFO     | __main__:<module>:54 - Top feature importances: 
+co                      0.173785
+aqi_hazardous_flag      0.132705
+aqi_rolling_mean_24h    0.127294
+so2                     0.098767
+no2                     0.098690
+pm2_5_pm10_ratio        0.077048
+aqi_rolling_max_24h     0.076474
+o3                      0.058212
+aqi_trend               0.039545
+hour                    0.037325
+day                     0.026045
+month                   0.023247
+weekday                 0.017071
+season                  0.013791
+dtype: float64
+2025-05-12 09:58:41.473 | INFO     | __main__:<module>:55 - Feature importance analysis completed.
+2025-05-12 09:58:41.647 | INFO     | __main__:<module>:58 - Splitting data into train, validation, and test sets...
+2025-05-12 09:58:41.725 | INFO     | __main__:<module>:61 - 
+Train shape: 
+(26443, 20)
+ Val shape: (5667, 20)
+ Test shape: (5667, 20)
+2025-05-12 09:58:41.740 | INFO     | __main__:<module>:62 - Data splitting completed.
+2025-05-12 09:58:41.740 | INFO     | __main__:<module>:65 - Saving features to CSV files...
+2025-05-12 09:58:44.362 | INFO     | __main__:<module>:69 - Features saved successfully.
+2025-05-12 10:31:57.471 | INFO     | __main__:<module>:27 - Starting feature pipeline...
+2025-05-12 10:31:57.471 | INFO     | __main__:<module>:31 - Data downloading from API...
+2025-05-12 10:31:58.529 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2016-01-01 - 2016-03-01
+2025-05-12 10:32:03.831 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2016-03-02 - 2016-05-01
+2025-05-12 10:32:09.129 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2016-05-02 - 2016-07-01
+2025-05-12 10:32:14.495 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2016-07-02 - 2016-08-31
+2025-05-12 10:32:19.816 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2016-09-01 - 2016-10-31
+2025-05-12 10:32:25.167 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2016-11-01 - 2016-12-31
+2025-05-12 10:32:30.488 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2017-01-01 - 2017-03-02
+2025-05-12 10:32:35.816 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2017-03-03 - 2017-05-02
+2025-05-12 10:32:41.128 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2017-05-03 - 2017-07-02
+2025-05-12 10:32:46.488 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2017-07-03 - 2017-09-01
+2025-05-12 10:32:51.862 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2017-09-02 - 2017-11-01
+2025-05-12 10:32:57.175 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2017-11-02 - 2018-01-01
+2025-05-12 10:33:02.964 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2018-01-02 - 2018-03-03
+2025-05-12 10:33:08.284 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2018-03-04 - 2018-05-03
+2025-05-12 10:33:13.597 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2018-05-04 - 2018-07-03
+2025-05-12 10:33:18.925 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2018-07-04 - 2018-09-02
+2025-05-12 10:33:24.295 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2018-09-03 - 2018-11-02
+2025-05-12 10:33:29.631 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2018-11-03 - 2019-01-02
+2025-05-12 10:33:34.957 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2019-01-03 - 2019-03-04
+2025-05-12 10:33:40.269 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2019-03-05 - 2019-05-04
+2025-05-12 10:33:45.566 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2019-05-05 - 2019-07-04
+2025-05-12 10:33:50.912 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2019-07-05 - 2019-09-03
+2025-05-12 10:33:56.252 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2019-09-04 - 2019-11-03
+2025-05-12 10:34:01.597 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2019-11-04 - 2020-01-03
+2025-05-12 10:34:07.308 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2020-01-04 - 2020-03-04
+2025-05-12 10:34:12.706 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2020-03-05 - 2020-05-04
+2025-05-12 10:34:18.050 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2020-05-05 - 2020-07-04
+2025-05-12 10:34:23.691 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2020-07-05 - 2020-09-03
+2025-05-12 10:34:29.035 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2020-09-04 - 2020-11-03
+2025-05-12 10:34:35.286 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2020-11-04 - 2021-01-03
+2025-05-12 10:34:41.371 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2021-01-04 - 2021-03-05
+2025-05-12 10:34:47.581 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2021-03-06 - 2021-05-05
+2025-05-12 10:34:53.846 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2021-05-06 - 2021-07-05
+2025-05-12 10:34:59.940 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2021-07-06 - 2021-09-04
+2025-05-12 10:35:06.629 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2021-09-05 - 2021-11-04
+2025-05-12 10:35:13.081 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2021-11-05 - 2022-01-04
+2025-05-12 10:35:19.318 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2022-01-05 - 2022-03-06
+2025-05-12 10:35:25.455 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2022-03-07 - 2022-05-06
+2025-05-12 10:35:31.722 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2022-05-07 - 2022-07-06
+2025-05-12 10:35:37.941 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2022-07-07 - 2022-09-05
+2025-05-12 10:35:44.096 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2022-09-06 - 2022-11-05
+2025-05-12 10:35:50.461 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2022-11-06 - 2023-01-05
+2025-05-12 10:35:56.785 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2023-01-06 - 2023-03-07
+2025-05-12 10:36:03.487 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2023-03-08 - 2023-05-07
+2025-05-12 10:36:09.770 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2023-05-08 - 2023-07-07
+2025-05-12 10:36:15.902 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2023-07-08 - 2023-09-06
+2025-05-12 10:36:22.049 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2023-09-07 - 2023-11-06
+2025-05-12 10:36:28.803 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2023-11-07 - 2024-01-06
+2025-05-12 10:36:34.947 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2024-01-07 - 2024-03-07
+2025-05-12 10:36:41.378 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2024-03-08 - 2024-05-07
+2025-05-12 10:36:49.796 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2024-05-08 - 2024-07-07
+2025-05-12 10:36:56.058 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2024-07-08 - 2024-09-06
+2025-05-12 10:37:02.315 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2024-09-07 - 2024-11-06
+2025-05-12 10:37:08.633 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2024-11-07 - 2025-01-06
+2025-05-12 10:37:15.004 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2025-01-07 - 2025-03-08
+2025-05-12 10:37:22.096 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2025-03-09 - 2025-05-08
+2025-05-12 10:37:27.472 | INFO     | src.data_fetcher:fetch_data:89 - Data pulled for 2025-05-09 - 2025-05-12
+2025-05-12 10:37:34.425 | INFO     | src.data_fetcher:fetch_data:110 - AQI Data saved to `aqi_data_2016-2025.csv`
+2025-05-12 10:37:34.456 | INFO     | __main__:<module>:33 - Data download completed...
+2025-05-12 10:37:34.456 | INFO     | __main__:<module>:35 - Data Loading & Cleaning...
+2025-05-12 10:37:37.456 | INFO     | src.data_cleaner:clean_data:82 - 
+Data Quality Report:  
+Total rows: 37860
+Total columns: 9
+2025-05-12 10:37:37.550 | INFO     | src.data_cleaner:clean_data:83 - 
+Missing values after cleaning:  
+timestamp    0
+aqi          0
+pm2_5        0
+pm10         0
+co           0
+no2          0
+so2          0
+o3           0
+nh3          0
+dtype: int64
+2025-05-12 10:37:37.883 | INFO     | src.data_cleaner:clean_data:84 - 
+Data types: 
+timestamp    datetime64[ns]
+aqi                   int64
+pm2_5               float64
+pm10                float64
+co                  float64
+no2                 float64
+so2                 float64
+o3                  float64
+nh3                 float64
+dtype: object
+2025-05-12 10:37:38.175 | INFO     | __main__:<module>:39 - Data Loading & Cleaning Completed.
+2025-05-12 10:37:38.190 | INFO     | __main__:<module>:41 - Feature Engineering...
+2025-05-12 10:37:40.315 | INFO     | __main__:<module>:44 - Feature Engineering Completed.
+2025-05-12 10:37:40.330 | INFO     | __main__:<module>:46 - Feature Selection...
+2025-05-12 10:37:40.330 | INFO     | __main__:<module>:48 - Performing correlation analysis...
+2025-05-12 10:37:40.999 | INFO     | __main__:<module>:51 - 
+Dropped highly correlated features: 
+['pm2_5', 'pm10', 'nh3', 'aqi_above_3_count_24h']
+2025-05-12 10:37:41.031 | INFO     | __main__:<module>:52 - Correlation analysis completed.
+2025-05-12 10:37:41.596 | INFO     | __main__:<module>:56 - Feature importance analysis...
+2025-05-12 10:38:52.893 | INFO     | __main__:<module>:59 - Top feature importances: 
+co                      0.170006
+aqi_rolling_mean_24h    0.129067
+aqi_hazardous_flag      0.126946
+so2                     0.101957
+no2                     0.097402
+aqi_rolling_max_24h     0.078810
+pm2_5_pm10_ratio        0.076701
+o3                      0.058013
+aqi_trend               0.039276
+hour                    0.037977
+day                     0.025797
+month                   0.022918
+season                  0.017905
+weekday                 0.017225
+dtype: float64
+2025-05-12 10:38:53.043 | INFO     | __main__:<module>:60 - Feature importance analysis completed.
+2025-05-12 10:38:53.159 | INFO     | __main__:<module>:63 - Splitting data into train, validation, and test sets...
+2025-05-12 10:38:53.206 | INFO     | __main__:<module>:66 - 
+Train shape: 
+(26502, 20)
+ Val shape: (5679, 20)
+ Test shape: (5679, 20)
+2025-05-12 10:38:53.441 | INFO     | __main__:<module>:67 - Data splitting completed.
+2025-05-12 10:38:53.567 | INFO     | __main__:<module>:70 - Saving features to CSV files...
+2025-05-12 10:38:57.878 | INFO     | __main__:<module>:74 - Features saved successfully.
+2025-05-12 23:43:06.644 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-12 23:43:06.928 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-12 23:43:07.572 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-12 23:43:07.575 | INFO     | __main__:train_model:40 - Training model...
+2025-05-13 00:05:56.364 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-13 00:05:56.784 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-13 00:05:57.050 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-13 00:05:57.050 | INFO     | __main__:train_model:40 - Training model...
+2025-05-13 00:35:45.628 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-13 00:35:45.987 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-13 00:35:46.300 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-13 00:35:46.300 | INFO     | __main__:train_model:40 - Training model...
+2025-05-13 09:56:06.867 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-13 09:56:07.244 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-13 09:56:07.582 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-13 09:56:07.590 | INFO     | __main__:train_model:40 - Training model...
+2025-05-13 10:07:13.634 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-13 10:07:14.080 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-13 10:07:14.535 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-13 10:07:14.535 | INFO     | __main__:train_model:40 - Training model...
+2025-05-13 10:23:30.539 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-13 10:23:30.791 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-13 10:23:31.125 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-13 10:23:31.137 | INFO     | __main__:train_model:40 - Training model...
+2025-05-13 10:27:16.443 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-13 10:27:16.918 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-13 10:27:17.290 | INFO     | __main__:read_data:27 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-13 10:27:17.300 | INFO     | __main__:train_model:40 - Training model...
+2025-05-13 10:27:42.963 | INFO     | __main__:train_model:96 - max_depth=3 | Metrics: {'accuracy': 0.9739390737805952, 'f1_score': 0.9739390737805952, 'precision': 0.9739390737805952, 'recall': 0.9739390737805952}
+2025-05-13 10:27:54.066 | INFO     | __main__:train_model:96 - max_depth=8 | Metrics: {'accuracy': 0.9730586370839936, 'f1_score': 0.9730586370839936, 'precision': 0.9730586370839936, 'recall': 0.9730586370839936}
+2025-05-13 10:28:07.302 | INFO     | __main__:train_model:96 - max_depth=13 | Metrics: {'accuracy': 0.9730586370839936, 'f1_score': 0.9730586370839936, 'precision': 0.9730586370839936, 'recall': 0.9730586370839936}
+2025-05-13 10:28:20.311 | INFO     | __main__:train_model:96 - max_depth=18 | Metrics: {'accuracy': 0.9734108117626342, 'f1_score': 0.9734108117626342, 'precision': 0.9734108117626342, 'recall': 0.9734108117626342}
+2025-05-13 10:28:32.911 | INFO     | __main__:train_model:96 - max_depth=23 | Metrics: {'accuracy': 0.9728825497446734, 'f1_score': 0.9728825497446734, 'precision': 0.9728825497446734, 'recall': 0.9728825497446734}
+2025-05-13 10:28:45.360 | INFO     | __main__:train_model:96 - max_depth=28 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:28:57.153 | INFO     | __main__:train_model:96 - max_depth=33 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:29:09.912 | INFO     | __main__:train_model:96 - max_depth=38 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:29:21.969 | INFO     | __main__:train_model:96 - max_depth=43 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:29:34.403 | INFO     | __main__:train_model:96 - max_depth=48 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:29:55.806 | INFO     | __main__:train_model:96 - max_depth=53 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:30:07.573 | INFO     | __main__:train_model:96 - max_depth=58 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:30:20.149 | INFO     | __main__:train_model:96 - max_depth=63 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:30:33.142 | INFO     | __main__:train_model:96 - max_depth=68 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:30:45.356 | INFO     | __main__:train_model:96 - max_depth=73 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:30:57.636 | INFO     | __main__:train_model:96 - max_depth=78 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:31:11.925 | INFO     | __main__:train_model:96 - max_depth=83 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:31:25.775 | INFO     | __main__:train_model:96 - max_depth=88 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:31:38.291 | INFO     | __main__:train_model:96 - max_depth=93 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:31:50.381 | INFO     | __main__:train_model:96 - max_depth=98 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-13 10:31:52.034 | INFO     | __main__:train_model:99 - Model training completed for all hyperparameter settings.
+2025-05-14 08:10:43.044 | INFO     | __main__:read_data:28 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-14 08:10:43.486 | INFO     | __main__:read_data:28 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-14 08:10:43.776 | INFO     | __main__:read_data:28 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-14 08:10:43.789 | INFO     | __main__:train_model:41 - Training model...
+2025-05-14 08:11:47.128 | INFO     | __main__:train_model:106 - max_depth=3 | Metrics: {'accuracy': 0.9721782003873921, 'f1_score': 0.9721782003873921, 'precision': 0.9721782003873921, 'recall': 0.9721782003873921}
+2025-05-14 08:11:54.334 | INFO     | __main__:train_model:106 - max_depth=3 | Metrics: {'accuracy': 0.9721782003873921, 'f1_score': 0.9721782003873921, 'precision': 0.9721782003873921, 'recall': 0.9721782003873921}
+2025-05-14 08:12:01.160 | INFO     | __main__:train_model:106 - max_depth=3 | Metrics: {'accuracy': 0.9721782003873921, 'f1_score': 0.9721782003873921, 'precision': 0.9721782003873921, 'recall': 0.9721782003873921}
+2025-05-14 08:12:09.993 | INFO     | __main__:train_model:106 - max_depth=3 | Metrics: {'accuracy': 0.9721782003873921, 'f1_score': 0.9721782003873921, 'precision': 0.9721782003873921, 'recall': 0.9721782003873921}
+2025-05-14 08:12:22.050 | INFO     | __main__:train_model:106 - max_depth=3 | Metrics: {'accuracy': 0.9721782003873921, 'f1_score': 0.9721782003873921, 'precision': 0.9721782003873921, 'recall': 0.9721782003873921}
+2025-05-14 08:12:31.882 | INFO     | __main__:train_model:106 - max_depth=3 | Metrics: {'accuracy': 0.9721782003873921, 'f1_score': 0.9721782003873921, 'precision': 0.9721782003873921, 'recall': 0.9721782003873921}
+2025-05-14 08:12:39.180 | INFO     | __main__:train_model:106 - max_depth=3 | Metrics: {'accuracy': 0.9721782003873921, 'f1_score': 0.9721782003873921, 'precision': 0.9721782003873921, 'recall': 0.9721782003873921}
+2025-05-14 08:12:47.284 | INFO     | __main__:train_model:106 - max_depth=3 | Metrics: {'accuracy': 0.9721782003873921, 'f1_score': 0.9721782003873921, 'precision': 0.9721782003873921, 'recall': 0.9721782003873921}
+2025-05-14 08:12:57.253 | INFO     | __main__:train_model:106 - max_depth=3 | Metrics: {'accuracy': 0.9721782003873921, 'f1_score': 0.9721782003873921, 'precision': 0.9721782003873921, 'recall': 0.9721782003873921}
+2025-05-14 08:13:04.644 | INFO     | __main__:train_model:106 - max_depth=3 | Metrics: {'accuracy': 0.9721782003873921, 'f1_score': 0.9721782003873921, 'precision': 0.9721782003873921, 'recall': 0.9721782003873921}
+2025-05-14 08:13:17.175 | INFO     | __main__:train_model:106 - max_depth=8 | Metrics: {'accuracy': 0.9730586370839936, 'f1_score': 0.9730586370839936, 'precision': 0.9730586370839936, 'recall': 0.9730586370839936}
+2025-05-14 08:13:25.831 | INFO     | __main__:train_model:106 - max_depth=8 | Metrics: {'accuracy': 0.9730586370839936, 'f1_score': 0.9730586370839936, 'precision': 0.9730586370839936, 'recall': 0.9730586370839936}
+2025-05-14 08:13:34.097 | INFO     | __main__:train_model:106 - max_depth=8 | Metrics: {'accuracy': 0.9730586370839936, 'f1_score': 0.9730586370839936, 'precision': 0.9730586370839936, 'recall': 0.9730586370839936}
+2025-05-14 08:13:42.800 | INFO     | __main__:train_model:106 - max_depth=8 | Metrics: {'accuracy': 0.9730586370839936, 'f1_score': 0.9730586370839936, 'precision': 0.9730586370839936, 'recall': 0.9730586370839936}
+2025-05-14 08:13:51.893 | INFO     | __main__:train_model:106 - max_depth=8 | Metrics: {'accuracy': 0.9730586370839936, 'f1_score': 0.9730586370839936, 'precision': 0.9730586370839936, 'recall': 0.9730586370839936}
+2025-05-14 08:14:01.206 | INFO     | __main__:train_model:106 - max_depth=8 | Metrics: {'accuracy': 0.9730586370839936, 'f1_score': 0.9730586370839936, 'precision': 0.9730586370839936, 'recall': 0.9730586370839936}
+2025-05-14 08:14:09.628 | INFO     | __main__:train_model:106 - max_depth=8 | Metrics: {'accuracy': 0.9730586370839936, 'f1_score': 0.9730586370839936, 'precision': 0.9730586370839936, 'recall': 0.9730586370839936}
+2025-05-14 08:14:17.909 | INFO     | __main__:train_model:106 - max_depth=8 | Metrics: {'accuracy': 0.9730586370839936, 'f1_score': 0.9730586370839936, 'precision': 0.9730586370839936, 'recall': 0.9730586370839936}
+2025-05-14 08:14:25.957 | INFO     | __main__:train_model:106 - max_depth=8 | Metrics: {'accuracy': 0.9730586370839936, 'f1_score': 0.9730586370839936, 'precision': 0.9730586370839936, 'recall': 0.9730586370839936}
+2025-05-14 08:14:34.539 | INFO     | __main__:train_model:106 - max_depth=8 | Metrics: {'accuracy': 0.9730586370839936, 'f1_score': 0.9730586370839936, 'precision': 0.9730586370839936, 'recall': 0.9730586370839936}
+2025-05-14 08:14:50.925 | INFO     | __main__:train_model:106 - max_depth=13 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:14:59.018 | INFO     | __main__:train_model:106 - max_depth=13 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:15:07.507 | INFO     | __main__:train_model:106 - max_depth=13 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:15:15.462 | INFO     | __main__:train_model:106 - max_depth=13 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:15:23.552 | INFO     | __main__:train_model:106 - max_depth=13 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:15:32.003 | INFO     | __main__:train_model:106 - max_depth=13 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:15:39.855 | INFO     | __main__:train_model:106 - max_depth=13 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:15:47.569 | INFO     | __main__:train_model:106 - max_depth=13 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:15:55.588 | INFO     | __main__:train_model:106 - max_depth=13 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:16:03.335 | INFO     | __main__:train_model:106 - max_depth=13 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:16:23.081 | INFO     | __main__:train_model:106 - max_depth=18 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:16:30.847 | INFO     | __main__:train_model:106 - max_depth=18 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:16:38.849 | INFO     | __main__:train_model:106 - max_depth=18 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:16:46.987 | INFO     | __main__:train_model:106 - max_depth=18 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:16:54.832 | INFO     | __main__:train_model:106 - max_depth=18 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:17:02.691 | INFO     | __main__:train_model:106 - max_depth=18 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:17:12.762 | INFO     | __main__:train_model:106 - max_depth=18 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:17:22.378 | INFO     | __main__:train_model:106 - max_depth=18 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:17:30.590 | INFO     | __main__:train_model:106 - max_depth=18 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:17:39.090 | INFO     | __main__:train_model:106 - max_depth=18 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:17:50.644 | INFO     | __main__:train_model:106 - max_depth=23 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:17:58.987 | INFO     | __main__:train_model:106 - max_depth=23 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:18:07.789 | INFO     | __main__:train_model:106 - max_depth=23 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:18:16.191 | INFO     | __main__:train_model:106 - max_depth=23 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:18:24.471 | INFO     | __main__:train_model:106 - max_depth=23 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:18:32.582 | INFO     | __main__:train_model:106 - max_depth=23 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:18:41.098 | INFO     | __main__:train_model:106 - max_depth=23 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:18:49.472 | INFO     | __main__:train_model:106 - max_depth=23 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:18:58.066 | INFO     | __main__:train_model:106 - max_depth=23 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:19:06.064 | INFO     | __main__:train_model:106 - max_depth=23 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:19:17.378 | INFO     | __main__:train_model:106 - max_depth=28 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:19:29.837 | INFO     | __main__:train_model:106 - max_depth=28 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:19:38.539 | INFO     | __main__:train_model:106 - max_depth=28 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:19:47.179 | INFO     | __main__:train_model:106 - max_depth=28 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:19:55.578 | INFO     | __main__:train_model:106 - max_depth=28 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:20:03.907 | INFO     | __main__:train_model:106 - max_depth=28 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:20:12.407 | INFO     | __main__:train_model:106 - max_depth=28 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:20:20.598 | INFO     | __main__:train_model:106 - max_depth=28 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:20:29.081 | INFO     | __main__:train_model:106 - max_depth=28 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:20:37.488 | INFO     | __main__:train_model:106 - max_depth=28 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:20:49.893 | INFO     | __main__:train_model:106 - max_depth=33 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:20:58.566 | INFO     | __main__:train_model:106 - max_depth=33 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:21:07.284 | INFO     | __main__:train_model:106 - max_depth=33 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:21:15.863 | INFO     | __main__:train_model:106 - max_depth=33 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:21:24.238 | INFO     | __main__:train_model:106 - max_depth=33 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:21:33.081 | INFO     | __main__:train_model:106 - max_depth=33 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:21:41.252 | INFO     | __main__:train_model:106 - max_depth=33 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:21:57.582 | INFO     | __main__:train_model:106 - max_depth=33 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:22:06.347 | INFO     | __main__:train_model:106 - max_depth=33 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:22:15.300 | INFO     | __main__:train_model:106 - max_depth=33 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:22:29.222 | INFO     | __main__:train_model:106 - max_depth=38 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:22:37.457 | INFO     | __main__:train_model:106 - max_depth=38 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:22:45.722 | INFO     | __main__:train_model:106 - max_depth=38 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:22:54.049 | INFO     | __main__:train_model:106 - max_depth=38 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:23:02.394 | INFO     | __main__:train_model:106 - max_depth=38 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:23:11.160 | INFO     | __main__:train_model:106 - max_depth=38 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:23:19.394 | INFO     | __main__:train_model:106 - max_depth=38 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:23:27.720 | INFO     | __main__:train_model:106 - max_depth=38 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:23:36.269 | INFO     | __main__:train_model:106 - max_depth=38 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:23:44.581 | INFO     | __main__:train_model:106 - max_depth=38 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:23:58.472 | INFO     | __main__:train_model:106 - max_depth=43 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:24:07.253 | INFO     | __main__:train_model:106 - max_depth=43 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:24:15.535 | INFO     | __main__:train_model:106 - max_depth=43 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:24:23.863 | INFO     | __main__:train_model:106 - max_depth=43 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:24:32.472 | INFO     | __main__:train_model:106 - max_depth=43 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:24:40.754 | INFO     | __main__:train_model:106 - max_depth=43 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:24:49.158 | INFO     | __main__:train_model:106 - max_depth=43 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:24:58.050 | INFO     | __main__:train_model:106 - max_depth=43 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:25:06.784 | INFO     | __main__:train_model:106 - max_depth=43 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:25:15.471 | INFO     | __main__:train_model:106 - max_depth=43 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:25:28.659 | INFO     | __main__:train_model:106 - max_depth=48 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:25:37.285 | INFO     | __main__:train_model:106 - max_depth=48 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:25:45.690 | INFO     | __main__:train_model:106 - max_depth=48 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:25:54.097 | INFO     | __main__:train_model:106 - max_depth=48 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:26:02.847 | INFO     | __main__:train_model:106 - max_depth=48 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:26:11.457 | INFO     | __main__:train_model:106 - max_depth=48 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:26:20.145 | INFO     | __main__:train_model:106 - max_depth=48 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:26:28.566 | INFO     | __main__:train_model:106 - max_depth=48 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:26:37.003 | INFO     | __main__:train_model:106 - max_depth=48 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:26:45.300 | INFO     | __main__:train_model:106 - max_depth=48 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:26:57.894 | INFO     | __main__:train_model:106 - max_depth=53 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:27:07.190 | INFO     | __main__:train_model:106 - max_depth=53 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:27:16.362 | INFO     | __main__:train_model:106 - max_depth=53 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:27:25.050 | INFO     | __main__:train_model:106 - max_depth=53 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:27:33.785 | INFO     | __main__:train_model:106 - max_depth=53 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:27:47.723 | INFO     | __main__:train_model:106 - max_depth=53 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:28:06.144 | INFO     | __main__:train_model:106 - max_depth=53 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:28:31.587 | INFO     | __main__:train_model:106 - max_depth=53 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:28:46.175 | INFO     | __main__:train_model:106 - max_depth=53 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:28:55.159 | INFO     | __main__:train_model:106 - max_depth=53 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:29:12.615 | INFO     | __main__:train_model:106 - max_depth=58 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:29:21.737 | INFO     | __main__:train_model:106 - max_depth=58 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:29:30.429 | INFO     | __main__:train_model:106 - max_depth=58 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:29:39.236 | INFO     | __main__:train_model:106 - max_depth=58 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:29:48.225 | INFO     | __main__:train_model:106 - max_depth=58 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:29:57.135 | INFO     | __main__:train_model:106 - max_depth=58 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:30:06.190 | INFO     | __main__:train_model:106 - max_depth=58 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:30:14.675 | INFO     | __main__:train_model:106 - max_depth=58 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:30:23.331 | INFO     | __main__:train_model:106 - max_depth=58 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:30:31.987 | INFO     | __main__:train_model:106 - max_depth=58 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:30:56.629 | INFO     | __main__:train_model:106 - max_depth=63 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:31:05.628 | INFO     | __main__:train_model:106 - max_depth=63 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:31:14.347 | INFO     | __main__:train_model:106 - max_depth=63 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:31:23.795 | INFO     | __main__:train_model:106 - max_depth=63 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:31:32.535 | INFO     | __main__:train_model:106 - max_depth=63 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:31:41.518 | INFO     | __main__:train_model:106 - max_depth=63 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:31:50.159 | INFO     | __main__:train_model:106 - max_depth=63 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:31:58.878 | INFO     | __main__:train_model:106 - max_depth=63 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:32:08.159 | INFO     | __main__:train_model:106 - max_depth=63 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:32:20.834 | INFO     | __main__:train_model:106 - max_depth=63 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:32:35.957 | INFO     | __main__:train_model:106 - max_depth=68 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:32:45.126 | INFO     | __main__:train_model:106 - max_depth=68 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:32:54.976 | INFO     | __main__:train_model:106 - max_depth=68 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:33:03.695 | INFO     | __main__:train_model:106 - max_depth=68 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:33:12.420 | INFO     | __main__:train_model:106 - max_depth=68 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:33:21.935 | INFO     | __main__:train_model:106 - max_depth=68 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:33:31.297 | INFO     | __main__:train_model:106 - max_depth=68 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:33:40.115 | INFO     | __main__:train_model:106 - max_depth=68 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:33:48.270 | INFO     | __main__:train_model:106 - max_depth=68 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:33:56.390 | INFO     | __main__:train_model:106 - max_depth=68 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:34:08.561 | INFO     | __main__:train_model:106 - max_depth=73 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:34:16.676 | INFO     | __main__:train_model:106 - max_depth=73 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:34:24.898 | INFO     | __main__:train_model:106 - max_depth=73 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:34:33.147 | INFO     | __main__:train_model:106 - max_depth=73 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:34:41.421 | INFO     | __main__:train_model:106 - max_depth=73 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:34:49.509 | INFO     | __main__:train_model:106 - max_depth=73 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:34:57.594 | INFO     | __main__:train_model:106 - max_depth=73 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:35:05.749 | INFO     | __main__:train_model:106 - max_depth=73 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:35:13.845 | INFO     | __main__:train_model:106 - max_depth=73 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:35:22.065 | INFO     | __main__:train_model:106 - max_depth=73 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:35:36.926 | INFO     | __main__:train_model:106 - max_depth=78 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:35:45.348 | INFO     | __main__:train_model:106 - max_depth=78 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:35:53.647 | INFO     | __main__:train_model:106 - max_depth=78 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:36:01.910 | INFO     | __main__:train_model:106 - max_depth=78 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:36:09.961 | INFO     | __main__:train_model:106 - max_depth=78 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:36:18.099 | INFO     | __main__:train_model:106 - max_depth=78 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:36:26.795 | INFO     | __main__:train_model:106 - max_depth=78 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:36:34.942 | INFO     | __main__:train_model:106 - max_depth=78 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:36:43.080 | INFO     | __main__:train_model:106 - max_depth=78 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:36:51.435 | INFO     | __main__:train_model:106 - max_depth=78 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:37:03.781 | INFO     | __main__:train_model:106 - max_depth=83 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:37:12.636 | INFO     | __main__:train_model:106 - max_depth=83 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:37:21.153 | INFO     | __main__:train_model:106 - max_depth=83 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:37:29.273 | INFO     | __main__:train_model:106 - max_depth=83 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:37:37.467 | INFO     | __main__:train_model:106 - max_depth=83 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:37:45.592 | INFO     | __main__:train_model:106 - max_depth=83 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:37:53.930 | INFO     | __main__:train_model:106 - max_depth=83 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:38:02.484 | INFO     | __main__:train_model:106 - max_depth=83 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:38:10.580 | INFO     | __main__:train_model:106 - max_depth=83 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:38:18.697 | INFO     | __main__:train_model:106 - max_depth=83 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:38:33.003 | INFO     | __main__:train_model:106 - max_depth=88 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:38:40.721 | INFO     | __main__:train_model:106 - max_depth=88 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:38:49.098 | INFO     | __main__:train_model:106 - max_depth=88 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:39:01.417 | INFO     | __main__:train_model:106 - max_depth=88 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:39:10.005 | INFO     | __main__:train_model:106 - max_depth=88 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:39:18.358 | INFO     | __main__:train_model:106 - max_depth=88 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:39:26.858 | INFO     | __main__:train_model:106 - max_depth=88 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:39:35.298 | INFO     | __main__:train_model:106 - max_depth=88 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:39:43.867 | INFO     | __main__:train_model:106 - max_depth=88 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:39:52.015 | INFO     | __main__:train_model:106 - max_depth=88 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:40:03.945 | INFO     | __main__:train_model:106 - max_depth=93 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:40:12.160 | INFO     | __main__:train_model:106 - max_depth=93 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:40:20.571 | INFO     | __main__:train_model:106 - max_depth=93 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:40:28.798 | INFO     | __main__:train_model:106 - max_depth=93 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:40:36.982 | INFO     | __main__:train_model:106 - max_depth=93 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:40:45.966 | INFO     | __main__:train_model:106 - max_depth=93 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:40:54.068 | INFO     | __main__:train_model:106 - max_depth=93 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:41:02.601 | INFO     | __main__:train_model:106 - max_depth=93 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:41:10.901 | INFO     | __main__:train_model:106 - max_depth=93 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:41:19.111 | INFO     | __main__:train_model:106 - max_depth=93 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:41:32.954 | INFO     | __main__:train_model:106 - max_depth=98 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:41:41.668 | INFO     | __main__:train_model:106 - max_depth=98 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:41:50.953 | INFO     | __main__:train_model:106 - max_depth=98 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:41:59.731 | INFO     | __main__:train_model:106 - max_depth=98 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:42:09.878 | INFO     | __main__:train_model:106 - max_depth=98 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:42:18.654 | INFO     | __main__:train_model:106 - max_depth=98 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:42:27.757 | INFO     | __main__:train_model:106 - max_depth=98 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:42:36.889 | INFO     | __main__:train_model:106 - max_depth=98 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:42:46.045 | INFO     | __main__:train_model:106 - max_depth=98 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:42:54.579 | INFO     | __main__:train_model:106 - max_depth=98 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:43:15.587 | INFO     | __main__:train_model:106 - max_depth=103 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:43:23.672 | INFO     | __main__:train_model:106 - max_depth=103 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:43:31.958 | INFO     | __main__:train_model:106 - max_depth=103 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:43:40.619 | INFO     | __main__:train_model:106 - max_depth=103 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:43:48.929 | INFO     | __main__:train_model:106 - max_depth=103 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:43:57.234 | INFO     | __main__:train_model:106 - max_depth=103 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:44:05.752 | INFO     | __main__:train_model:106 - max_depth=103 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:44:13.880 | INFO     | __main__:train_model:106 - max_depth=103 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:44:22.586 | INFO     | __main__:train_model:106 - max_depth=103 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:44:30.867 | INFO     | __main__:train_model:106 - max_depth=103 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:44:46.475 | INFO     | __main__:train_model:106 - max_depth=108 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:44:55.046 | INFO     | __main__:train_model:106 - max_depth=108 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:45:14.070 | INFO     | __main__:train_model:106 - max_depth=108 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:45:22.494 | INFO     | __main__:train_model:106 - max_depth=108 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:45:30.643 | INFO     | __main__:train_model:106 - max_depth=108 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:45:38.985 | INFO     | __main__:train_model:106 - max_depth=108 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:45:47.067 | INFO     | __main__:train_model:106 - max_depth=108 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:45:55.426 | INFO     | __main__:train_model:106 - max_depth=108 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:46:03.994 | INFO     | __main__:train_model:106 - max_depth=108 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:46:13.067 | INFO     | __main__:train_model:106 - max_depth=108 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:46:30.909 | INFO     | __main__:train_model:106 - max_depth=113 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:46:38.598 | INFO     | __main__:train_model:106 - max_depth=113 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:46:49.558 | INFO     | __main__:train_model:106 - max_depth=113 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:46:58.119 | INFO     | __main__:train_model:106 - max_depth=113 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:47:06.873 | INFO     | __main__:train_model:106 - max_depth=113 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:47:16.474 | INFO     | __main__:train_model:106 - max_depth=113 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:47:25.299 | INFO     | __main__:train_model:106 - max_depth=113 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:47:34.705 | INFO     | __main__:train_model:106 - max_depth=113 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:47:44.634 | INFO     | __main__:train_model:106 - max_depth=113 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:47:53.594 | INFO     | __main__:train_model:106 - max_depth=113 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:48:21.512 | INFO     | __main__:train_model:106 - max_depth=118 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:48:30.093 | INFO     | __main__:train_model:106 - max_depth=118 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:48:39.029 | INFO     | __main__:train_model:106 - max_depth=118 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:48:47.764 | INFO     | __main__:train_model:106 - max_depth=118 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:48:56.660 | INFO     | __main__:train_model:106 - max_depth=118 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:49:05.251 | INFO     | __main__:train_model:106 - max_depth=118 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:49:13.608 | INFO     | __main__:train_model:106 - max_depth=118 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:49:22.235 | INFO     | __main__:train_model:106 - max_depth=118 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:49:30.551 | INFO     | __main__:train_model:106 - max_depth=118 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:49:38.973 | INFO     | __main__:train_model:106 - max_depth=118 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:49:51.348 | INFO     | __main__:train_model:106 - max_depth=123 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:49:59.916 | INFO     | __main__:train_model:106 - max_depth=123 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:50:09.716 | INFO     | __main__:train_model:106 - max_depth=123 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:50:18.164 | INFO     | __main__:train_model:106 - max_depth=123 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:50:26.627 | INFO     | __main__:train_model:106 - max_depth=123 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:50:35.745 | INFO     | __main__:train_model:106 - max_depth=123 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:50:43.973 | INFO     | __main__:train_model:106 - max_depth=123 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:50:52.493 | INFO     | __main__:train_model:106 - max_depth=123 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:51:00.984 | INFO     | __main__:train_model:106 - max_depth=123 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:51:09.210 | INFO     | __main__:train_model:106 - max_depth=123 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:51:23.863 | INFO     | __main__:train_model:106 - max_depth=128 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:51:32.275 | INFO     | __main__:train_model:106 - max_depth=128 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:51:40.847 | INFO     | __main__:train_model:106 - max_depth=128 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:51:49.362 | INFO     | __main__:train_model:106 - max_depth=128 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:51:57.991 | INFO     | __main__:train_model:106 - max_depth=128 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:52:06.472 | INFO     | __main__:train_model:106 - max_depth=128 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:52:14.777 | INFO     | __main__:train_model:106 - max_depth=128 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:52:23.286 | INFO     | __main__:train_model:106 - max_depth=128 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:52:31.838 | INFO     | __main__:train_model:106 - max_depth=128 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:52:40.178 | INFO     | __main__:train_model:106 - max_depth=128 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:52:53.687 | INFO     | __main__:train_model:106 - max_depth=133 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:53:01.793 | INFO     | __main__:train_model:106 - max_depth=133 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:53:10.436 | INFO     | __main__:train_model:106 - max_depth=133 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:53:18.849 | INFO     | __main__:train_model:106 - max_depth=133 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:53:27.114 | INFO     | __main__:train_model:106 - max_depth=133 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:53:35.370 | INFO     | __main__:train_model:106 - max_depth=133 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:53:43.711 | INFO     | __main__:train_model:106 - max_depth=133 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:53:52.063 | INFO     | __main__:train_model:106 - max_depth=133 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:54:00.239 | INFO     | __main__:train_model:106 - max_depth=133 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:54:08.608 | INFO     | __main__:train_model:106 - max_depth=133 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:54:31.446 | INFO     | __main__:train_model:106 - max_depth=138 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:54:39.666 | INFO     | __main__:train_model:106 - max_depth=138 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:54:47.988 | INFO     | __main__:train_model:106 - max_depth=138 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:54:56.196 | INFO     | __main__:train_model:106 - max_depth=138 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:55:04.409 | INFO     | __main__:train_model:106 - max_depth=138 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:55:13.107 | INFO     | __main__:train_model:106 - max_depth=138 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:55:21.373 | INFO     | __main__:train_model:106 - max_depth=138 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:55:30.151 | INFO     | __main__:train_model:106 - max_depth=138 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:55:38.444 | INFO     | __main__:train_model:106 - max_depth=138 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:55:46.849 | INFO     | __main__:train_model:106 - max_depth=138 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:55:59.161 | INFO     | __main__:train_model:106 - max_depth=143 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:56:07.339 | INFO     | __main__:train_model:106 - max_depth=143 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:56:15.739 | INFO     | __main__:train_model:106 - max_depth=143 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:56:24.597 | INFO     | __main__:train_model:106 - max_depth=143 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:56:32.870 | INFO     | __main__:train_model:106 - max_depth=143 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:56:40.761 | INFO     | __main__:train_model:106 - max_depth=143 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:56:52.003 | INFO     | __main__:train_model:106 - max_depth=143 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:56:59.659 | INFO     | __main__:train_model:106 - max_depth=143 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:57:10.237 | INFO     | __main__:train_model:106 - max_depth=143 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:57:19.418 | INFO     | __main__:train_model:106 - max_depth=143 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:57:33.319 | INFO     | __main__:train_model:106 - max_depth=148 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:57:41.096 | INFO     | __main__:train_model:106 - max_depth=148 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:57:51.480 | INFO     | __main__:train_model:106 - max_depth=148 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:57:59.321 | INFO     | __main__:train_model:106 - max_depth=148 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:58:07.137 | INFO     | __main__:train_model:106 - max_depth=148 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:58:15.393 | INFO     | __main__:train_model:106 - max_depth=148 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:58:23.193 | INFO     | __main__:train_model:106 - max_depth=148 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:58:38.891 | INFO     | __main__:train_model:106 - max_depth=148 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:58:51.650 | INFO     | __main__:train_model:106 - max_depth=148 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:59:00.627 | INFO     | __main__:train_model:106 - max_depth=148 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:59:25.354 | INFO     | __main__:train_model:106 - max_depth=153 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 08:59:45.484 | INFO     | __main__:train_model:106 - max_depth=153 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:00:00.972 | INFO     | __main__:train_model:106 - max_depth=153 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:00:10.918 | INFO     | __main__:train_model:106 - max_depth=153 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:00:23.628 | INFO     | __main__:train_model:106 - max_depth=153 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:00:42.542 | INFO     | __main__:train_model:106 - max_depth=153 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:01:36.430 | INFO     | __main__:train_model:106 - max_depth=153 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:01:45.723 | INFO     | __main__:train_model:106 - max_depth=153 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:01:56.907 | INFO     | __main__:train_model:106 - max_depth=153 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:02:05.376 | INFO     | __main__:train_model:106 - max_depth=153 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:02:51.521 | INFO     | __main__:train_model:106 - max_depth=158 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:03:20.344 | INFO     | __main__:train_model:106 - max_depth=158 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:03:30.285 | INFO     | __main__:train_model:106 - max_depth=158 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:03:44.364 | INFO     | __main__:train_model:106 - max_depth=158 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:03:53.884 | INFO     | __main__:train_model:106 - max_depth=158 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:04:08.925 | INFO     | __main__:train_model:106 - max_depth=158 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:04:19.333 | INFO     | __main__:train_model:106 - max_depth=158 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:04:28.505 | INFO     | __main__:train_model:106 - max_depth=158 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:04:38.131 | INFO     | __main__:train_model:106 - max_depth=158 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:04:46.978 | INFO     | __main__:train_model:106 - max_depth=158 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:05:11.191 | INFO     | __main__:train_model:106 - max_depth=163 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:05:30.145 | INFO     | __main__:train_model:106 - max_depth=163 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:05:38.685 | INFO     | __main__:train_model:106 - max_depth=163 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:05:47.313 | INFO     | __main__:train_model:106 - max_depth=163 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:05:57.810 | INFO     | __main__:train_model:106 - max_depth=163 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:06:06.810 | INFO     | __main__:train_model:106 - max_depth=163 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:06:15.627 | INFO     | __main__:train_model:106 - max_depth=163 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:06:23.903 | INFO     | __main__:train_model:106 - max_depth=163 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:06:32.534 | INFO     | __main__:train_model:106 - max_depth=163 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:06:41.971 | INFO     | __main__:train_model:106 - max_depth=163 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:06:56.495 | INFO     | __main__:train_model:106 - max_depth=168 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:07:04.858 | INFO     | __main__:train_model:106 - max_depth=168 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:07:14.033 | INFO     | __main__:train_model:106 - max_depth=168 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:07:22.641 | INFO     | __main__:train_model:106 - max_depth=168 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:07:30.748 | INFO     | __main__:train_model:106 - max_depth=168 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:07:39.076 | INFO     | __main__:train_model:106 - max_depth=168 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:07:47.316 | INFO     | __main__:train_model:106 - max_depth=168 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:07:55.480 | INFO     | __main__:train_model:106 - max_depth=168 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:08:03.744 | INFO     | __main__:train_model:106 - max_depth=168 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:08:12.495 | INFO     | __main__:train_model:106 - max_depth=168 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:08:25.421 | INFO     | __main__:train_model:106 - max_depth=173 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:08:34.046 | INFO     | __main__:train_model:106 - max_depth=173 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:08:42.501 | INFO     | __main__:train_model:106 - max_depth=173 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:08:50.801 | INFO     | __main__:train_model:106 - max_depth=173 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:08:58.979 | INFO     | __main__:train_model:106 - max_depth=173 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:09:07.357 | INFO     | __main__:train_model:106 - max_depth=173 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:09:15.579 | INFO     | __main__:train_model:106 - max_depth=173 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:09:23.843 | INFO     | __main__:train_model:106 - max_depth=173 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:09:32.810 | INFO     | __main__:train_model:106 - max_depth=173 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:09:41.625 | INFO     | __main__:train_model:106 - max_depth=173 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:09:55.377 | INFO     | __main__:train_model:106 - max_depth=178 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:10:04.349 | INFO     | __main__:train_model:106 - max_depth=178 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:10:14.356 | INFO     | __main__:train_model:106 - max_depth=178 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:10:22.723 | INFO     | __main__:train_model:106 - max_depth=178 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:10:30.973 | INFO     | __main__:train_model:106 - max_depth=178 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:10:39.998 | INFO     | __main__:train_model:106 - max_depth=178 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:10:48.307 | INFO     | __main__:train_model:106 - max_depth=178 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:10:57.286 | INFO     | __main__:train_model:106 - max_depth=178 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:11:05.842 | INFO     | __main__:train_model:106 - max_depth=178 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:11:14.198 | INFO     | __main__:train_model:106 - max_depth=178 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:11:29.968 | INFO     | __main__:train_model:106 - max_depth=183 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:11:38.621 | INFO     | __main__:train_model:106 - max_depth=183 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:11:46.928 | INFO     | __main__:train_model:106 - max_depth=183 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:11:55.344 | INFO     | __main__:train_model:106 - max_depth=183 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:12:03.760 | INFO     | __main__:train_model:106 - max_depth=183 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:12:12.300 | INFO     | __main__:train_model:106 - max_depth=183 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:12:20.488 | INFO     | __main__:train_model:106 - max_depth=183 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:12:28.873 | INFO     | __main__:train_model:106 - max_depth=183 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:12:37.153 | INFO     | __main__:train_model:106 - max_depth=183 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:12:45.477 | INFO     | __main__:train_model:106 - max_depth=183 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:12:58.083 | INFO     | __main__:train_model:106 - max_depth=188 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:13:06.298 | INFO     | __main__:train_model:106 - max_depth=188 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:13:14.589 | INFO     | __main__:train_model:106 - max_depth=188 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:13:23.003 | INFO     | __main__:train_model:106 - max_depth=188 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:13:31.244 | INFO     | __main__:train_model:106 - max_depth=188 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:13:40.082 | INFO     | __main__:train_model:106 - max_depth=188 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:13:48.553 | INFO     | __main__:train_model:106 - max_depth=188 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:13:56.931 | INFO     | __main__:train_model:106 - max_depth=188 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:14:05.265 | INFO     | __main__:train_model:106 - max_depth=188 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:14:13.596 | INFO     | __main__:train_model:106 - max_depth=188 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:14:26.407 | INFO     | __main__:train_model:106 - max_depth=193 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:14:34.680 | INFO     | __main__:train_model:106 - max_depth=193 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:14:42.915 | INFO     | __main__:train_model:106 - max_depth=193 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:14:51.473 | INFO     | __main__:train_model:106 - max_depth=193 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:14:59.568 | INFO     | __main__:train_model:106 - max_depth=193 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:15:07.899 | INFO     | __main__:train_model:106 - max_depth=193 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:15:16.058 | INFO     | __main__:train_model:106 - max_depth=193 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:15:24.256 | INFO     | __main__:train_model:106 - max_depth=193 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:15:32.761 | INFO     | __main__:train_model:106 - max_depth=193 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:15:40.963 | INFO     | __main__:train_model:106 - max_depth=193 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:15:54.143 | INFO     | __main__:train_model:106 - max_depth=198 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:16:01.581 | INFO     | __main__:train_model:106 - max_depth=198 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:16:11.432 | INFO     | __main__:train_model:106 - max_depth=198 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:16:19.557 | INFO     | __main__:train_model:106 - max_depth=198 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:16:27.481 | INFO     | __main__:train_model:106 - max_depth=198 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:16:36.486 | INFO     | __main__:train_model:106 - max_depth=198 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:16:45.221 | INFO     | __main__:train_model:106 - max_depth=198 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:16:54.526 | INFO     | __main__:train_model:106 - max_depth=198 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:17:19.359 | INFO     | __main__:train_model:106 - max_depth=198 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:17:27.751 | INFO     | __main__:train_model:106 - max_depth=198 | Metrics: {'accuracy': 0.9725303750660328, 'f1_score': 0.9725303750660328, 'precision': 0.9725303750660328, 'recall': 0.9725303750660328}
+2025-05-14 09:17:30.111 | INFO     | __main__:train_model:110 - Model training completed for all hyperparameter settings.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   2025-05-17 12:31:43.350 | INFO     | __main__:<module>:27 - Starting feature pipeline...
+2025-05-17 12:31:43.541 | INFO     | __main__:<module>:31 - Data downloading from API...
+2025-05-17 12:31:47.259 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-01-01 - 2016-03-01
+2025-05-17 12:31:54.652 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-03-02 - 2016-05-01
+2025-05-17 12:32:01.435 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-05-02 - 2016-07-01
+2025-05-17 12:32:07.202 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-07-02 - 2016-08-31
+2025-05-17 12:32:12.607 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-09-01 - 2016-10-31
+2025-05-17 12:32:19.602 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-11-01 - 2016-12-31
+2025-05-17 12:32:25.549 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-01-01 - 2017-03-02
+2025-05-17 12:32:30.992 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-03-03 - 2017-05-02
+2025-05-17 12:32:38.069 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-05-03 - 2017-07-02
+2025-05-17 12:32:43.764 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-07-03 - 2017-09-01
+2025-05-17 12:32:49.212 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-09-02 - 2017-11-01
+2025-05-17 12:32:54.617 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-11-02 - 2018-01-01
+2025-05-17 12:33:00.706 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-01-02 - 2018-03-03
+2025-05-17 12:33:07.036 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-03-04 - 2018-05-03
+2025-05-17 12:33:12.484 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-05-04 - 2018-07-03
+2025-05-17 12:33:19.444 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-07-04 - 2018-09-02
+2025-05-17 12:33:26.385 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-09-03 - 2018-11-02
+2025-05-17 12:33:32.137 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-11-03 - 2019-01-02
+2025-05-17 12:33:38.900 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-01-03 - 2019-03-04
+2025-05-17 12:33:45.573 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-03-05 - 2019-05-04
+2025-05-17 12:33:51.825 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-05-05 - 2019-07-04
+2025-05-17 12:33:57.378 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-07-05 - 2019-09-03
+2025-05-17 12:34:03.470 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-09-04 - 2019-11-03
+2025-05-17 12:34:09.732 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-11-04 - 2020-01-03
+2025-05-17 12:34:15.720 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-01-04 - 2020-03-04
+2025-05-17 12:34:21.513 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-03-05 - 2020-05-04
+2025-05-17 12:34:34.648 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-05-05 - 2020-07-04
+2025-05-17 12:34:40.602 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-07-05 - 2020-09-03
+2025-05-17 12:34:47.181 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-09-04 - 2020-11-03
+2025-05-17 12:34:53.833 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-11-04 - 2021-01-03
+2025-05-17 12:35:00.994 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-01-04 - 2021-03-05
+2025-05-17 12:35:08.477 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-03-06 - 2021-05-05
+2025-05-17 12:35:17.248 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-05-06 - 2021-07-05
+2025-05-17 12:35:24.617 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-07-06 - 2021-09-04
+2025-05-17 12:35:33.522 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-09-05 - 2021-11-04
+2025-05-17 12:35:40.370 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-11-05 - 2022-01-04
+2025-05-17 12:35:49.262 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2022-01-05 - 2022-03-06
+2025-05-17 12:35:56.300 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2022-03-07 - 2022-05-06
+2025-05-17 12:36:03.708 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2022-05-07 - 2022-07-06
+2025-05-17 12:36:10.069 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2022-07-07 - 2022-09-05
+2025-05-17 12:36:16.938 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2022-09-06 - 2022-11-05
+2025-05-17 12:36:24.181 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2022-11-06 - 2023-01-05
+2025-05-17 12:36:33.770 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2023-01-06 - 2023-03-07
+2025-05-17 12:36:44.395 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2023-03-08 - 2023-05-07
+2025-05-17 12:36:50.693 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2023-05-08 - 2023-07-07
+2025-05-17 12:36:57.120 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2023-07-08 - 2023-09-06
+2025-05-17 12:37:04.107 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2023-09-07 - 2023-11-06
+2025-05-17 12:37:10.481 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2023-11-07 - 2024-01-06
+2025-05-17 12:37:16.963 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2024-01-07 - 2024-03-07
+2025-05-17 12:37:23.172 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2024-03-08 - 2024-05-07
+2025-05-17 12:37:29.332 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2024-05-08 - 2024-07-07
+2025-05-17 12:37:36.433 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2024-07-08 - 2024-09-06
+2025-05-17 12:37:42.868 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2024-09-07 - 2024-11-06
+2025-05-17 12:37:49.116 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2024-11-07 - 2025-01-06
+2025-05-17 12:37:56.292 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2025-01-07 - 2025-03-08
+2025-05-17 12:38:03.051 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2025-03-09 - 2025-05-08
+2025-05-17 12:38:08.832 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2025-05-09 - 2025-05-17
+2025-05-17 12:38:25.957 | INFO     | src.data_fetcher:fetch_data:110 - ✔ AQI Data saved to `aqi_data_2016-2025.csv`
+2025-05-17 12:38:26.031 | INFO     | __main__:<module>:33 - Data download completed...
+2025-05-17 12:38:30.081 | INFO     | __main__:<module>:35 - Data Loading & Cleaning...
+2025-05-17 12:39:01.951 | INFO     | src.data_cleaner:clean_data:82 - 
+Data Quality Report:  
+Total rows: 37982
+Total columns: 9
+2025-05-17 12:39:03.243 | INFO     | src.data_cleaner:clean_data:83 - 
+Missing values after cleaning:  
+timestamp    0
+aqi          0
+pm2_5        0
+pm10         0
+co           0
+no2          0
+so2          0
+o3           0
+nh3          0
+dtype: int64
+2025-05-17 12:39:03.749 | INFO     | src.data_cleaner:clean_data:84 - 
+Data types: 
+timestamp    datetime64[ns]
+aqi                   int64
+pm2_5               float64
+pm10                float64
+co                  float64
+no2                 float64
+so2                 float64
+o3                  float64
+nh3                 float64
+dtype: object
+2025-05-17 12:39:03.994 | INFO     | __main__:<module>:39 - Data Loading & Cleaning Completed.
+2025-05-17 12:39:04.371 | INFO     | __main__:<module>:41 - Feature Engineering...
+2025-05-17 12:39:14.023 | INFO     | __main__:<module>:44 - Feature Engineering Completed.
+2025-05-17 12:39:14.023 | INFO     | __main__:<module>:46 - Feature Selection...
+2025-05-17 12:39:14.023 | INFO     | __main__:<module>:48 - Performing correlation analysis...
+2025-05-17 12:39:15.996 | INFO     | __main__:<module>:51 - 
+Dropped highly correlated features: 
+['pm2_5', 'pm10', 'nh3', 'aqi_above_3_count_24h']
+2025-05-17 12:39:16.024 | INFO     | __main__:<module>:52 - Correlation analysis completed.
+2025-05-17 12:39:16.027 | INFO     | __main__:<module>:56 - Feature importance analysis...
+2025-05-17 12:40:14.377 | INFO     | __main__:<module>:59 - Top feature importances: 
+co                      0.175411
+aqi_rolling_mean_24h    0.151421
+so2                     0.128574
+no2                     0.098259
+pm2_5_pm10_ratio        0.095967
+aqi_rolling_max_24h     0.090591
+o3                      0.064290
+aqi_trend               0.043495
+hour                    0.041177
+season                  0.034916
+day                     0.030105
+month                   0.025957
+weekday                 0.019837
+dtype: float64
+2025-05-17 12:40:14.393 | INFO     | __main__:<module>:60 - Feature importance analysis completed.
+2025-05-17 12:40:14.393 | INFO     | __main__:<module>:63 - Splitting data into train, validation, and test sets...
+2025-05-17 12:40:14.424 | INFO     | __main__:<module>:66 - 
+Train shape: 
+(26587, 19)
+ Val shape: (5697, 19)
+ Test shape: (5698, 19)
+2025-05-17 12:40:14.748 | INFO     | __main__:<module>:67 - Data splitting completed.
+2025-05-17 12:40:14.772 | INFO     | __main__:<module>:70 - Saving features to CSV files...
+2025-05-17 12:40:19.082 | INFO     | __main__:<module>:74 - Features saved successfully.
+2025-05-20 20:35:30.633 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-20 20:35:31.052 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-20 20:35:31.312 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-20 20:35:31.312 | INFO     | __main__:train_model:37 - Training model...
+2025-05-20 20:36:12.674 | INFO     | __main__:train_model:107 - Fitting models...
+2025-05-20 23:51:28.888 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-20 23:51:29.247 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-20 23:51:29.596 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-20 23:51:29.605 | INFO     | __main__:train_model:37 - Training model...
+2025-05-20 23:52:10.389 | INFO     | __main__:train_model:107 - Fitting models...
+2025-05-20 23:56:06.448 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-20 23:56:06.811 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-20 23:56:07.031 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-20 23:56:07.050 | INFO     | __main__:train_model:37 - Training model...
+2025-05-20 23:56:47.261 | INFO     | __main__:train_model:107 - Fitting models...
+2025-05-21 08:47:13.095 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-21 08:47:13.512 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-21 08:47:14.635 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-21 08:47:14.635 | INFO     | __main__:train_model:38 - Training model...
+2025-05-21 08:47:56.159 | INFO     | __main__:train_model:105 - Fitting models...
+2025-05-21 08:51:03.870 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-21 08:51:04.125 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-21 08:51:04.512 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-21 08:51:04.512 | INFO     | __main__:train_model:38 - Training model...
+2025-05-21 08:51:44.766 | INFO     | __main__:train_model:105 - Fitting models...
+2025-05-21 18:27:13.198 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-21 18:27:13.776 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-21 18:27:14.244 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-21 18:27:14.259 | INFO     | __main__:train_model:39 - Training model...
+2025-05-21 18:29:05.525 | INFO     | __main__:train_model:120 - Fitting models...
+2025-05-22 02:19:06.058 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-22 02:19:06.510 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-22 02:19:06.778 | INFO     | utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-22 02:19:06.778 | INFO     | __main__:train_model:39 - Training model...
+2025-05-22 02:20:16.729 | INFO     | __main__:train_model:120 - Fitting models...
+2025-05-24 16:18:45.423 | INFO     | __main__:<module>:27 - Starting feature pipeline...
+2025-05-24 16:18:45.439 | INFO     | __main__:<module>:31 - Data downloading from API...
+2025-05-24 16:18:46.265 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-01-01 - 2016-03-01
+2025-05-24 16:18:51.594 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-03-02 - 2016-05-01
+2025-05-24 16:18:56.907 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-05-02 - 2016-07-01
+2025-05-24 16:19:02.215 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-07-02 - 2016-08-31
+2025-05-24 16:19:07.563 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-09-01 - 2016-10-31
+2025-05-24 16:19:12.890 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-11-01 - 2016-12-31
+2025-05-24 16:19:18.188 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-01-01 - 2017-03-02
+2025-05-24 16:19:23.486 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-03-03 - 2017-05-02
+2025-05-24 16:19:29.280 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-05-03 - 2017-07-02
+2025-05-24 16:19:34.647 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-07-03 - 2017-09-01
+2025-05-24 16:19:40.203 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-09-02 - 2017-11-01
+2025-05-24 16:19:46.077 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-11-02 - 2018-01-01
+2025-05-24 16:19:51.416 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-01-02 - 2018-03-03
+2025-05-24 16:19:56.733 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-03-04 - 2018-05-03
+2025-05-24 16:20:02.060 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-05-04 - 2018-07-03
+2025-05-24 16:20:07.390 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-07-04 - 2018-09-02
+2025-05-24 16:20:12.892 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-09-03 - 2018-11-02
+2025-05-24 16:20:18.315 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-11-03 - 2019-01-02
+2025-05-24 16:20:24.079 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-01-03 - 2019-03-04
+2025-05-24 16:20:29.455 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-03-05 - 2019-05-04
+2025-05-24 16:20:34.783 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-05-05 - 2019-07-04
+2025-05-24 16:20:40.188 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-07-05 - 2019-09-03
+2025-05-24 16:20:55.214 | INFO     | src.data_fetcher:fetch_data:92 - ⚠ Timeout error! Skipping this batch.
+2025-05-24 16:21:10.109 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-11-04 - 2020-01-03
+2025-05-24 16:21:15.509 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-01-04 - 2020-03-04
+2025-05-24 16:22:22.218 | INFO     | __main__:<module>:27 - Starting feature pipeline...
+2025-05-24 16:22:22.234 | INFO     | __main__:<module>:31 - Data downloading from API...
+2025-05-24 16:22:22.766 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-01-01 - 2016-03-01
+2025-05-24 16:22:28.102 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-03-02 - 2016-05-01
+2025-05-24 16:22:33.567 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-05-02 - 2016-07-01
+2025-05-24 16:22:38.906 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-07-02 - 2016-08-31
+2025-05-24 16:22:44.266 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-09-01 - 2016-10-31
+2025-05-24 16:22:49.563 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-11-01 - 2016-12-31
+2025-05-24 16:22:54.891 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-01-01 - 2017-03-02
+2025-05-24 16:23:00.203 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-03-03 - 2017-05-02
+2025-05-24 16:23:05.532 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-05-03 - 2017-07-02
+2025-05-24 16:23:10.829 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-07-03 - 2017-09-01
+2025-05-24 16:23:16.156 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-09-02 - 2017-11-01
+2025-05-24 16:23:21.490 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-11-02 - 2018-01-01
+2025-05-24 16:23:26.815 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-01-02 - 2018-03-03
+2025-05-24 16:23:32.142 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-03-04 - 2018-05-03
+2025-05-24 16:23:37.453 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-05-04 - 2018-07-03
+2025-05-24 16:23:42.767 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-07-04 - 2018-09-02
+2025-05-24 16:23:48.094 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-09-03 - 2018-11-02
+2025-05-24 16:23:53.407 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-11-03 - 2019-01-02
+2025-05-24 16:23:58.735 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-01-03 - 2019-03-04
+2025-05-24 16:24:04.048 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-03-05 - 2019-05-04
+2025-05-24 16:24:09.454 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-05-05 - 2019-07-04
+2025-05-24 16:24:14.797 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-07-05 - 2019-09-03
+2025-05-24 16:24:20.094 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-09-04 - 2019-11-03
+2025-05-24 16:24:25.454 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-11-04 - 2020-01-03
+2025-05-24 16:24:30.781 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-01-04 - 2020-03-04
+2025-05-24 16:24:36.203 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-03-05 - 2020-05-04
+2025-05-24 16:24:41.516 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-05-05 - 2020-07-04
+2025-05-24 16:24:46.922 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-07-05 - 2020-09-03
+2025-05-24 16:24:52.328 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-09-04 - 2020-11-03
+2025-05-24 16:24:58.475 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-11-04 - 2021-01-03
+2025-05-24 16:25:05.615 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-01-04 - 2021-03-05
+2025-05-24 16:25:12.688 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-03-06 - 2021-05-05
+2025-05-24 16:25:19.066 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-05-06 - 2021-07-05
+2025-05-24 16:25:25.485 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-07-06 - 2021-09-04
+2025-05-24 16:25:31.766 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-09-05 - 2021-11-04
+2025-05-24 16:25:37.914 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-11-05 - 2022-01-04
+2025-05-24 16:25:47.639 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2022-01-05 - 2022-03-06
+2025-05-24 17:11:27.607 | INFO     | src.utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-24 17:11:27.840 | INFO     | src.utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-24 17:11:28.044 | INFO     | src.utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-24 17:11:28.048 | INFO     | __main__:<module>:55 - Running training instance begins...
+2025-05-24 17:11:28.049 | INFO     | src.train:train_model:23 - Training model...
+2025-05-24 17:12:58.590 | INFO     | src.train:train_model:104 - Fitting models...
+2025-05-24 19:02:02.937 | INFO     | src.train:train_model:162 - Logging the model perfomance on Validation data...
+2025-05-24 19:02:04.005 | INFO     | src.train:train_model:163 - svc - Accuracy: 0.6683209397311046, F1: 0.6652136669403745, Recall: 0.6683209397311046, Precision: 0.6676207898386842, ROC AUC: 0.98045079622128
+2025-05-24 19:02:05.262 | INFO     | src.train:train_model:175 - Saving models to Model Registry...
+2025-05-24 19:02:14.145 | INFO     | src.train:train_model:162 - Logging the model perfomance on Validation data...
+2025-05-24 19:02:14.192 | INFO     | src.train:train_model:163 - knn - Accuracy: 0.6395682575424482, F1: 0.624351144649723, Recall: 0.6395682575424482, Precision: 0.6205141809301187, ROC AUC: 0.8828829169411657
+2025-05-24 19:02:14.231 | INFO     | src.train:train_model:175 - Saving models to Model Registry...
+2025-05-24 19:02:17.902 | INFO     | src.train:train_model:162 - Logging the model perfomance on Validation data...
+2025-05-24 19:02:18.200 | INFO     | src.train:train_model:163 - rf - Accuracy: 0.771892562718497, F1: 0.7590633330694072, Recall: 0.771892562718497, Precision: 0.7681199017426771, ROC AUC: 0.9934355363565152
+2025-05-24 19:02:18.540 | INFO     | src.train:train_model:175 - Saving models to Model Registry...
+2025-05-24 19:02:21.196 | INFO     | src.train:train_model:162 - Logging the model perfomance on Validation data...
+2025-05-24 19:02:21.461 | INFO     | src.train:train_model:163 - xgb - Accuracy: 0.8213973808708721, F1: 0.8194867857813961, Recall: 0.8213973808708721, Precision: 0.8215475375401595, ROC AUC: 0.9949873799638226
+2025-05-24 19:02:21.500 | INFO     | src.train:train_model:175 - Saving models to Model Registry...
+2025-05-24 19:02:23.286 | ERROR    | __main__:run:35 - Error encountered: '>' not supported between instances of 'KNeighborsClassifier' and 'SVC'
+2025-05-24 19:02:24.336 | INFO     | __main__:<module>:61 - Saving Model to Model Registry...
+2025-05-24 19:02:24.754 | SUCCESS  | __main__:<module>:62 - Training instance complete...
+2025-05-26 01:42:22.825 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-26 01:44:12.547 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-26 01:44:12.547 | SUCCESS  | inference_pipeline:<module>:39 - Model loaded successfully for inference...
+2025-05-26 02:18:35.417 | INFO     | __main__:<module>:27 - Starting feature pipeline...
+2025-05-26 02:18:35.603 | INFO     | __main__:<module>:31 - Data downloading from API...
+2025-05-26 02:18:36.302 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-01-01 - 2016-03-01
+2025-05-26 02:18:41.645 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-03-02 - 2016-05-01
+2025-05-26 02:18:46.965 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-05-02 - 2016-07-01
+2025-05-26 02:18:52.265 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-07-02 - 2016-08-31
+2025-05-26 02:18:57.585 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-09-01 - 2016-10-31
+2025-05-26 02:19:02.870 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2016-11-01 - 2016-12-31
+2025-05-26 02:19:08.190 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-01-01 - 2017-03-02
+2025-05-26 02:19:13.510 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-03-03 - 2017-05-02
+2025-05-26 02:19:18.847 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-05-03 - 2017-07-02
+2025-05-26 02:19:24.137 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-07-03 - 2017-09-01
+2025-05-26 02:19:29.509 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-09-02 - 2017-11-01
+2025-05-26 02:19:41.873 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2017-11-02 - 2018-01-01
+2025-05-26 02:19:47.222 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-01-02 - 2018-03-03
+2025-05-26 02:19:52.576 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-03-04 - 2018-05-03
+2025-05-26 02:19:57.858 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-05-04 - 2018-07-03
+2025-05-26 02:20:03.256 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-07-04 - 2018-09-02
+2025-05-26 02:20:08.600 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-09-03 - 2018-11-02
+2025-05-26 02:20:13.949 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2018-11-03 - 2019-01-02
+2025-05-26 02:20:19.270 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-01-03 - 2019-03-04
+2025-05-26 02:20:24.556 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-03-05 - 2019-05-04
+2025-05-26 02:20:29.847 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-05-05 - 2019-07-04
+2025-05-26 02:20:35.168 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-07-05 - 2019-09-03
+2025-05-26 02:20:40.511 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-09-04 - 2019-11-03
+2025-05-26 02:20:45.820 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2019-11-04 - 2020-01-03
+2025-05-26 02:20:51.144 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-01-04 - 2020-03-04
+2025-05-26 02:20:56.468 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-03-05 - 2020-05-04
+2025-05-26 02:21:01.800 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-05-05 - 2020-07-04
+2025-05-26 02:21:07.179 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-07-05 - 2020-09-03
+2025-05-26 02:21:12.595 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-09-04 - 2020-11-03
+2025-05-26 02:21:18.709 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2020-11-04 - 2021-01-03
+2025-05-26 02:21:24.793 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-01-04 - 2021-03-05
+2025-05-26 02:21:31.020 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-03-06 - 2021-05-05
+2025-05-26 02:21:37.079 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-05-06 - 2021-07-05
+2025-05-26 02:21:43.140 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-07-06 - 2021-09-04
+2025-05-26 02:21:49.187 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-09-05 - 2021-11-04
+2025-05-26 02:21:55.286 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2021-11-05 - 2022-01-04
+2025-05-26 02:22:01.656 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2022-01-05 - 2022-03-06
+2025-05-26 02:22:08.069 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2022-03-07 - 2022-05-06
+2025-05-26 02:22:14.278 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2022-05-07 - 2022-07-06
+2025-05-26 02:22:22.119 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2022-07-07 - 2022-09-05
+2025-05-26 02:22:28.212 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2022-09-06 - 2022-11-05
+2025-05-26 02:22:34.355 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2022-11-06 - 2023-01-05
+2025-05-26 02:22:40.532 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2023-01-06 - 2023-03-07
+2025-05-26 02:22:46.667 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2023-03-08 - 2023-05-07
+2025-05-26 02:22:52.860 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2023-05-08 - 2023-07-07
+2025-05-26 02:22:58.949 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2023-07-08 - 2023-09-06
+2025-05-26 02:23:05.138 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2023-09-07 - 2023-11-06
+2025-05-26 02:23:11.346 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2023-11-07 - 2024-01-06
+2025-05-26 02:23:17.346 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2024-01-07 - 2024-03-07
+2025-05-26 02:23:23.583 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2024-03-08 - 2024-05-07
+2025-05-26 02:23:29.764 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2024-05-08 - 2024-07-07
+2025-05-26 02:23:35.927 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2024-07-08 - 2024-09-06
+2025-05-26 02:23:42.191 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2024-09-07 - 2024-11-06
+2025-05-26 02:23:48.567 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2024-11-07 - 2025-01-06
+2025-05-26 02:23:54.654 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2025-01-07 - 2025-03-08
+2025-05-26 02:24:01.305 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2025-03-09 - 2025-05-08
+2025-05-26 02:24:06.961 | INFO     | src.data_fetcher:fetch_data:89 - ✅ Data pulled for 2025-05-09 - 2025-05-26
+2025-05-26 02:24:13.713 | INFO     | src.data_fetcher:fetch_data:110 - ✔ AQI Data saved to `aqi_data_2016-2025.csv`
+2025-05-26 02:24:13.760 | INFO     | __main__:<module>:33 - Data download completed...
+2025-05-26 02:24:13.790 | INFO     | __main__:<module>:35 - Data Loading & Cleaning...
+2025-05-26 02:24:16.553 | INFO     | src.data_cleaner:clean_data:82 - 
+Data Quality Report:  
+Total rows: 38188
+Total columns: 9
+2025-05-26 02:24:16.833 | INFO     | src.data_cleaner:clean_data:83 - 
+Missing values after cleaning:  
+timestamp    0
+aqi          0
+pm2_5        0
+pm10         0
+co           0
+no2          0
+so2          0
+o3           0
+nh3          0
+dtype: int64
+2025-05-26 02:24:17.395 | INFO     | src.data_cleaner:clean_data:84 - 
+Data types: 
+timestamp    datetime64[ns]
+aqi                   int64
+pm2_5               float64
+pm10                float64
+co                  float64
+no2                 float64
+so2                 float64
+o3                  float64
+nh3                 float64
+dtype: object
+2025-05-26 02:24:17.735 | INFO     | __main__:<module>:39 - Data Loading & Cleaning Completed.
+2025-05-26 02:24:17.960 | INFO     | __main__:<module>:41 - Feature Engineering...
+2025-05-26 02:24:19.693 | INFO     | __main__:<module>:44 - Feature Engineering Completed.
+2025-05-26 02:24:19.708 | INFO     | __main__:<module>:46 - Feature Selection...
+2025-05-26 02:24:19.708 | INFO     | __main__:<module>:48 - Performing correlation analysis...
+2025-05-26 02:24:20.208 | INFO     | __main__:<module>:51 - 
+Dropped highly correlated features: 
+['pm2_5', 'pm10', 'nh3', 'aqi_above_3_count_24h']
+2025-05-26 02:24:20.208 | INFO     | __main__:<module>:52 - Correlation analysis completed.
+2025-05-26 02:24:20.224 | INFO     | __main__:<module>:56 - Feature importance analysis...
+2025-05-26 02:24:40.118 | INFO     | __main__:<module>:59 - Top feature importances: 
+co                      0.174310
+aqi_rolling_mean_24h    0.152210
+so2                     0.128206
+no2                     0.096823
+pm2_5_pm10_ratio        0.095407
+aqi_rolling_max_24h     0.094264
+o3                      0.063442
+aqi_trend               0.043192
+hour                    0.041315
+season                  0.033361
+day                     0.030443
+month                   0.027118
+weekday                 0.019908
+dtype: float64
+2025-05-26 02:24:40.596 | INFO     | __main__:<module>:60 - Feature importance analysis completed.
+2025-05-26 02:24:40.601 | INFO     | __main__:<module>:63 - Splitting data into train, validation, and test sets...
+2025-05-26 02:24:40.840 | INFO     | __main__:<module>:66 - 
+Train shape: 
+(26731, 19)
+ Val shape: (5728, 19)
+ Test shape: (5729, 19)
+2025-05-26 02:24:40.984 | INFO     | __main__:<module>:67 - Data splitting completed.
+2025-05-26 02:24:41.014 | INFO     | __main__:<module>:70 - Saving features to CSV files...
+2025-05-26 02:24:43.558 | INFO     | __main__:<module>:74 - Features saved successfully.
+2025-05-26 02:26:59.116 | INFO     | src.utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-26 02:26:59.396 | INFO     | src.utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val/aqi_val_data_v1.csv
+2025-05-26 02:26:59.635 | INFO     | src.utils:read_processed_data:50 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-26 02:26:59.800 | INFO     | __main__:<module>:55 - Running training instance begins...
+2025-05-26 02:26:59.805 | INFO     | src.train:train_model:25 - Training model...
+2025-05-26 02:28:07.255 | INFO     | src.train:train_model:106 - Fitting models...
+2025-05-26 03:37:22.520 | INFO     | src.train:train_model:165 - Logging the model perfomance on Validation data...
+2025-05-26 03:37:23.104 | INFO     | src.train:train_model:166 - svc - Accuracy: 0.692, F1: 0.687, Recall: 0.692, Precision: 0.685, ROC AUC: 0.983
+2025-05-26 03:37:24.051 | INFO     | src.train:train_model:178 - Saving models to Model Registry...
+2025-05-26 03:37:32.802 | INFO     | src.train:train_model:165 - Logging the model perfomance on Validation data...
+2025-05-26 03:37:32.802 | INFO     | src.train:train_model:166 - knn - Accuracy: 0.654, F1: 0.636, Recall: 0.654, Precision: 0.630, ROC AUC: 0.888
+2025-05-26 03:37:33.012 | INFO     | src.train:train_model:178 - Saving models to Model Registry...
+2025-05-26 03:37:33.889 | INFO     | src.train:train_model:165 - Logging the model perfomance on Validation data...
+2025-05-26 03:37:33.902 | INFO     | src.train:train_model:166 - rf - Accuracy: 0.802, F1: 0.790, Recall: 0.802, Precision: 0.795, ROC AUC: 0.996
+2025-05-26 03:37:33.964 | INFO     | src.train:train_model:178 - Saving models to Model Registry...
+2025-05-26 03:37:37.069 | INFO     | src.train:train_model:165 - Logging the model perfomance on Validation data...
+2025-05-26 03:37:37.116 | INFO     | src.train:train_model:166 - xgb - Accuracy: 0.845, F1: 0.837, Recall: 0.845, Precision: 0.835, ROC AUC: 0.996
+2025-05-26 03:37:37.131 | INFO     | src.train:train_model:178 - Saving models to Model Registry...
+2025-05-26 03:37:38.083 | ERROR    | __main__:run:35 - Error encountered: not enough values to unpack (expected 7, got 6)
+2025-05-26 03:37:38.561 | INFO     | __main__:<module>:61 - Saving Model to Model Registry...
+2025-05-26 03:37:38.566 | SUCCESS  | __main__:<module>:62 - Training instance complete...
+2025-05-27 09:18:07.522 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-27 09:19:57.633 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-27 09:19:57.664 | SUCCESS  | __main__:<module>:45 - Model loaded successfully for inference...
+2025-05-27 09:33:42.632 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-27 09:34:00.979 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-27 09:34:01.261 | SUCCESS  | __main__:<module>:45 - Model loaded successfully for inference...
+2025-05-27 09:36:26.181 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-27 09:36:30.560 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-27 09:36:30.834 | SUCCESS  | __main__:<module>:47 - Model loaded successfully for inference...
+2025-05-27 09:46:47.375 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-27 09:46:51.610 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-27 09:46:51.637 | SUCCESS  | __main__:<module>:47 - Model loaded successfully for inference...
+2025-05-27 09:52:43.021 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-27 09:52:46.851 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-27 09:52:46.867 | SUCCESS  | __main__:<module>:47 - Model loaded successfully for inference...
+2025-05-27 10:22:34.775 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-27 10:23:20.297 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-27 10:23:20.622 | SUCCESS  | __main__:<module>:47 - Model loaded successfully for inference...
+2025-05-27 10:24:58.378 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-27 10:25:16.836 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-27 10:25:16.836 | SUCCESS  | __main__:<module>:47 - Model loaded successfully for inference...
+2025-05-27 10:25:41.945 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-27 10:25:46.902 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-27 10:25:46.918 | SUCCESS  | __main__:<module>:47 - Model loaded successfully for inference...
+2025-05-27 10:26:17.336 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-27 10:26:20.994 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-27 10:26:21.041 | SUCCESS  | __main__:<module>:47 - Model loaded successfully for inference...
+2025-05-28 12:59:57.085 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-28 13:00:35.162 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-28 13:00:35.162 | SUCCESS  | __main__:<module>:46 - Model loaded successfully for inference...
+2025-05-28 13:03:02.272 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-28 13:03:06.272 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-28 13:03:06.272 | SUCCESS  | __main__:<module>:46 - Model loaded successfully for inference...
+2025-05-28 13:10:10.821 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-28 13:10:14.523 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-28 13:10:14.841 | SUCCESS  | __main__:<module>:46 - Model loaded successfully for inference...
+2025-05-28 13:24:11.304 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-28 13:24:14.835 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-28 13:24:14.835 | SUCCESS  | __main__:<module>:46 - Model loaded successfully for inference...
+2025-05-28 13:25:09.179 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-28 13:25:12.430 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-28 13:25:12.430 | SUCCESS  | __main__:<module>:46 - Model loaded successfully for inference...
+2025-05-28 21:56:20.036 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-28 21:56:49.554 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-28 21:56:49.561 | SUCCESS  | inference_pipeline:<module>:45 - Model loaded successfully for inference...
+2025-05-28 21:56:50.530 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-28 22:07:35.441 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-28 22:07:52.014 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-28 22:07:52.014 | SUCCESS  | inference_pipeline:<module>:45 - Model loaded successfully for inference...
+2025-05-28 22:07:52.591 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test/aqi_test_data_v1.csv
+2025-05-30 22:40:35.569 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-30 22:42:44.501 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-30 22:42:44.501 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-05-30 22:51:14.267 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-31 05:04:49.236 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-31 05:04:49.283 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-05-31 09:46:26.635 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-31 09:52:36.410 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-31 09:52:36.410 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-05-31 09:52:42.301 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-31 09:55:08.696 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-31 09:56:05.282 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-31 09:56:05.282 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-05-31 09:56:06.798 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-31 10:06:18.944 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-31 10:09:42.365 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-31 10:09:42.365 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-05-31 10:09:51.666 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-05-31 10:13:30.912 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-05-31 16:50:35.447 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-05-31 16:50:35.447 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-05-31 16:50:36.836 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-06-01 19:08:15.022 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-01 19:09:23.905 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-01 19:09:24.244 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-06-01 19:09:30.659 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-06-01 22:29:57.186 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-01 22:42:34.259 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-01 22:42:58.681 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-01 22:42:58.681 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-06-01 22:43:01.341 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-06-01 22:50:50.524 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-01 22:50:53.525 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-01 22:50:53.525 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-06-01 22:50:56.274 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-06-01 22:53:29.415 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-01 22:53:32.306 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-01 22:53:32.306 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-06-01 22:53:33.759 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-06-01 22:55:13.012 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-01 22:55:15.603 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-01 22:55:15.618 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-06-01 22:55:17.104 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-06-01 22:56:27.540 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-01 22:56:30.389 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-01 22:56:30.393 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-06-01 22:56:32.289 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-06-01 22:57:18.670 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-01 22:57:21.400 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-01 22:57:21.400 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-06-01 22:57:22.710 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-06-01 23:18:16.987 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-01 23:19:36.833 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-01 23:19:36.833 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-06-01 23:19:42.526 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-06-01 23:31:05.206 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-01 23:31:08.472 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-01 23:31:08.488 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-06-01 23:31:09.895 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-06-01 23:37:18.919 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-01 23:37:23.006 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-01 23:37:23.042 | SUCCESS  | inference_pipeline:<module>:43 - Model loaded successfully for inference...
+2025-06-01 23:47:18.842 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-01 23:47:33.142 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-01 23:47:33.508 | SUCCESS  | inference_pipeline:<module>:43 - Model loaded successfully for inference...
+2025-06-01 23:52:39.435 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-01 23:52:43.066 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-01 23:52:43.066 | SUCCESS  | __main__:<module>:43 - Model loaded successfully for inference...
+2025-06-01 23:52:46.252 | INFO     | src.utils:read_processed_data:52 - Data read successfully from C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train/aqi_train_data_v1.csv
+2025-06-02 00:01:16.876 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-02 00:02:45.208 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-02 00:02:45.601 | SUCCESS  | inference_pipeline:<module>:43 - Model loaded successfully for inference...
+2025-06-02 00:05:55.345 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-02 00:06:06.125 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-02 00:06:06.127 | SUCCESS  | inference_pipeline:<module>:43 - Model loaded successfully for inference...
+2025-06-02 01:29:31.850 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-02 01:31:38.038 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-02 01:31:38.054 | SUCCESS  | inference_pipeline:<module>:43 - Model loaded successfully for inference...
+2025-06-02 01:36:26.238 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-02 01:36:41.537 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-02 01:36:41.537 | SUCCESS  | inference_pipeline:<module>:43 - Model loaded successfully for inference...
+2025-06-02 10:42:00.356 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-02 10:42:29.544 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-02 10:42:29.549 | SUCCESS  | inference_pipeline:<module>:43 - Model loaded successfully for inference...
+2025-06-02 11:14:34.944 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-02 11:17:49.387 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-02 11:17:49.387 | SUCCESS  | inference_pipeline:<module>:43 - Model loaded successfully for inference...
+2025-06-02 11:33:11.804 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-02 11:33:17.648 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-02 11:33:17.664 | SUCCESS  | inference_pipeline:<module>:43 - Model loaded successfully for inference...
+2025-06-02 11:45:28.408 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-02 11:45:33.395 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-02 11:45:33.411 | SUCCESS  | inference_pipeline:<module>:44 - Model loaded successfully for inference...
+2025-06-02 11:47:21.682 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-02 11:47:26.488 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-02 11:47:26.508 | SUCCESS  | inference_pipeline:<module>:44 - Model loaded successfully for inference...
+2025-06-02 12:55:54.446 | INFO     | pipelines.feature_pipeline:main:29 - Starting feature pipeline...
+2025-06-02 12:55:54.446 | INFO     | pipelines.feature_pipeline:main:33 - Data downloading from API...
+2025-06-02 12:55:57.198 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-01-01 - 2016-03-01
+2025-06-02 12:56:08.846 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-03-02 - 2016-05-01
+2025-06-02 12:56:23.867 | INFO     | src.data_fetcher:fetch_data:93 - ⚠ Timeout error! Skipping this batch.
+2025-06-02 12:56:29.421 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-07-02 - 2016-08-31
+2025-06-02 12:56:36.005 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-09-01 - 2016-10-31
+2025-06-02 12:56:41.535 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-11-01 - 2016-12-31
+2025-06-02 12:56:54.304 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-01-01 - 2017-03-02
+2025-06-02 12:57:03.860 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-03-03 - 2017-05-02
+2025-06-02 12:57:11.758 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-05-03 - 2017-07-02
+2025-06-02 12:57:19.407 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-07-03 - 2017-09-01
+2025-06-02 12:57:34.478 | INFO     | src.data_fetcher:fetch_data:93 - ⚠ Timeout error! Skipping this batch.
+2025-06-02 12:57:44.861 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-11-02 - 2018-01-01
+2025-06-02 12:57:58.558 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-01-02 - 2018-03-03
+2025-06-02 12:58:03.993 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-03-04 - 2018-05-03
+2025-06-02 12:58:09.565 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-05-04 - 2018-07-03
+2025-06-02 12:58:22.253 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-07-04 - 2018-09-02
+2025-06-02 12:58:27.859 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-09-03 - 2018-11-02
+2025-06-02 12:58:34.209 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-11-03 - 2019-01-02
+2025-06-02 12:58:41.605 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-01-03 - 2019-03-04
+2025-06-02 12:58:47.241 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-03-05 - 2019-05-04
+2025-06-02 12:58:52.705 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-05-05 - 2019-07-04
+2025-06-02 12:58:58.291 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-07-05 - 2019-09-03
+2025-06-02 12:59:06.833 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-09-04 - 2019-11-03
+2025-06-02 12:59:12.420 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-11-04 - 2020-01-03
+2025-06-02 12:59:18.956 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-01-04 - 2020-03-04
+2025-06-02 12:59:25.503 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-03-05 - 2020-05-04
+2025-06-02 12:59:33.039 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-05-05 - 2020-07-04
+2025-06-02 12:59:41.560 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-07-05 - 2020-09-03
+2025-06-02 12:59:47.724 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-09-04 - 2020-11-03
+2025-06-02 13:00:05.501 | INFO     | src.data_fetcher:fetch_data:96 - ❌ Request failed: HTTPConnectionPool(host='api.openweathermap.org', port=80): Read timed out.
+2025-06-02 13:00:25.056 | INFO     | src.data_fetcher:fetch_data:96 - ❌ Request failed: HTTPConnectionPool(host='api.openweathermap.org', port=80): Read timed out.
+2025-06-02 13:45:37.033 | INFO     | pipelines.feature_pipeline:main:29 - Starting feature pipeline...
+2025-06-02 13:45:37.033 | INFO     | pipelines.feature_pipeline:main:33 - Data downloading from API...
+2025-06-02 13:45:39.933 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-01-01 - 2016-03-01
+2025-06-02 13:45:45.525 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-03-02 - 2016-05-01
+2025-06-02 13:45:52.096 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-05-02 - 2016-07-01
+2025-06-02 13:45:57.578 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-07-02 - 2016-08-31
+2025-06-02 13:46:04.131 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-09-01 - 2016-10-31
+2025-06-02 13:46:12.902 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-11-01 - 2016-12-31
+2025-06-02 13:46:18.537 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-01-01 - 2017-03-02
+2025-06-02 13:46:25.967 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-03-03 - 2017-05-02
+2025-06-02 13:46:31.602 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-05-03 - 2017-07-02
+2025-06-02 13:46:37.976 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-07-03 - 2017-09-01
+2025-06-02 13:46:43.469 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-09-02 - 2017-11-01
+2025-06-02 13:46:55.111 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-11-02 - 2018-01-01
+2025-06-02 13:47:04.112 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-01-02 - 2018-03-03
+2025-06-02 13:47:10.445 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-03-04 - 2018-05-03
+2025-06-02 13:47:19.626 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-05-04 - 2018-07-03
+2025-06-02 13:47:27.283 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-07-04 - 2018-09-02
+2025-06-02 13:47:34.137 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-09-03 - 2018-11-02
+2025-06-02 13:47:40.155 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-11-03 - 2019-01-02
+2025-06-02 13:47:45.683 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-01-03 - 2019-03-04
+2025-06-02 13:47:56.233 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-03-05 - 2019-05-04
+2025-06-02 13:48:03.632 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-05-05 - 2019-07-04
+2025-06-02 13:48:10.184 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-07-05 - 2019-09-03
+2025-06-02 13:48:18.818 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-09-04 - 2019-11-03
+2025-06-02 13:48:25.354 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-11-04 - 2020-01-03
+2025-06-02 13:48:40.614 | INFO     | src.data_fetcher:fetch_data:93 - ⚠ Timeout error! Skipping this batch.
+2025-06-02 13:48:46.150 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-03-05 - 2020-05-04
+2025-06-02 13:48:52.664 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-05-05 - 2020-07-04
+2025-06-02 13:52:14.283 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-02 13:52:20.429 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-02 13:52:20.444 | SUCCESS  | pipelines.inference_pipeline:main:47 - Model loaded successfully for inference...
+2025-06-02 13:56:13.218 | INFO     | pipelines.feature_pipeline:main:29 - Starting feature pipeline...
+2025-06-02 13:56:13.236 | INFO     | pipelines.feature_pipeline:main:33 - Data downloading from API...
+2025-06-02 13:56:14.533 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-01-01 - 2016-03-01
+2025-06-02 13:56:26.193 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-03-02 - 2016-05-01
+2025-06-02 13:56:31.678 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-05-02 - 2016-07-01
+2025-06-02 13:56:39.163 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-07-02 - 2016-08-31
+2025-06-02 13:56:44.736 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-09-01 - 2016-10-31
+2025-06-02 13:56:50.211 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-11-01 - 2016-12-31
+2025-06-02 13:56:56.344 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-01-01 - 2017-03-02
+2025-06-02 13:57:11.583 | INFO     | src.data_fetcher:fetch_data:93 - ⚠ Timeout error! Skipping this batch.
+2025-06-02 13:57:18.027 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-05-03 - 2017-07-02
+2025-06-02 13:57:45.508 | INFO     | pipelines.feature_pipeline:main:29 - Starting feature pipeline...
+2025-06-02 13:57:45.516 | INFO     | pipelines.feature_pipeline:main:33 - Data downloading from API...
+2025-06-02 13:57:46.388 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-01-01 - 2016-03-01
+2025-06-02 13:57:53.170 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-03-02 - 2016-05-01
+2025-06-02 13:57:59.402 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-05-02 - 2016-07-01
+2025-06-02 13:58:05.709 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-07-02 - 2016-08-31
+2025-06-02 13:58:21.670 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-09-01 - 2016-10-31
+2025-06-02 13:58:27.946 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-11-01 - 2016-12-31
+2025-06-02 13:58:43.280 | INFO     | src.data_fetcher:fetch_data:93 - ⚠ Timeout error! Skipping this batch.
+2025-06-02 13:58:50.823 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-03-03 - 2017-05-02
+2025-06-03 21:29:49.486 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-03 21:29:55.962 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-03 21:29:55.977 | SUCCESS  | pipelines.inference_pipeline:<module>:40 - Model loaded successfully for inference...
+2025-06-03 21:31:53.321 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-03 21:31:53.654 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-03 21:31:53.669 | SUCCESS  | pipelines.inference_pipeline:<module>:40 - Model loaded successfully for inference...
+2025-06-03 21:35:56.748 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-03 21:35:59.397 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-03 21:35:59.925 | SUCCESS  | pipelines.inference_pipeline:<module>:40 - Model loaded successfully for inference...
+2025-06-03 21:53:28.198 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-03 21:53:30.210 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-03 21:53:30.225 | SUCCESS  | pipelines.inference_pipeline:<module>:40 - Model loaded successfully for inference...
+2025-06-03 21:54:20.005 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-03 21:54:20.281 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-03 21:54:20.287 | SUCCESS  | pipelines.inference_pipeline:<module>:40 - Model loaded successfully for inference...
+2025-06-03 22:11:37.947 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb.pkl...
+2025-06-03 22:11:44.125 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-03 22:11:44.125 | SUCCESS  | pipelines.inference_pipeline:create_app:52 - Model loaded successfully for inference...
+2025-06-03 22:14:19.245 | INFO     | pipelines.feature_pipeline:main:29 - Starting feature pipeline...
+2025-06-03 22:14:19.261 | INFO     | pipelines.feature_pipeline:main:33 - Data downloading from API...
+2025-06-03 22:14:21.011 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-01-01 - 2016-03-01
+2025-06-03 22:14:26.652 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-03-02 - 2016-05-01
+2025-06-03 22:14:34.135 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-05-02 - 2016-07-01
+2025-06-03 22:14:39.662 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-07-02 - 2016-08-31
+2025-06-03 22:14:45.177 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-09-01 - 2016-10-31
+2025-06-03 22:14:50.981 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-11-01 - 2016-12-31
+2025-06-03 22:15:02.347 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-01-01 - 2017-03-02
+2025-06-03 22:15:09.463 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-03-03 - 2017-05-02
+2025-06-03 22:15:15.304 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-05-03 - 2017-07-02
+2025-06-03 22:15:23.034 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-07-03 - 2017-09-01
+2025-06-03 22:15:28.811 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-09-02 - 2017-11-01
+2025-06-03 22:15:36.437 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-11-02 - 2018-01-01
+2025-06-03 22:15:42.022 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-01-02 - 2018-03-03
+2025-06-03 22:15:47.878 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-03-04 - 2018-05-03
+2025-06-03 22:15:53.549 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-05-04 - 2018-07-03
+2025-06-03 22:15:59.227 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-07-04 - 2018-09-02
+2025-06-03 22:16:05.076 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-09-03 - 2018-11-02
+2025-06-03 22:16:10.603 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-11-03 - 2019-01-02
+2025-06-03 22:16:16.193 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-01-03 - 2019-03-04
+2025-06-03 22:16:23.201 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-03-05 - 2019-05-04
+2025-06-03 22:16:29.679 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-05-05 - 2019-07-04
+2025-06-03 22:16:37.002 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-07-05 - 2019-09-03
+2025-06-03 22:16:42.852 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-09-04 - 2019-11-03
+2025-06-03 22:16:49.379 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-11-04 - 2020-01-03
+2025-06-03 22:16:55.903 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-01-04 - 2020-03-04
+2025-06-03 22:17:04.477 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-03-05 - 2020-05-04
+2025-06-03 22:17:10.029 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-05-05 - 2020-07-04
+2025-06-03 22:17:16.241 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-07-05 - 2020-09-03
+2025-06-03 22:17:21.797 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-09-04 - 2020-11-03
+2025-06-03 22:17:45.958 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-11-04 - 2021-01-03
+2025-06-03 22:18:11.996 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-01-04 - 2021-03-05
+2025-06-03 22:18:47.083 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-03-06 - 2021-05-05
+2025-06-03 22:19:19.384 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-05-06 - 2021-07-05
+2025-06-03 22:19:55.587 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-07-06 - 2021-09-04
+2025-06-03 22:20:27.905 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-09-05 - 2021-11-04
+2025-06-03 22:20:49.614 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-11-05 - 2022-01-04
+2025-06-03 22:21:16.625 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-01-05 - 2022-03-06
+2025-06-03 22:21:23.609 | INFO     | src.model_loader:load_model:11 - Loading model from C:/Users/user/Desktop/startups/aqi_mvp/models/xgb_acc_0.845_roc_0.996.pkl...
+2025-06-03 22:21:35.285 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-03 22:21:35.300 | SUCCESS  | pipelines.inference_pipeline:create_app:52 - Model loaded successfully for inference...
+2025-06-03 22:21:45.640 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-03-07 - 2022-05-06
+2025-06-03 22:22:01.796 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-05-07 - 2022-07-06
+2025-06-03 22:22:27.738 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-07-07 - 2022-09-05
+2025-06-03 22:23:01.366 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-09-06 - 2022-11-05
+2025-06-03 22:23:29.365 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-11-06 - 2023-01-05
+2025-06-03 22:23:55.910 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-01-06 - 2023-03-07
+2025-06-03 22:24:23.889 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-03-08 - 2023-05-07
+2025-06-03 22:24:50.011 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-05-08 - 2023-07-07
+2025-06-03 22:25:21.247 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-07-08 - 2023-09-06
+2025-06-03 22:25:43.845 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-09-07 - 2023-11-06
+2025-06-03 22:26:01.178 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-11-07 - 2024-01-06
+2025-06-03 22:26:28.606 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-01-07 - 2024-03-07
+2025-06-03 22:26:52.705 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-03-08 - 2024-05-07
+2025-06-03 22:27:18.676 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-05-08 - 2024-07-07
+2025-06-03 22:27:39.939 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-07-08 - 2024-09-06
+2025-06-03 22:27:51.577 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-09-07 - 2024-11-06
+2025-06-03 22:28:15.583 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-11-07 - 2025-01-06
+2025-06-03 22:28:27.923 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2025-01-07 - 2025-03-08
+2025-06-03 22:28:36.551 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2025-03-09 - 2025-05-08

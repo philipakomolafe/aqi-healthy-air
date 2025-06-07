@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: aqi-inference-api
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn pipelines.inference_pipeline:create_app --factory --port 4200
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"

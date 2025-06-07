@@ -1,0 +1,23 @@
+# Ignore config files
+# config.yaml
+# config/
+# *.env
+# .env
+# *.key
+# *.secret
+# *.pkl
+# *.db
+# *.sqlite3
+
+# # Ignore data files
+# data/
+# dataset/
+# *.csv
+# logs/
+
+
+# # Ignore Python cache and virtual environments
+# __pycache__/
+# *.pyc
+# venv/
+# .env/

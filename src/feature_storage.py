@@ -6,6 +6,8 @@ def save_features(data: pd.DataFrame, filename: str, output_dir: str, version: s
     """
     Save processed features to disk with optional versioning.
     """
+    # Ensure output_dir is relative to project root
+    output_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), output_dir)
     if version is None:
         version = datetime.now().strftime('%Y%m%d_%H%M%S')
     os.makedirs(output_dir, exist_ok=True)

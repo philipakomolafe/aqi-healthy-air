@@ -13,20 +13,19 @@ neptune:
   
 
 dataset:
-  raw: "C:/Users/user/Desktop/startups/aqi_mvp/data/raw"
+  raw: "data/raw"
   processed: 
-    train: C:/Users/user/Desktop/startups/aqi_mvp/data/processed/train
-    test: C:/Users/user/Desktop/startups/aqi_mvp/data/processed/test
-    val: C:/Users/user/Desktop/startups/aqi_mvp/data/processed/val
+    train: "data/processed/train"
+    test: "data/processed/test"
+    val: "data/processed/val"
     
-  cache: C:/Users/user/Desktop/startups/aqi_mvp/data/cache
+  cache: "data/cache"
 
-cv_result: "C:/Users/user/Desktop/startups/aqi_mvp/cv_results"
+cv_result: "cv_results"
 
 model_registry:
-  model_path: "C:/Users/user/Desktop/startups/aqi_mvp/models"
+  model_path: "models"
 
 
 other_setting: true
 
-    

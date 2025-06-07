@@ -94,29 +94,17 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
                 }
 
     # Define RandomizedSearchCV for hyperparameter tuning.
-<<<<<<< HEAD
-    svc_search = model_selection.RandomizedSearchCV(svc(), svc_params, scoring=scoring, refit="f1", n_iter=3, cv=tscv, n_jobs=-1, verbose=2, return_train_score=True)
-    sleep(10)
-    knn_search = model_selection.RandomizedSearchCV(knn(), knn_params, scoring=scoring, refit='f1', n_iter=7, cv=tscv, n_jobs=-1, verbose=2, return_train_score=True)
-    sleep(10)
-    rf_search = model_selection.RandomizedSearchCV(rf(), rf_params, scoring=scoring, refit='f1', n_iter=7, cv=tscv, n_jobs=-1, verbose=2, return_train_score=True)
-=======
     svc_search = model_selection.RandomizedSearchCV(svc(), svc_params, scoring=scoring, refit="f1", n_iter=3, cv=tscv, n_jobs=-1, verbose=2)
     sleep(10)
     knn_search = model_selection.RandomizedSearchCV(knn(), knn_params, scoring=scoring, refit='f1', n_iter=7, cv=tscv, n_jobs=-1, verbose=2)
     sleep(10)
     rf_search = model_selection.RandomizedSearchCV(rf(), rf_params, scoring=scoring, refit='f1', n_iter=7, cv=tscv, n_jobs=-1, verbose=2)
->>>>>>> ccf4cd5fac4c8873fa7ca381663338d92e698d84
     sleep(10)
     xgb_search = model_selection.RandomizedSearchCV(xgb(), xgb_params, scoring=scoring, refit="f1", n_iter=7, cv=tscv, n_jobs=-1, verbose=2, return_train_score=True)
     sleep(10)
     
     # Fit the models.
-<<<<<<< HEAD
-    log.info(f"\nFitted Features: {X_train.columns.tolist()}\nTarget used: {y_train.name}")
-=======
     log.info(f"\nFitted Features: {X_train.columns}\nTarget used: {y_train.columns}")
->>>>>>> ccf4cd5fac4c8873fa7ca381663338d92e698d84
     log.info("Fitting models...")
     svc_search.fit(X_train, y_train)
     knn_search.fit(X_train, y_train)
@@ -147,10 +135,9 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
     # Log the best models and their parameters.
     for model_name, result in results.items():
         # Define the path to save results.
-        path = config['cv_result']
+        path = os.path.join(os.path.dirname(os.path.dirname(__file__)), config['cv_result'])
         file = f"{model_name}_results.csv"
         df_path = os.path.join(path, file)
-        
         # Save to Data
         df_result = pd.DataFrame(result)
         df_result.to_csv(df_path, index=False)
@@ -190,7 +177,7 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
 
         # Save the models. to model registry/folder based on the validation set performance.
         log.info("Saving models to Model Registry...")
-        model_path = f"{config['model_registry']['model_path']}/{model_name}_acc_{accuracy:.3f}_roc_{roc_auc:.3f}.pkl"
+        model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), config['model_registry']['model_path'], f"{model_name}_acc_{accuracy:.3f}_roc_{roc_auc:.3f}.pkl")
         with open(model_path, "wb") as file:
             pickle.dump(model, file)
         # Upload model to Neptune
@@ -199,12 +186,8 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
     # Get the best model to use for retraining:                                                                         
     # This is based on the balanced accuracy score.
     best_model_name = max(val_model_performance, key=lambda name: val_model_performance[name][1])
-<<<<<<< HEAD
     best_val_model, _, _, _, _, _ = val_model_performance[best_model_name]
-=======
-    best_val_model, _, _, _, _, _, _ = val_model_performance[best_model_name]
 
->>>>>>> ccf4cd5fac4c8873fa7ca381663338d92e698d84
 
     # Define temp. model validtion
     records = []
@@ -217,71 +200,39 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
             'precision': precision,
             'roc_auc': roc_auc
         })
-<<<<<<< HEAD
-
-=======
->>>>>>> ccf4cd5fac4c8873fa7ca381663338d92e698d84
     # Create dataframe from records.
     val_df_results = pd.DataFrame(records)
 
     # Save the validation results to csv.
-    val_df_results.to_csv(f"{config['cv_result']}/val_model_performance.csv", index=False)
+    val_df_results.to_csv(os.path.join(os.path.dirname(os.path.dirname(__file__)), config['cv_result'], "val_model_performance.csv"), index=False)
     log.info(f"Best model based on validation set: {best_model_name} with accuracy: {val_model_performance[best_model_name][1]}")
 
     # Stop Neptune run
     stop_run(run)
 
-<<<<<<< HEAD
-    # Best model across various model performance.
-=======
->>>>>>> ccf4cd5fac4c8873fa7ca381663338d92e698d84
     return best_val_model
 
     
 
 def retrain_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, model, config):
-<<<<<<< HEAD
-    """
-    Retrain the model using both training and validation data.
-    This is useful for final model training before deployment.
-    """
-=======
->>>>>>> ccf4cd5fac4c8873fa7ca381663338d92e698d84
     # To perform retraining by merging both train and val datasets.
     X_train_val = pd.concat([train_data, val_data])
     X_train_val = X_train_val.sort_values('timestamp').reset_index(drop=True)
     y_train_val = X_train_val['aqi']
-<<<<<<< HEAD
-    X_train_val = X_train_val.drop(columns=['aqi', 'timestamp'], axis=1)
-
-    # Output the features as well as the target...
-    log.info(f"\nFeatures fitted: \n{list(X_train_val)}\n Target fitted: \n{y_train_val.name}")
-=======
     X_train_val = X_train_val.drop(['aqi', 'timestamp'])
->>>>>>> ccf4cd5fac4c8873fa7ca381663338d92e698d84
 
     # Select best models from the evaluation on the validation set [e.g X_val].
     final_model = model.fit(X_train_val, y_train_val)
     
-<<<<<<< HEAD
-    
-    log.info("Saving retrained-model to Model Registry...")
-    with open(f"{config['model_registry']['model_path']}/retrained_model.pkl", "wb") as file:
-=======
     with open(f"{config['model_registry']['model_path']}/best_model.pkl", "wb") as file:
->>>>>>> ccf4cd5fac4c8873fa7ca381663338d92e698d84
         pickle.dump(final_model, file)
 
     return final_model
 
        
-<<<<<<< HEAD
-# NOTE: The `train_model` function is the main entry point for training the model.
-=======
 
 
 
->>>>>>> ccf4cd5fac4c8873fa7ca381663338d92e698d84
 
 
 

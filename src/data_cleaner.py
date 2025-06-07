@@ -13,6 +13,8 @@ config = config_loader()
 
 # This function helps load the `OPENWEATHER API DATA`. 
 def load_data(data_path: str = config['dataset']['raw']) -> pd.DataFrame : 
+    # Ensure data_path is relative to project root
+    data_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), data_path)
     if os.path.exists(data_path):
         filename = "aqi_data_2016-2025.csv"
         path = os.path.join(data_path, filename)

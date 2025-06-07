@@ -5,11 +5,12 @@ import yaml
 import pandas as pd
 import numpy as np
 import requests
+from pathlib import Path
 from datetime import datetime, timedelta
 from loguru import logger
 
-
-def config_loader(path= "C:/Users/user/Desktop/startups/aqi_mvp/config/config.yaml"):
+config_path = Path(__file__).parent.parent / "config" / "config.yaml"
+def config_loader(path=config_path):
     "Helper function to load the config file."
     with open(path, 'r') as file:
         config = yaml.safe_load(file)

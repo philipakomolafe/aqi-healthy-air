@@ -2,6 +2,7 @@ fastapi
 uvicorn
 pandas
 numpy
+loguru
 scikit-learn
 xgboost
 pydantic

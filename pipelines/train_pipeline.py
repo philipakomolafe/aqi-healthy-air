@@ -54,23 +54,6 @@ def main():
 
     # Run training instance for best validation model.
     log.info("Running training instance begins...")
-<<<<<<< HEAD
-    best_model = run(train_data=train_df,
-                    val_data=val_df,
-                    log=log, # type: ignore
-                    config=config)
-    log.success("Training instance complete...")
-
-    # Retrain the model with train and val datasets.
-    log.info('Begin Model retraining...')
-    _ = run(train_data=train_df,
-            val_data=val_df,
-            log=log,        # type: ignore
-            model=best_model,
-            config=config,
-            re_train=True)
-    log.success("Re-training instance completed...")
-=======
     _ = run(train_data=train_df,
             val_data=val_df,
             log=log, # type: ignore
@@ -78,7 +61,6 @@ def main():
             )
     log.info("Saving Model to Model Registry...")
     log.success("Training instance complete...")
->>>>>>> ccf4cd5fac4c8873fa7ca381663338d92e698d84
 
         
     

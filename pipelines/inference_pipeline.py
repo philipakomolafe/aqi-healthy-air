@@ -94,7 +94,7 @@ def create_app():
     def test_prediction_plot():
         # Load test data
         test_path = f"{config['dataset']['processed']['test']}/aqi_test_data_v1.csv"
-        test_df = read_processed_data(test_path).tail(100)
+        test_df = read_processed_data(test_path, log).tail(100)
         # Apply feature engineering
         feature_eng = feature_engineering(test_df)
         X = feature_eng.drop(columns=['timestamp', 'aqi'], errors='ignore')

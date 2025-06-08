@@ -7,6 +7,9 @@
 
 
 import sys
+import io
+import base64
+import matplotlib.pyplot as plt
 import uvicorn
 import pandas as pd
 from pathlib import Path
@@ -14,6 +17,7 @@ from typing import Union, List
 from pydantic import BaseModel
 from datetime import datetime 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
 
 # Adding the project root.
 project_root = Path(__file__).parent.parent
@@ -85,6 +89,38 @@ def create_app():
             'color': postprocess_predictions(prediction).iloc[0].values[2],
             "timestamp": datetime.utcnow(),
         }
+    
+    @app.get('/aqi/test-prediction', response_class=HTMLResponse)
+    def test_prediction_plot():
+        # Load test data
+        test_path = f"{config['dataset']['processed']['test']}/aqi_test_data_v1.csv"
+        test_df = read_processed_data(test_path).tail(100)
+        # Apply feature engineering
+        feature_eng = feature_engineering(test_df)
+        X = feature_eng.drop(columns=['timestamp', 'aqi'], errors='ignore')
+        y_true = test_df['aqi']
+        timestamps = pd.to_datetime(test_df['timestamp'])
+        # Predict
+        y_pred = model.predict(X.values) + 1  # Adjust scale if needed
+
+        # Plot
+        plt.figure(figsize=(12, 5))
+        plt.plot(timestamps, y_true, label='Actual AQI', color='green')
+        plt.plot(timestamps, y_pred, label='Predicted AQI', color='orange', linestyle='--')
+        plt.xlabel('Time')
+        plt.ylabel('AQI')
+        plt.title('Actual vs Predicted AQI Over Time')
+        plt.legend()
+        plt.tight_layout()
+
+        # Convert plot to PNG image and encode as base64
+        buf = io.BytesIO()
+        plt.savefig(buf, format='png')
+        plt.close()
+        buf.seek(0)
+        img_base64 = base64.b64encode(buf.read()).decode('utf-8')
+        html = f'<img src="data:image/png;base64,{img_base64}"/>'
+        return html
         
 
     return app

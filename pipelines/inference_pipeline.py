@@ -75,7 +75,7 @@ def create_app():
         # Apply feature engineering..
         feature_eng = feature_engineering(df)
         # Drop unnecessary columns.
-        feature_eng = feature_eng.drop(columns=['timestamp', 'aqi', 'no'], errors='ignore')
+        feature_eng = feature_eng.drop(columns=['timestamp', 'aqi'], errors='ignore')
         # make prediction using the loaded model..
         prediction = model.predict(feature_eng.values)  
         prediction = prediction + 1  # Adjusting the prediction to match the AQI scale (1-5).
@@ -95,6 +95,8 @@ def create_app():
         # Load test data
         test_path = f"{config['dataset']['processed']['test']}/aqi_test_data_v1.csv"
         test_df = read_processed_data(test_path, log).tail(100)
+        #  Ensure timestamp is datetime.
+        test_df['timestamp'] = pd.to_datetime(test_df['timestamp'], errors='coerce')
         # Apply feature engineering
         feature_eng = feature_engineering(test_df)
         X = feature_eng.drop(columns=['timestamp', 'aqi'], errors='ignore')

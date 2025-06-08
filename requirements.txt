@@ -1,5 +1,6 @@
 fastapi
 uvicorn
+matplotlib
 pandas
 numpy
 loguru

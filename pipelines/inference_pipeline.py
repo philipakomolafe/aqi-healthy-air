@@ -25,7 +25,8 @@ sys.path.append(str(project_root))
 
 from src.model_loader import load_model
 # from src.data_fetcher import AQIResponse, Components
-from src.utils import config_loader, setup_logger, get_logger, postprocess_predictions, fetch_current_data, read_processed_data
+from src.utils import (config_loader, setup_logger, select_best_model,
+                       get_logger, postprocess_predictions, fetch_current_data, read_processed_data)
 from src.feature_engineering import feature_engineering
 
 
@@ -48,13 +49,15 @@ class PredictionOutput(BaseModel):
 # Defining callable to run the Inference Pipeline..
 def create_app():
     # Define the model path from the config.
-    model_path = f"{config['model_registry']['model_path']}/xgb_acc_0.845_roc_0.996.pkl"
-    # Define test data path.
-    # test_path = f"{config['dataset']['processed']['test']}/aqi_test_data_v1.csv"
+    model_path, acc, roc, weighted_score = select_best_model(config['model_registry']['model_path']) 
+    if not model_path:
+        log.error("No model found in the model registry. Please train a model first.")
+        raise HTTPException(status_code=500, detail="No model found in the model registry. Please train a mode first..")
 
     # Instantiate the model loader.
     model = load_model(model_path=model_path, log=log)   # type: ignore
-    log.success("Model loaded successfully for inference...")
+    log.info(f"\nBest Model metadata:\nNumber of features: {model.n_features_in_}\nBalanced accuracy: {acc}\nROC AUC: {roc}\nWeighted Score: {weighted_score}\nModel Path: {model_path}")
+    log.success("Model ready for inference...")
 
     # Init App instance.
     app = FastAPI(
@@ -79,7 +82,6 @@ def create_app():
         # make prediction using the loaded model..
         prediction = model.predict(feature_eng.values)  
         prediction = prediction + 1  # Adjusting the prediction to match the AQI scale (1-5).
-        # Postprocess the predictions.
 
         # json output. 
         return {

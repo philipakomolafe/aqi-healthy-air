@@ -76,11 +76,7 @@ def fetch_data(config):
             for entry in validated_data.list:
                 data_list.append({
                     "timestamp": datetime.utcfromtimestamp(entry.dt),
-<<<<<<< HEAD
                     "aqi": int(entry.main.aqi),
-=======
-                    "aqi": entry.main.aqi,
->>>>>>> ccf4cd5fac4c8873fa7ca381663338d92e698d84
                     "no": entry.components.no,  # recently added to features..
                     "pm2_5": entry.components.pm2_5,
                     'pm10': entry.components.pm10,

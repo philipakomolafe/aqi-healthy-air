@@ -1,4 +1,6 @@
 # NOTE: utils.py contains all the helper functions ike logger for loguru and config loader.
+import re
+import os
 import sys
 import time
 import yaml
@@ -140,3 +142,40 @@ def fetch_current_data(config):
         return f"Connection error: {e}"
     except Exception as e:
         return f"Other Errors occurred -> {e}"
+
+
+def select_best_model(model_directory: Path, weight=(0.6, 0.4)) -> tuple[str, float, float, float]:
+    """Select the best model based off the weighted sum of the Balanced accuracy and Macro ROC-AUC values..."""
+    best_model_name = None
+    best_roc = -1
+    best_acc = -1
+    best_score = -1
+
+    # Define search pattern
+    pattern = re.compile(r"acc_(\d+\.\d+)_roc_(\d+\.\d+)\.pkl")
+    # Iterate through all files in the directory
+    for file in os.listdir(model_directory):
+        match = pattern.search(file)
+        if match:
+            acc = float(match.group(1))
+            roc = float(match.group(2))
+
+            # weighted sum of balanced accuracy and macro ROC
+            w1, w2 = weight
+            score = (w1 * roc) + (w2 * acc)
+
+            if score > best_score:
+                best_score = score
+                best_model_name = f"{model_directory}/{file}"
+                best_acc = acc
+                best_roc = roc
+
+    return best_model_name, best_acc, best_roc, best_score
+
+
+
+if __name__ == "__main__":
+    # config = config_loader()
+    # print(fetch_current_data(config))
+
+    pass

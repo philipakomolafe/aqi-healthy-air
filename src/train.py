@@ -104,7 +104,7 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
     sleep(10)
     
     # Fit the models.
-    log.info(f"\nFitted Features: {X_train.columns}\nTarget used: {y_train.columns}")
+    log.info(f"\nFitted Features: {X_train.columns}\nTarget used: {y_train.name}")
     log.info("Fitting models...")
     svc_search.fit(X_train, y_train)
     knn_search.fit(X_train, y_train)

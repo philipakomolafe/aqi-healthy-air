@@ -13,6 +13,8 @@ def init_neptune_run(project_name, api_token, tags, params) -> neptune.Run:
         project=project_name or os.getenv("NEPTUNE_PROJECT_NAME"),
         api_token=api_token or os.getenv("NEPTUNE_API_TOKEN"),
         tags = tags or [],
+        mode='offline',
+        connection_timeout=180, # 3-mins timeout period.
     )
 
     if params:

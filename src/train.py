@@ -180,13 +180,13 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
         model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), config['model_registry']['model_path'], f"{model_name}_acc_{accuracy:.3f}_roc_{roc_auc:.3f}.pkl")
        
         # Remove unnecessary model attributes.
-        log.info("Removing unnecessary model attributes..")
+        # log.info("Removing unnecessary model attributes..")
         for attr in ['X_train_', 'y_train_', "oob_score_", 'oob_decision_function']:
             if hasattr(model, attr):
                 delattr(model, attr)
 
-        # Save model using joblib with compression = 3 to reduce model size.
-        joblib.dump(model, model_path, compress=3)
+        # Save model using joblib without compression to reduce model size.
+        joblib.dump(model, model_path)
         # Upload model to Neptune
         log_model(run, model_path, alias=model_name)
 
@@ -231,16 +231,10 @@ def retrain_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, model, 
     # Select best models from the evaluation on the validation set [e.g X_val].
     final_model = model.fit(X_train_val, y_train_val)
     path = f"{config['model_registry']['model_path']}/best_model.pkl"
-    # Save with compression=3.
-    joblib.dump(final_model, path, compress=3)
+    # Save with joblib.
+    joblib.dump(final_model, path)
 
     return final_model
-
-       
-
-
-
-
 
 
 

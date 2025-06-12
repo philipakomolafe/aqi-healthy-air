@@ -166,7 +166,7 @@ def select_best_model(model_directory: Path, weight=(0.6, 0.4)) -> tuple[str, fl
 
             if score > best_score:
                 best_score = score
-                best_model_name = f"{model_directory}/{file}"
+                best_model_name = f"{model_directory}\{file}"
                 best_acc = acc
                 best_roc = roc
 

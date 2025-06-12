@@ -5,7 +5,7 @@
 # 3. Prediction function.
 # 4. Return Output to the API.
 
-
+import os
 import sys
 import io
 import base64
@@ -49,7 +49,7 @@ class PredictionOutput(BaseModel):
 # Defining callable to run the Inference Pipeline..
 def create_app():
     # Define the model path from the config.
-    model_path, acc, roc, weighted_score = select_best_model(config['model_registry']['model_path']) 
+    model_path, acc, roc, weighted_score = select_best_model(os.path.join(project_root, config['model_registry']['model_path'])) 
     if not model_path:
         log.error("No model found in the model registry. Please train a model first.")
         raise HTTPException(status_code=500, detail="No model found in the model registry. Please train a mode first..")
@@ -60,7 +60,7 @@ def create_app():
     log.success("Model ready for inference...")
 
     # Init App instance.
-    app = FastAPI(
+    app  = FastAPI(
         title="AIR QUALITY INDEX SYSTEM.",
         description="A system designed to predict the air quality of any city - Akure."
         )
@@ -95,7 +95,7 @@ def create_app():
     @app.get('/aqi/test-prediction', response_class=HTMLResponse)
     def test_prediction_plot():
         # Load test data
-        test_path = f"{config['dataset']['processed']['test']}/aqi_test_data_v1.csv"
+        test_path = os.path.join(project_root, 'data', 'processed', 'test', 'aqi_test_data_v1.csv')
         test_df = read_processed_data(test_path, log).tail(100)
         #  Ensure timestamp is datetime.
         test_df['timestamp'] = pd.to_datetime(test_df['timestamp'], errors='coerce')
@@ -134,3 +134,23 @@ def main():
     uvicorn.run("pipelines.inference_pipeline:create_app", factory=True, host='0.0.0.0', port=10000, reload=True)
     # NOTE: url: http://localhost:10000/aqi/online-prediction with this you get the prediction result.
 
+if __name__ == "__main__":
+    # model_path, _, _, _ = select_best_model(os.path.join(project_root, config['model_registry']['model_path']))
+    # model = load_model(model_path=model_path, log=log)   # type: ignore
+    # compressed_model = load_model(model_path="C:/Users/user/Desktop/startups/project/aqi_mvp/models/xgb_acc_0.845_roc_0.996.pkl", log=log)   # type: ignore
+    # # Load test data
+    # test_path = os.path.join(project_root, 'data', 'processed', 'test', 'aqi_test_data_v1.csv')
+    # test_df = read_processed_data(test_path, log)
+    # #  Ensure timestamp is datetime.
+    # test_df['timestamp'] = pd.to_datetime(test_df['timestamp'], errors='coerce')
+    # # Apply feature engineering
+    # feature_eng = feature_engineering(test_df)
+    # X = feature_eng.drop(columns=['timestamp', 'aqi'], errors='ignore')
+    # y_true = test_df['aqi']
+
+    # # Test accuracy before and after compression
+    # from sklearn import metrics
+    # original_accuracy = metrics.balanced_accuracy_score(y_true, model.predict(X) + 1)
+
+    # print(f"Original accuracy: {original_accuracy}")
+    pass

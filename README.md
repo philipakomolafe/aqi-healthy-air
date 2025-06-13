@@ -1,92 +1,113 @@
 # Air Quality Index (AQI) Machine Learning Project
 
-This project provides a modular, production-ready framework for working with Air Quality Index (AQI) data. It includes three main pipelines:
+This project is a modular, production-ready framework for analyzing, modeling, and predicting Air Quality Index (AQI) using machine learning. It is designed for reproducibility, extensibility, and clarity, with each component separated for ease of understanding and modification.
 
-- **Feature Pipeline**: For data cleaning, feature engineering, feature selection, and data splitting.
-- **Training Pipeline**: For model training and evaluation (to be implemented).
-- **Inference Pipeline**: For making predictions with trained models (to be implemented).
+## Project Overview
 
-The project is designed for extensibility, reproducibility, and ease of use, leveraging best practices in data science and software engineering.
+The project is organized into several key components:
 
-## Project Structure
+- **Data Ingestion & Cleaning**: Fetches raw AQI data, cleans it, and prepares it for analysis.
+- **Feature Engineering & Selection**: Extracts meaningful features and selects the most relevant ones.
+- **Model Training & Evaluation**: Trains multiple models, evaluates their performance, and saves the best ones.
+- **Inference Pipeline**: Loads trained models and serves predictions via an API.
+- **Configuration & Logging**: Centralized configuration and logging for reproducibility.
+
+## Directory Structure & Key Files
 
 ```
+aqi_mvp/
+│
 ├── config/
-│   └── config.yaml           # Configuration file for API, data paths, etc.
+│   └── config.yaml           # Central configuration for data paths, API keys, etc.
+│
 ├── data/
-│   ├── raw/                  # Raw AQI data (CSV)
-│   ├── processed/            # Processed and feature-engineered data
-│   └── cache/                # Cached intermediate results
+│   ├── raw/                  # Raw AQI data (e.g., aqi_data_2016-2025.csv)
+│   └── processed/
+│       └── train/val/test/   # Cleaned and split datasets for ML
+│
 ├── logs/
-│   └── pipeline.log          # Log file for pipeline runs
-├── models/                   # Model storage
+│   └── pipeline.log          # Logs for pipeline runs
+│
+├── models/                   # Saved model artifacts (e.g., .pkl files)
+│
 ├── pipelines/
-│   └── feature_pipeline.py   # Main feature pipeline script
+│   ├── feature_pipeline.py   # Orchestrates data cleaning, feature engineering, and selection
+│   ├── train_pipeline.py     # Handles model training and evaluation
+│   └── inference_pipeline.py # Loads models and serves predictions (API-ready)
+│
 ├── src/
-│   ├── data_cleaner.py       # Data cleaning utilities
-│   ├── data_fetcher.py       # (Optional) Data fetching utilities
-│   ├── data_splitter.py      # Time-based data splitting
-│   ├── feature_cache.py      # Caching utilities
-│   ├── feature_engineering.py# Feature engineering for AQI
-│   ├── feature_selection.py  # Feature selection (correlation, importance)
-│   ├── feature_storage.py    # Feature saving/versioning
-│   ├── neptune_utils.py      # Neptune logging utilities
-│   └── utils.py              # Config loader, logger setup, helpers
+│   ├── data_cleaner.py       # Functions for loading and cleaning raw data
+│   ├── data_fetcher.py       # (Optional) For fetching data from APIs
+│   ├── data_splitter.py      # Splits data into train/val/test sets
+│   ├── feature_engineering.py# Adds new features to the dataset
+│   ├── feature_selection.py  # Selects important features
+│   ├── feature_storage.py    # Handles saving/versioning of features
+│   ├── model_loader.py       # Loads models for inference
+│   ├── neptune_utils.py      # Utilities for experiment tracking (Neptune.ai)
+│   ├── train.py              # Core model training logic
+│   └── utils.py              # Config loader, logger, and helpers
+│
 ├── requirements.txt          # Python dependencies
 └── README.md                 # This file
 ```
 
-## Key Features
+## How Each Component Works
 
-- **Configurable**: All paths and API keys are managed in `config/config.yaml`.
-- **Logging**: Uses Loguru for robust logging to `logs/pipeline.log`.
-- **Modular**: Each pipeline step (cleaning, engineering, selection, splitting, saving, caching) is a separate script in `src/`.
-- **Feature Engineering**: Adds time-based, weather, interaction, and AQI-specific features.
-- **Feature Selection**: Removes highly correlated features and ranks features by importance.
-- **Time Series Splitting**: Splits data into train/validation/test sets chronologically.
-- **Feature Storage & Caching**: Saves processed features with versioning and supports caching for speed.
+### 1. Configuration (`config/config.yaml`)
+All paths, API keys, and settings are centralized here. Change this file to point to your own data or adjust parameters.
 
-## How to Use
+### 2. Data Handling
+- **Raw Data**: Place your source CSVs in `data/raw/`.
+- **`src/data_cleaner.py`**: Loads and cleans raw data, handling missing values and formatting.
+- **`src/data_splitter.py`**: Splits cleaned data into train/val/test sets for robust model evaluation.
 
-1. **Install Requirements**
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 3. Feature Engineering & Selection
+- **`src/feature_engineering.py`**: Adds time-based, interaction, and domain-specific features (e.g., rolling AQI stats, ratios).
+- **`src/feature_selection.py`**: Uses correlation and importance metrics to select the best features.
 
-2. **Configure Your Project**
-   - Edit `config/config.yaml` to set your data paths and API keys.
-   - Sensitive info (API keys) should be stored in a `.env` file and referenced in your config.
+### 4. Pipelines
+- **`pipelines/feature_pipeline.py`**: Orchestrates the full feature pipeline—loading, cleaning, engineering, selecting, and saving features.
+- **`pipelines/train_pipeline.py`**: Loads processed data, trains models (KNN, RF, SVC, XGB), evaluates them, and logs results.
+- **`pipelines/inference_pipeline.py`**: Loads the best model and exposes a FastAPI endpoint for predictions.
 
-3. **Run the Feature Pipeline**
-   ```bash
-   python pipelines/feature_pipeline.py
-   ```
-   This will:
-   - Load and clean raw AQI data
-   - Engineer new features
-   - Select the best features
-   - Split data into train/val/test sets
-   - Save processed features to `data/processed/`
-   - Log all steps to `logs/pipeline.log`
+### 5. Model Management
+- **`models/`**: Stores all trained model artifacts, named with their accuracy and ROC for easy selection.
+- **`src/model_loader.py`**: Loads models for inference.
 
-4. **Check Outputs**
-   - Processed feature files: `data/processed/aqi_train_data_*.csv`, etc.
-   - Logs: `logs/pipeline.log`
+### 6. Experiment Tracking
+- **`src/neptune_utils.py`**: Integrates with Neptune.ai for experiment tracking and artifact logging.
 
-## Customization
-- Add new feature engineering logic in `src/feature_engineering.py`.
-- Adjust feature selection thresholds in `src/feature_selection.py`.
-- Change data split ratios in `src/data_splitter.py`.
-- Update logging or config logic in `src/utils.py`.
+### 7. Utilities
+- **`src/utils.py`**: Handles configuration loading, logger setup, and other helper functions.
 
-## Best Practices
-- Keep sensitive info out of version control (add `.env` and `config/config.yaml` to `.gitignore`).
-- Use the logger for all print/debug statements.
-- Version your features for reproducibility.
+### 8. Logging
+- **`logs/pipeline.log`**: All pipeline runs and errors are logged here for debugging and reproducibility.
 
-## Credits
-- Built with Loguru, Pandas, Scikit-learn, and Neptune.ai (for experiment tracking).
+## Reproducibility Steps
 
----
+1. **Clone the repository**  
+   `git clone <repo-url> && cd aqi_mvp`
 
-**This pipeline is designed for easy extension and robust, reproducible AQI data science workflows.**
+2. **Install dependencies**  
+   `pip install -r requirements.txt`
+
+3. **Configure your environment**  
+   Edit `config/config.yaml` as needed.
+
+4. **Prepare data**  
+   Place your raw AQI data in `data/raw/`.
+
+5. **Run the feature pipeline**  
+   `python pipelines/feature_pipeline.py`
+
+6. **Run the training pipeline**  
+   `python pipelines/train_pipeline.py`
+
+7. **Run the inference pipeline (API)**  
+   `python pipelines/inference_pipeline.py`
+
+## Notes
+
+- All scripts are modular and can be run independently.
+- The project is designed for easy extension—add new models, features, or data sources as needed.
+- For experiment tracking, set up Neptune.ai and update your config.

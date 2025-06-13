@@ -2,7 +2,7 @@ name: Train Pipeline Schedule
 
 on:
   schedule:
-    -cron: '0 0 * * 0' # Runs at Sundays UTC
+    - cron: '0 0 * * 0' # Runs at Sundays UTC
 
 jobs:
   run-featune-pipeline:

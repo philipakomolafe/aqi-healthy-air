@@ -2,7 +2,7 @@ name: Feature Data Pipeline Schedule
 
 on:
   schedule:
-    -cron: '0 0 * * *' # Runs daily at midnight UTC
+    - cron: '0 0 * * *' # Runs daily at midnight UTC
 
 jobs:
   run-featune-pipeline:

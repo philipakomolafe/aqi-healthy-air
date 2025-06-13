@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: '0 0 * * *' # Runs daily at midnight UTC
 
+permissions:
+  contents: write # allows to write to the repository.
+
 jobs:
   run-featune-pipeline:
     runs-on: ubuntu-latest

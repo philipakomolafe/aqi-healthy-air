@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: '0 0 * * 0' # Runs every Sunday at 00:00 UTC
 
+permissions:
+  contents: write # Allows the workflow to push changes to the repository
+
 jobs:
   run-feature-pipeline:
     runs-on: ubuntu-latest

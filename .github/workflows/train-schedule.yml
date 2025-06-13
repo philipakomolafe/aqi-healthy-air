@@ -9,7 +9,7 @@ permissions:
   contents: write # Allows the workflow to push changes to the repository
 
 jobs:
-  run-feature-pipeline:
+  run-train-pipeline:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

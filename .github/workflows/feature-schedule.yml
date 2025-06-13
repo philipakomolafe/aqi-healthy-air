@@ -9,7 +9,7 @@ permissions:
   contents: write # allows to write to the repository.
 
 jobs:
-  run-featune-pipeline:
+  run-feature-pipeline:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

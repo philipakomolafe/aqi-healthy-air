@@ -64,20 +64,20 @@ def read_processed_data(path: str, log) -> pd.DataFrame:
 # TODO: Define the prefect orchestration utilities..
 
 def categorize_aqi(aqi: float):
-    if aqi <= 0 :
-        return "Invalid AQI"
+    if aqi <= 0:
+        return "Invalid Air Quality Index (AQI) value. Please check the data source."
     elif aqi <= 1:
-        return "Excellent (No health risk)"
+        return "Excellent: Safe for outdoor activities, but stay alert to symptoms."
     elif aqi <= 2:
-        return "Good (Low health risk)"
+        return "Good: Generally safe, but consider wearing a mask if outdoors for long periods."
     elif aqi <= 3:
-        return "Moderate (Sensitive groups may experience health effects)"
+        return "Moderate: Limit prolonged outdoor exertion. Carry inhaler/medication. Consider a mask."
     elif aqi <= 4:
-        return "Poor (Unhealthy for sensitive groups)"
+        return "Poor: Avoid outdoor activities. Use air purifiers indoors. Wear a mask if you must go out."
     elif aqi <= 5:
-        return "Very Poor (Unhealthy for all)"
+        return "Very Poor: Stay indoors with windows closed. Use HEPA filters. Avoid physical activity outside."
     else:
-        return "Hazardous (Serious health effects for all)" 
+        return "Hazardous: Remain indoors. Use air purifiers. Seek medical attention if symptoms worsen." 
 
 def color_aqi(aqi: float):
     if aqi <= 0:
@@ -166,7 +166,7 @@ def select_best_model(model_directory: Path, weight=(0.6, 0.4)) -> tuple[str, fl
 
             if score > best_score:
                 best_score = score
-                best_model_name = f"{model_directory}\{file}"
+                best_model_name = os.path.join(model_directory, file)
                 best_acc = acc
                 best_roc = roc
 

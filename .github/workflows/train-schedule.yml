@@ -2,25 +2,29 @@ name: Train Pipeline Schedule
 
 on:
   schedule:
-    -cron: '0 0 * * 0' # Runs at Sundays UTC
+    - cron: '0 0 * * 0' # Runs every Sunday at 00:00 UTC
 
 jobs:
-  run-featune-pipeline:
+  run-feature-pipeline:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x' 
+          python-version: '3.x'
+
       - name: Install dependencies
         run: pip install -r requirements.txt
+
       - name: Run Feature Data Pipeline
         run: python pipelines/train_pipeline.py
+
       - name: Commit and push changes
         run: |
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
           git add .
-          git commit -m "Automated update"
-          git push origin master
+          git diff --quiet && git diff --staged --quiet || git commit -m "Automated update"
+          git push origin master 

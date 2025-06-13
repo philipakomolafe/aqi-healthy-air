@@ -62,5 +62,9 @@ def main():
     log.info("Saving Model to Model Registry...")
     log.success("Training instance complete...")
 
+
+if __name__ == "__main__":
+        # Running the main function.
+        main()
         
     

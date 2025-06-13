@@ -1,6 +1,7 @@
 name: Feature Data Pipeline Schedule
 
 on:
+  workflow_dispatch: # allows manual triggering of workflow..
   schedule:
     - cron: '0 0 * * *' # Runs daily at midnight UTC
 

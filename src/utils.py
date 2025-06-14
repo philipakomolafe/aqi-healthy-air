@@ -24,7 +24,8 @@ def to_unix_timestamp(datetime_obj) -> int:
 
 
 # TODO: Define the Logger utils to log file processes..
-def setup_logger(log_file: str = 'C:/Users/user/Desktop/startups/aqi_mvp/logs/pipeline.log', level: str = "DEBUG"):
+logger_path = Path(__file__).parent.parent / 'logs' / 'pipeline.log'
+def setup_logger(log_file: str = logger_path, level: str = "DEBUG"):
     """
     Configure the Loguru logger.
     """

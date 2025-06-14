@@ -106,23 +106,31 @@ def create_app():
         # Predict
         y_pred = model.predict(X.values) + 1  # Adjust scale if needed
 
-        # Plot
-        plt.figure(figsize=(12, 5))
-        plt.plot(timestamps, y_true, label='Actual AQI', color='blue')
-        plt.plot(timestamps, y_pred, label='Predicted AQI', color='red', linestyle='--')
-        plt.xlabel('Time')
-        plt.ylabel('AQI')
-        plt.title('Actual vs Predicted AQI Over 1-WEEK')
-        plt.legend()
+
+        # Plot with dark theme
+        plt.style.use('dark_background')
+        fig, ax = plt.subplots(figsize=(12, 5))
+        ax.plot(timestamps, y_true, label='Actual AQI', color='#00BFFF')  # DeepSkyBlue
+        ax.plot(timestamps, y_pred, label='Predicted AQI', color='#FF6347', linestyle='--')  # Tomato
+
+        # Set title and labels with bright colors for readability
+        ax.set_xlabel('Time', color='white')
+        ax.set_ylabel('AQI', color='white')
+        ax.set_title('Actual vs Predicted AQI Over 1-WEEK', color='white', fontsize=16)
+        ax.tick_params(colors='white')
+        ax.legend(facecolor='#222', edgecolor='white', labelcolor='white')
+        fig.patch.set_facecolor('#222')  # Slightly lighter than pure black
+
         plt.tight_layout()
 
         # Convert plot to PNG image and encode as base64
         buf = io.BytesIO()
-        plt.savefig(buf, format='png')
-        plt.close()
+        plt.savefig(buf, format='png', bbox_inches='tight', facecolor=fig.get_facecolor())
+        plt.close(fig)
         buf.seek(0)
         img_base64 = base64.b64encode(buf.read()).decode('utf-8')
         html = f'<img src="data:image/png;base64,{img_base64}"/>'
+        
         return html
         
 

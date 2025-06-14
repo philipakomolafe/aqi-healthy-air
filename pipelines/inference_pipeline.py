@@ -95,7 +95,7 @@ def create_app():
     def test_prediction_plot():
         # Load test data
         test_path = os.path.join(project_root, 'data', 'processed', 'test', 'aqi_test_data_v1.csv')
-        test_df = read_processed_data(test_path, log).tail(100)
+        test_df = read_processed_data(test_path, log).tail(168)
         #  Ensure timestamp is datetime.
         test_df['timestamp'] = pd.to_datetime(test_df['timestamp'], errors='coerce')
         # Apply feature engineering
@@ -108,11 +108,11 @@ def create_app():
 
         # Plot
         plt.figure(figsize=(12, 5))
-        plt.plot(timestamps, y_true, label='Actual AQI', color='green')
-        plt.plot(timestamps, y_pred, label='Predicted AQI', color='orange', linestyle='--')
+        plt.plot(timestamps, y_true, label='Actual AQI', color='blue')
+        plt.plot(timestamps, y_pred, label='Predicted AQI', color='red', linestyle='--')
         plt.xlabel('Time')
         plt.ylabel('AQI')
-        plt.title('Actual vs Predicted AQI Over Time')
+        plt.title('Actual vs Predicted AQI Over 1-WEEK')
         plt.legend()
         plt.tight_layout()
 
@@ -130,7 +130,7 @@ def create_app():
 
 def main():
     # Runs app instance using uvicorn and factory pattern.
-    uvicorn.run("pipelines.inference_pipeline:create_app", factory=True, host='0.0.0.0', port=10000, reload=True)
+    uvicorn.run("pipelines.inference_pipeline:create_app", factory=True, host='0.0.0.0', port=10000)
     # NOTE: url: http://localhost:10000/aqi/inference with this you get the prediction result.
 
 if __name__ == "__main__":

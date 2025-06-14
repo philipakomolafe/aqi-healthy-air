@@ -1533,3 +1533,24 @@ ROC AUC: 0.997
 Weighted Score: 0.9421999999999999
 Model Path: C:\Users\user\Desktop\startups\project\aqi_mvp\models\xgb_acc_0.860_roc_0.997.pkl
 2025-06-14 14:03:15.738 | SUCCESS  | pipelines.inference_pipeline:create_app:59 - Model ready for inference...
+2025-06-14 14:11:40.144 | INFO     | src.model_loader:load_model:11 - Loading model from C:\Users\user\Desktop\startups\project\aqi_mvp\models\xgb_acc_0.860_roc_0.997.pkl...
+2025-06-14 14:11:53.991 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-14 14:11:53.991 | INFO     | pipelines.inference_pipeline:create_app:58 - 
+Best Model metadata:
+Number of features: 18
+Balanced accuracy: 0.86
+ROC AUC: 0.997
+Weighted Score: 0.9421999999999999
+Model Path: C:\Users\user\Desktop\startups\project\aqi_mvp\models\xgb_acc_0.860_roc_0.997.pkl
+2025-06-14 14:11:54.007 | SUCCESS  | pipelines.inference_pipeline:create_app:59 - Model ready for inference...
+2025-06-14 14:16:33.861 | INFO     | src.utils:read_processed_data:56 - Data read successfully from C:\Users\user\Desktop\startups\project\aqi_mvp\data\processed\test\aqi_test_data_v1.csv
+2025-06-14 14:25:27.121 | INFO     | src.model_loader:load_model:11 - Loading model from C:\Users\user\Desktop\startups\project\aqi_mvp\models\xgb_acc_0.860_roc_0.997.pkl...
+2025-06-14 14:26:39.486 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-14 14:26:39.778 | INFO     | pipelines.inference_pipeline:create_app:58 - 
+Best Model metadata:
+Number of features: 18
+Balanced accuracy: 0.86
+ROC AUC: 0.997
+Weighted Score: 0.9421999999999999
+Model Path: C:\Users\user\Desktop\startups\project\aqi_mvp\models\xgb_acc_0.860_roc_0.997.pkl
+2025-06-14 14:26:39.778 | SUCCESS  | pipelines.inference_pipeline:create_app:59 - Model ready for inference...

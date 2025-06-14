@@ -14,7 +14,7 @@
 # dataset/
 # *.csv
 # logs/
-logs/pipeline.log
+# logs/pipeline.log
 
 # # Ignore Python cache and virtual environments
 # __pycache__/

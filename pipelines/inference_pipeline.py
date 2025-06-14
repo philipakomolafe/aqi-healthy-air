@@ -109,9 +109,9 @@ def create_app():
 
         # Plot with dark theme
         plt.style.use('dark_background')
-        fig, ax = plt.subplots(figsize=(12, 5))
+        fig, ax = plt.subplots(figsize=(8, 4))
         ax.plot(timestamps, y_true, label='Actual AQI', color='#00BFFF')  # DeepSkyBlue
-        ax.plot(timestamps, y_pred, label='Predicted AQI', color='#FF6347', linestyle='--')  # Tomato
+        ax.plot(timestamps, y_pred, label='Predicted AQI', color='#FF6347', linestyle="None", marker='o', markersize=5)  # Tomato
 
         # Set title and labels with bright colors for readability
         ax.set_xlabel('Time', color='white')
@@ -129,8 +129,8 @@ def create_app():
         plt.close(fig)
         buf.seek(0)
         img_base64 = base64.b64encode(buf.read()).decode('utf-8')
-        html = f'<img src="data:image/png;base64,{img_base64}"/>'
-        
+        html = f'<img src="data:image/png;base64,{img_base64}" style="max-width:100%; height:auto; display:block; margin:auto;"/>'
+
         return html
         
 

@@ -1513,3 +1513,23 @@ Train shape:
 2025-06-03 22:28:15.583 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-11-07 - 2025-01-06
 2025-06-03 22:28:27.923 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2025-01-07 - 2025-03-08
 2025-06-03 22:28:36.551 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2025-03-09 - 2025-05-08
+2025-06-14 13:40:27.795 | INFO     | src.model_loader:load_model:11 - Loading model from C:\Users\user\Desktop\startups\project\aqi_mvp\models\xgb_acc_0.860_roc_0.997.pkl...
+2025-06-14 13:40:34.363 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-14 13:40:34.790 | INFO     | pipelines.inference_pipeline:create_app:59 - 
+Best Model metadata:
+Number of features: 18
+Balanced accuracy: 0.86
+ROC AUC: 0.997
+Weighted Score: 0.9421999999999999
+Model Path: C:\Users\user\Desktop\startups\project\aqi_mvp\models\xgb_acc_0.860_roc_0.997.pkl
+2025-06-14 13:40:34.798 | SUCCESS  | pipelines.inference_pipeline:create_app:60 - Model ready for inference...
+2025-06-14 14:03:09.095 | INFO     | src.model_loader:load_model:11 - Loading model from C:\Users\user\Desktop\startups\project\aqi_mvp\models\xgb_acc_0.860_roc_0.997.pkl...
+2025-06-14 14:03:15.340 | SUCCESS  | src.model_loader:load_model:13 - Model loaded successfully...
+2025-06-14 14:03:15.736 | INFO     | pipelines.inference_pipeline:create_app:58 - 
+Best Model metadata:
+Number of features: 18
+Balanced accuracy: 0.86
+ROC AUC: 0.997
+Weighted Score: 0.9421999999999999
+Model Path: C:\Users\user\Desktop\startups\project\aqi_mvp\models\xgb_acc_0.860_roc_0.997.pkl
+2025-06-14 14:03:15.738 | SUCCESS  | pipelines.inference_pipeline:create_app:59 - Model ready for inference...

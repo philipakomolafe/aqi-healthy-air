@@ -24,7 +24,6 @@ project_root = Path(__file__).parent.parent
 sys.path.append(str(project_root))
 
 from src.model_loader import load_model
-# from src.data_fetcher import AQIResponse, Components
 from src.utils import (config_loader, setup_logger, select_best_model,
                        get_logger, postprocess_predictions, fetch_current_data, read_processed_data)
 from src.feature_engineering import feature_engineering
@@ -70,7 +69,7 @@ def create_app():
         return {'message': "Welcome to the Air Quality prediction system..."}
 
 
-    @app.get('/aqi/online-prediction', response_model=PredictionOutput)
+    @app.get('/aqi/inference', response_model=PredictionOutput)
     def online_predict():
         # Get the current AQI features :->.
         aqi_features = fetch_current_data(config=config)
@@ -92,7 +91,7 @@ def create_app():
             "timestamp": datetime.utcnow(),
         }
     
-    @app.get('/aqi/test-prediction', response_class=HTMLResponse)
+    @app.get('/aqi/plot', response_class=HTMLResponse)
     def test_prediction_plot():
         # Load test data
         test_path = os.path.join(project_root, 'data', 'processed', 'test', 'aqi_test_data_v1.csv')
@@ -132,7 +131,7 @@ def create_app():
 def main():
     # Runs app instance using uvicorn and factory pattern.
     uvicorn.run("pipelines.inference_pipeline:create_app", factory=True, host='0.0.0.0', port=10000, reload=True)
-    # NOTE: url: http://localhost:10000/aqi/online-prediction with this you get the prediction result.
+    # NOTE: url: http://localhost:10000/aqi/inference with this you get the prediction result.
 
 if __name__ == "__main__":
     # model_path, _, _, _ = select_best_model(os.path.join(project_root, config['model_registry']['model_path']))

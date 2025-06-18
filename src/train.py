@@ -122,13 +122,13 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
                 }
 
     # Define RandomizedSearchCV for hyperparameter tuning.
-    svc_search = model_selection.RandomizedSearchCV(svc(), svc_params, scoring=scoring, refit="f1", n_iter=3, cv=tscv, n_jobs=-1, verbose=2)
+    svc_search = model_selection.RandomizedSearchCV(svc(), svc_params, scoring=scoring, refit="f1", n_iter=7, cv=tscv, n_jobs=-1, verbose=2)
     sleep(10)
-    knn_search = model_selection.RandomizedSearchCV(knn(), knn_params, scoring=scoring, refit='f1', n_iter=7, cv=tscv, n_jobs=-1, verbose=2)
+    knn_search = model_selection.RandomizedSearchCV(knn(), knn_params, scoring=scoring, refit='f1', n_iter=8, cv=tscv, n_jobs=-1, verbose=2)
     sleep(10)
-    rf_search = model_selection.RandomizedSearchCV(rf(), rf_params, scoring=scoring, refit='f1', n_iter=7, cv=tscv, n_jobs=-1, verbose=2)
+    rf_search = model_selection.RandomizedSearchCV(rf(), rf_params, scoring=scoring, refit='f1', n_iter=9, cv=tscv, n_jobs=-1, verbose=2)
     sleep(10)
-    xgb_search = model_selection.RandomizedSearchCV(xgb(), xgb_params, scoring=scoring, refit="f1", n_iter=7, cv=tscv, n_jobs=-1, verbose=2, return_train_score=True)
+    xgb_search = model_selection.RandomizedSearchCV(xgb(), xgb_params, scoring=scoring, refit="f1", n_iter=10, cv=tscv, n_jobs=-1, verbose=2, return_train_score=True)
     sleep(10)
     
     # Fit the models.

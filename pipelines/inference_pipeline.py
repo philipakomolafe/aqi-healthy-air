@@ -8,6 +8,7 @@
 import os
 import sys
 import io
+import shap
 import base64
 import matplotlib.pyplot as plt
 import uvicorn
@@ -17,7 +18,7 @@ from typing import Union, List
 from pydantic import BaseModel
 from datetime import datetime 
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 
 # Adding the project root.
 project_root = Path(__file__).parent.parent
@@ -91,6 +92,38 @@ def create_app():
             "timestamp": datetime.utcnow(),
         }
     
+    @app.get('/aqi/explain', response_class=JSONResponse)
+    def explain_prediction():
+        """
+        Explain the model's AQI prediction for a given input.
+        Expects a JSON input with the same features as the model.
+        """
+        # Get the current AQI features
+        data = fetch_current_data(config=config) 
+        df = pd.DataFrame([data], index=[0])  # Create a DataFrame with the input data
+
+        # Apply feature engineering
+        features_eng = feature_engineering(df)
+
+        # Drop unnecessary columns
+        features_eng = features_eng.drop(columns=['timestamp', 'aqi'], errors="ignore")
+        # SHAP Explainer
+        explainer = shap.Explainer(model)  
+        shap_values = explainer(features_eng)
+
+        # Generate feature names.
+        feature_names = list(features_eng.columns)
+        shap_vals = shap_values.values[0].tolist()
+
+        return JSONResponse({
+            "features": feature_names,
+            "shap_values": shap_vals,
+            "expected_value": shap_values.base_values[0],
+        })
+
+
+
+
     @app.get('/aqi/plot', response_class=HTMLResponse)
     def test_prediction_plot():
         # Load test data

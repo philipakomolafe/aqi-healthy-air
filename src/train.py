@@ -25,18 +25,46 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
     log.info("Training model...")
 
     # Define params for hyperparameter tuning.
-    svc_params = {'C': [0.1, 1, 10],
-                "kernel": ["rbf"],
-                "gamma": ['scale'],} 
-    knn_params = {'n_neighbors': [3, 7, 9],
-                    'leaf_size': [30, 50, 70],
-                  }
-    rf_params = {'n_estimators': [100, 300, 500],
-                 'max_depth': [10, 20, 50],
-                 }
-    xgb_params = {'n_estimators': [100, 300, 500],
-                  "learning_rate": [0.0001, 0.001, 0.1],
-                  }
+    svc_params = {
+    'C': [0.1, 1, 10, 100],
+    'kernel': ['rbf'],
+    'gamma': ['scale', 'auto', 0.01, 0.001],
+    'shrinking': [True, False],
+    'probability': [True],
+    'class_weight': [None, 'balanced']
+}
+    knn_params = {
+    'n_neighbors': [3, 5, 7, 9],
+    'leaf_size': [20, 30, 50, 70],
+    'weights': ['uniform', 'distance'],
+    'p': [1, 2],
+    'algorithm': ['auto', 'ball_tree', 'kd_tree']
+}
+    rf_params = {
+    'n_estimators': [100, 300, 500],
+    'max_depth': [10, 20, 50, None],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4],
+    'max_features': ['sqrt', 'log2', None],
+    'bootstrap': [True, False],
+    'class_weight': [None, 'balanced']
+}
+
+    xgb_params = {
+    'n_estimators': [100, 300, 500],
+    'learning_rate': [0.0001, 0.001, 0.01, 0.1],
+    'max_depth': [3, 5, 7, 10],
+    'subsample': [0.6, 0.8, 1.0],
+    'colsample_bytree': [0.6, 0.8, 1.0],
+    'min_child_weight': [1, 3, 5],
+    'gamma': [0, 0.1, 0.3],
+    'reg_alpha': [0, 0.1, 1],
+    'reg_lambda': [0.1, 1, 10],
+    'scale_pos_weight': [1]  # Adjust >1 for imbalanced classes
+}
+    
+     
+
     
 
     # Initialize Neptune run
@@ -94,13 +122,13 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
                 }
 
     # Define RandomizedSearchCV for hyperparameter tuning.
-    svc_search = model_selection.RandomizedSearchCV(svc(), svc_params, scoring=scoring, refit="f1", n_iter=3, cv=tscv, n_jobs=-1, verbose=2)
+    svc_search = model_selection.RandomizedSearchCV(svc(), svc_params, scoring=scoring, refit="f1", n_iter=7, cv=tscv, n_jobs=-1, verbose=2)
     sleep(10)
-    knn_search = model_selection.RandomizedSearchCV(knn(), knn_params, scoring=scoring, refit='f1', n_iter=7, cv=tscv, n_jobs=-1, verbose=2)
+    knn_search = model_selection.RandomizedSearchCV(knn(), knn_params, scoring=scoring, refit='f1', n_iter=8, cv=tscv, n_jobs=-1, verbose=2)
     sleep(10)
-    rf_search = model_selection.RandomizedSearchCV(rf(), rf_params, scoring=scoring, refit='f1', n_iter=7, cv=tscv, n_jobs=-1, verbose=2)
+    rf_search = model_selection.RandomizedSearchCV(rf(), rf_params, scoring=scoring, refit='f1', n_iter=9, cv=tscv, n_jobs=-1, verbose=2)
     sleep(10)
-    xgb_search = model_selection.RandomizedSearchCV(xgb(), xgb_params, scoring=scoring, refit="f1", n_iter=7, cv=tscv, n_jobs=-1, verbose=2, return_train_score=True)
+    xgb_search = model_selection.RandomizedSearchCV(xgb(), xgb_params, scoring=scoring, refit="f1", n_iter=10, cv=tscv, n_jobs=-1, verbose=2, return_train_score=True)
     sleep(10)
     
     # Fit the models.

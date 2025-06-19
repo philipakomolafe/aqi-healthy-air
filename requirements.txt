@@ -2,6 +2,7 @@ fastapi
 uvicorn
 matplotlib
 pandas
+shap
 numpy
 loguru
 scikit-learn

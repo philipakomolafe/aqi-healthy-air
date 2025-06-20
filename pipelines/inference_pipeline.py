@@ -118,7 +118,7 @@ def create_app():
         return JSONResponse({
             "features": list(feature_names),
             "shap_values": shap_vals.tolist() if hasattr(shap_vals, "tolist") else shap_vals,
-            "expected_value": float(shap_values.base_values[0]),
+            "expected_value": shap_values.base_values[0].tolist(),
         })
 
 

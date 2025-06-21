@@ -59,6 +59,9 @@ def create_app():
     log.info(f"\nBest Model metadata:\nNumber of features: {model.n_features_in_}\nBalanced accuracy: {acc}\nROC AUC: {roc}\nWeighted Score: {weighted_score}\nModel Path: {model_path}")
     log.success("Model ready for inference...")
 
+    # SHAP Explainer
+    explainer = shap.TreeExplainer(model) 
+
     # Init App instance.
     app  = FastAPI(
         title="AIR QUALITY INDEX SYSTEM.",
@@ -92,8 +95,7 @@ def create_app():
             "timestamp": datetime.utcnow(),
         }
     
-    # SHAP Explainer
-    explainer = shap.TreeExplainer(model) 
+    
 
     @app.get('/aqi/explain', response_class=JSONResponse)
     def explain_prediction():
@@ -118,7 +120,7 @@ def create_app():
         shap_vals = shap_values.values[0].tolist()
 
         return JSONResponse({
-            "features": list(feature_names),
+            "features": feature_names,
             "shap_values": shap_vals,
             # "expected_value": shap_values.base_values[0].tolist(),
         })
@@ -195,4 +197,30 @@ if __name__ == "__main__":
     # original_accuracy = metrics.balanced_accuracy_score(y_true, model.predict(X) + 1)
 
     # print(f"Original accuracy: {original_accuracy}")
-    pass
+     # Get the current AQI features
+    # data = fetch_current_data(config=config) 
+    # df = pd.DataFrame([data], index=[0])  # Create a DataFrame with the input data
+
+    # # Apply feature engineering
+    # features_eng = feature_engineering(df)
+
+    # # Drop unnecessary columns
+    # features_eng = features_eng.drop(columns=['timestamp', 'aqi'], errors="ignore")
+    # # SHAP Explainer
+    # explainer = shap.TreeExplainer(model)
+    # # SHAP values 
+    # shap_values = explainer(features_eng)
+
+    # # Generate feature names.
+    # feature_names = list(features_eng.columns)
+    # shap_vals = shap_values.values[0].tolist()
+    # # Print the feature names and SHAP values
+    # import numpy as np
+
+    # df = pd.DataFrame({"features": feature_names, "shap_values": shap_vals})
+    # # print(df)
+    # df['mean_shap'] = df["shap_values"].apply(lambda x: np.mean(x) if isinstance(x, (list, np.ndarray)) else x)
+    # df_sorted = df[['features', 'mean_shap']].sort_values(by="mean_shap", ascending=False)
+
+    # print(df_sorted)
+    # pass

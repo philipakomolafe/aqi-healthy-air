@@ -8,7 +8,8 @@
 # *.pkl
 # *.db
 # *.sqlite3
-
+notebook/
+*.ipynb
 # # Ignore data files
 # data/
 # dataset/

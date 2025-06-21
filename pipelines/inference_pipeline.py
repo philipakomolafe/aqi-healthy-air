@@ -92,6 +92,9 @@ def create_app():
             "timestamp": datetime.utcnow(),
         }
     
+    # SHAP Explainer
+    explainer = shap.TreeExplainer(model) 
+    
     @app.get('/aqi/explain', response_class=JSONResponse)
     def explain_prediction():
         """
@@ -107,8 +110,7 @@ def create_app():
 
         # Drop unnecessary columns
         features_eng = features_eng.drop(columns=['timestamp', 'aqi'], errors="ignore")
-        # SHAP Explainer
-        explainer = shap.TreeExplainer(model)  
+        # SHAP values 
         shap_values = explainer(features_eng)
 
         # Generate feature names.

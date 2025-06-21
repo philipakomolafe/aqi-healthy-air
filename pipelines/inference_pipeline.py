@@ -84,7 +84,7 @@ def create_app():
         feature_eng = feature_eng.drop(columns=['timestamp', 'aqi'], errors='ignore')
         # make prediction using the loaded model..
         prediction = model.predict(feature_eng.values)  
-        prediction = prediction + 1  # Adjusting the prediction to match the AQI scale (1-5).
+        prediction = prediction + 4  # Adjusting the prediction to match the AQI scale (1-5).
 
         # json output. 
         return {

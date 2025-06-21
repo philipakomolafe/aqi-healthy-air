@@ -94,7 +94,7 @@ def create_app():
     
     # SHAP Explainer
     explainer = shap.TreeExplainer(model) 
-    
+
     @app.get('/aqi/explain', response_class=JSONResponse)
     def explain_prediction():
         """
@@ -119,8 +119,8 @@ def create_app():
 
         return JSONResponse({
             "features": list(feature_names),
-            "shap_values": shap_vals.tolist() if hasattr(shap_vals, "tolist") else shap_vals,
-            "expected_value": shap_values.base_values[0].tolist(),
+            "shap_values": shap_vals,
+            # "expected_value": shap_values.base_values[0].tolist(),
         })
 
 

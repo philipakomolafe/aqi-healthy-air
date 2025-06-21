@@ -94,8 +94,9 @@ def create_app():
     
     @app.get('/aqi/explain', response_class=JSONResponse)
     def explain_prediction():
-        """ Explain the model's AQI prediction for a given input.
-          Expects a JSON input with the same features as the model.
+        """
+        Explain the model's AQI prediction for a given input.
+        Expects a JSON input with the same features as the model.
         """
         # Get the current AQI features
         data = fetch_current_data(config=config) 
@@ -106,29 +107,21 @@ def create_app():
 
         # Drop unnecessary columns
         features_eng = features_eng.drop(columns=['timestamp', 'aqi'], errors="ignore")
-
         # SHAP Explainer
-        explainer = shap.Explainer(model)  
+        explainer = shap.TreeExplainer(model)  
         shap_values = explainer(features_eng)
 
-        # Generate feature names
+        # Generate feature names.
         feature_names = list(features_eng.columns)
-        shap_vals = shap_values.values[0]
-
-        # Handle expected value(s)
-        base_value = shap_values.base_values[0]
-        if isinstance(base_value, (np.ndarray, list)):
-          expected_value = base_value.tolist()
-        else:
-          expected_value = float(base_value)
+        shap_vals = shap_values.values[0].tolist()
 
         return JSONResponse({
-        "features": feature_names,
-        "shap_values": shap_vals.tolist() if hasattr(shap_vals, "tolist") else shap_vals,
-        "expected_value": expected_value
-         })
-  
-    
+            "features": list(feature_names),
+            "shap_values": shap_vals.tolist() if hasattr(shap_vals, "tolist") else shap_vals,
+            "expected_value": shap_values.base_values[0].tolist(),
+        })
+
+
 
 
     @app.get('/aqi/plot', response_class=HTMLResponse)

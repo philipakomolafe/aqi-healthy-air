@@ -148,7 +148,7 @@ def create_app():
         plt.style.use('dark_background')
         fig, ax = plt.subplots(figsize=(12, 6))
         ax.plot(timestamps, y_true, label='Actual AQI', color='#23272F')  # DeepSkyBlue
-        ax.plot(timestamps, y_pred, label='Predicted AQI', color='#2D3748', linestyle="None", marker='o', markersize=3)  # Tomato
+        ax.plot(timestamps, y_pred, label='Predicted AQI', color="#EEF0F4", linestyle="None", marker='o', markersize=4)  # Tomato
 
         # Set title and labels with bright colors for readability
         ax.set_xlabel('Time', color='white')

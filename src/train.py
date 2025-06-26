@@ -26,42 +26,28 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
 
     # Define params for hyperparameter tuning.
     svc_params = {
-    'C': [0.1, 1, 10, 100],
-    'kernel': ['rbf'],
-    'gamma': ['scale', 'auto', 0.01, 0.001],
-    'shrinking': [True, False],
-    'probability': [True],
-    'class_weight': [None, 'balanced']
-}
+        'C': np.logspace(-2, 2, 10),  # 0.01 to 100, log scale
+        'kernel': ['rbf'],
+        'gamma': np.logspace(-4, 0, 6).tolist() + ['scale', 'auto'],  # 0.0001 to 1, plus 'scale'/'auto'
+        'class_weight': [None, 'balanced']
+    }
+
     knn_params = {
-    'n_neighbors': [3, 5, 7, 9],
-    'leaf_size': [20, 30, 50, 70],
-    'weights': ['uniform', 'distance'],
-    'p': [1, 2],
-    'algorithm': ['auto', 'ball_tree', 'kd_tree']
-}
+        'n_neighbors': list(range(1, 21)),  # 1 to 20 for smooth plots
+        'weights': ['uniform', 'distance'],
+        'p': [1, 2]
+    }
+
     rf_params = {
-    'n_estimators': [100, 300, 500],
-    'max_depth': [10, 20, 50, None],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4],
-    'max_features': ['sqrt', 'log2', None],
-    'bootstrap': [True, False],
-    'class_weight': [None, 'balanced']
-}
+        'n_estimators': list(range(50, 501, 10)),  # 50 to 500 in steps of 10
+        'max_depth': [None, 5, 10, 20, 50]
+    }
 
     xgb_params = {
-    'n_estimators': [100, 300, 500],
-    'learning_rate': [0.0001, 0.001, 0.01, 0.1],
-    'max_depth': [3, 5, 7, 10],
-    'subsample': [0.6, 0.8, 1.0],
-    'colsample_bytree': [0.6, 0.8, 1.0],
-    'min_child_weight': [1, 3, 5],
-    'gamma': [0, 0.1, 0.3],
-    'reg_alpha': [0, 0.1, 1],
-    'reg_lambda': [0.1, 1, 10],
-    'scale_pos_weight': [1]  # Adjust >1 for imbalanced classes
-}
+        'n_estimators': list(range(50, 501, 10)),  # 50 to 500 in steps of 10
+        'learning_rate': np.logspace(-3, 0, 8),   # 0.001 to 1, log scale
+        'max_depth': [3, 5, 7, 10]
+    }
     
      
 
@@ -122,13 +108,14 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
                 }
 
     # Define RandomizedSearchCV for hyperparameter tuning.
-    svc_search = model_selection.RandomizedSearchCV(svc(), svc_params, scoring=scoring, refit="f1", n_iter=7, cv=tscv, n_jobs=-1, verbose=2)
+    # For selecting the number of iterations (n_iter) - we selected 84% of the sample space..
+    svc_search = model_selection.RandomizedSearchCV(svc(), svc_params, scoring=scoring, refit="f1", n_iter=134, cv=tscv, n_jobs=-1, verbose=2)
     sleep(10)
-    knn_search = model_selection.RandomizedSearchCV(knn(), knn_params, scoring=scoring, refit='f1', n_iter=8, cv=tscv, n_jobs=-1, verbose=2)
+    knn_search = model_selection.RandomizedSearchCV(knn(), knn_params, scoring=scoring, refit='f1', n_iter=67, cv=tscv, n_jobs=-1, verbose=2)
     sleep(10)
-    rf_search = model_selection.RandomizedSearchCV(rf(), rf_params, scoring=scoring, refit='f1', n_iter=9, cv=tscv, n_jobs=-1, verbose=2)
+    rf_search = model_selection.RandomizedSearchCV(rf(), rf_params, scoring=scoring, refit='f1', n_iter=193, cv=tscv, n_jobs=-1, verbose=2)
     sleep(10)
-    xgb_search = model_selection.RandomizedSearchCV(xgb(), xgb_params, scoring=scoring, refit="f1", n_iter=10, cv=tscv, n_jobs=-1, verbose=2, return_train_score=True)
+    xgb_search = model_selection.RandomizedSearchCV(xgb(), xgb_params, scoring=scoring, refit="f1", n_iter=1236, cv=tscv, n_jobs=-1, verbose=2)
     sleep(10)
     
     # Fit the models.

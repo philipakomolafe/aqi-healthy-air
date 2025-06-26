@@ -22,8 +22,13 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Feature Data Pipeline
+      - name: Run Training Pipeline
         run: python pipelines/train_pipeline.py
+
+      - name: Execute Analysis Notebook
+        run: |
+          pip install jupyter nbconvert
+          jupyter nbconvert --to notebook --execute --inplace notebook/analysis.ipynb
 
       - name: Commit and push changes
         run: |

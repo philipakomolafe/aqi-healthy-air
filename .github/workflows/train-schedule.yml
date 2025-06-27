@@ -25,11 +25,6 @@ jobs:
       - name: Run Training Pipeline
         run: python pipelines/train_pipeline.py
 
-      - name: Execute Analysis Notebook
-        run: |
-          pip install jupyter nbconvert
-          jupyter nbconvert --to notebook --execute --inplace notebook/analysis.ipynb
-
       - name: Commit and push changes
         run: |
           git config --local user.name "GitHub Actions"

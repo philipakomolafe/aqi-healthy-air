@@ -26,7 +26,7 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
 
     # Define params for hyperparameter tuning.
     svc_params = {
-        'C': np.logspace(-2, 2, 10),  # 0.01 to 100, log scale
+        'C': np.logspace(-2, 2, 10),  # log scale
         'kernel': ['rbf'],
         'gamma': np.logspace(-4, 0, 6).tolist() + ['scale', 'auto'],  # 0.0001 to 1, plus 'scale'/'auto'
         'class_weight': [None, 'balanced']
@@ -126,12 +126,14 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
     rf_search.fit(X_train, y_train)
     xgb_search.fit(X_train, y_train)
 
-    # Get the best models.
-    svc_best = svc_search.best_estimator_
-    knn_best = knn_search.best_estimator_   
-    rf_best = rf_search.best_estimator_
-    xgb_best = xgb_search.best_estimator_
+    best_estimators = []
+    for name, search in zip(['svc', 'knn', 'rf', 'xgb'], [svc_search, knn_search, rf_search, xgb_search]):
+        log.info(f'Fitting {name} model...')
+        search.fit(X_train, y_train)
+        best_estimators.append(search.best_estimator_)
 
+    # Get the best models. 
+    svc_best, knn_best, rf_best, xgb_best = best_estimators
     best_models = {'svc': svc_best,
                     'knn': knn_best,
                     'rf': rf_best,

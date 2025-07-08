@@ -128,7 +128,7 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
 
     best_estimators = []
     for name, search in zip(['svc', 'knn', 'rf', 'xgb'], [svc_search, knn_search, rf_search, xgb_search]):
-        log.info(f'Fitting {name} model...')
+        log.info(f'Fitting {name.upper()} model...')
         search.fit(X_train, y_train)
         best_estimators.append(search.best_estimator_)
 

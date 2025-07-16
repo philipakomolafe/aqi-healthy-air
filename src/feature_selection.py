@@ -22,6 +22,7 @@ def feature_importance(df: pd.DataFrame, target_col: str, task: str = 'classific
     X = df.drop(columns=[target_col], axis=1)
     y = df[target_col]
     if task == 'classification':
+        y = y.astype(int)
         model = RandomForestClassifier(n_estimators=100, random_state=42)
     else:
         model = RandomForestRegressor(n_estimators=100, random_state=42)

@@ -11,4 +11,5 @@ pydantic
 requests
 neptune-client
 python-dotenv
+sweetviz
 streamlit

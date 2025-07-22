@@ -26,7 +26,7 @@ jobs:
         run: python eda_script.py
 
       - name: Upload EDA report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: eda-report
           path: eda_report.html

@@ -1,6 +1,9 @@
 import numpy as np
 # work around Sweetviz expecting this attribute
-np.VisibleDeprecationWarning = DeprecationWarning
+if not hasattr(np, 'VisibleDeprecationWarning'):
+    np.VisibleDeprecationWarning = DeprecationWarning
+if not hasattr(np, 'NaN'):
+    np.NaN = np.nan
 
 import sweetviz as sv
 import pandas as pd

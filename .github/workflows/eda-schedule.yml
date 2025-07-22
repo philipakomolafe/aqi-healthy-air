@@ -12,9 +12,8 @@ jobs:
   run-eda:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout repo
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -25,17 +24,10 @@ jobs:
 
       - name: Run EDA script
         run: python eda_script.py
-      
+
       - name: Upload EDA report
         uses: actions/upload-artifact@v4
         with:
           name: eda-report
           path: eda_report.html
-      
-      - name: Commit & push EDA report
-        run: |
-          git config --local user.name "GitHub Actions"
-          git config --local user.email "actions@github.com"
-          git add eda_report.html
-          git commit -m "Daily EDA report for $(date -u +'%Y-%m-%d')" || echo "No changes to commit"
-          git push origin master
+          

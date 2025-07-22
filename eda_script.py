@@ -1,3 +1,7 @@
+import numpy as np
+# work around Sweetviz expecting this attribute
+np.VisibleDeprecationWarning = DeprecationWarning
+
 import sweetviz as sv
 import pandas as pd
 import os
@@ -14,7 +18,6 @@ def show_eda():
     report = sv.analyze(df)
 
     # Save the report
-    # os.makedirs('eda', exists_ok=True)
     report.show_html("eda_report.html")
 
 if __name__ == "__main__":

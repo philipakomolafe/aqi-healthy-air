@@ -28,15 +28,6 @@ jobs:
           pip install jupyter nbconvert
           jupyter nbconvert --to notebook --execute --inplace notebook/analysis.ipynb
 
-      - name: Run EDA script
-        run: python eda_script.py
-
-      - name: Upload EDA report as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: eda-report
-          path: eda/eda_report.html
-      
       - name: Commit and push changes
         run: |
           git config --local user.name "GitHub Actions"

@@ -14,9 +14,7 @@ jobs:
     steps:
       - name: checkout repo
       - uses: actions/checkout@v4
-      - with: 
-          fetch-depth: 0          # fetches full commit history.
-
+      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:

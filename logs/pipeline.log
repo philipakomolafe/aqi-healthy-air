@@ -7138,3 +7138,132 @@ Train shape:
 2025-07-29 02:41:43.469 | INFO     | __main__:main:69 - Data splitting completed.
 2025-07-29 02:41:43.469 | INFO     | __main__:main:72 - Saving features to CSV files...
 2025-07-29 02:41:43.857 | INFO     | __main__:main:76 - Features saved successfully.
+2025-07-30 02:28:04.776 | INFO     | __main__:main:29 - Starting feature pipeline...
+2025-07-30 02:28:04.779 | INFO     | __main__:main:33 - Data downloading from API...
+2025-07-30 02:28:05.411 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-01-01 - 2016-03-01
+2025-07-30 02:28:10.889 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-03-02 - 2016-05-01
+2025-07-30 02:28:16.093 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-05-02 - 2016-07-01
+2025-07-30 02:28:21.572 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-07-02 - 2016-08-31
+2025-07-30 02:28:26.775 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-09-01 - 2016-10-31
+2025-07-30 02:28:31.976 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-11-01 - 2016-12-31
+2025-07-30 02:28:37.181 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-01-01 - 2017-03-02
+2025-07-30 02:28:42.385 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-03-03 - 2017-05-02
+2025-07-30 02:28:47.864 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-05-03 - 2017-07-02
+2025-07-30 02:28:53.066 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-07-03 - 2017-09-01
+2025-07-30 02:28:58.267 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-09-02 - 2017-11-01
+2025-07-30 02:29:03.469 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-11-02 - 2018-01-01
+2025-07-30 02:29:08.671 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-01-02 - 2018-03-03
+2025-07-30 02:29:13.876 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-03-04 - 2018-05-03
+2025-07-30 02:29:19.085 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-05-04 - 2018-07-03
+2025-07-30 02:29:24.287 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-07-04 - 2018-09-02
+2025-07-30 02:29:29.490 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-09-03 - 2018-11-02
+2025-07-30 02:29:34.691 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-11-03 - 2019-01-02
+2025-07-30 02:29:39.894 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-01-03 - 2019-03-04
+2025-07-30 02:29:45.096 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-03-05 - 2019-05-04
+2025-07-30 02:29:50.575 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-05-05 - 2019-07-04
+2025-07-30 02:29:55.777 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-07-05 - 2019-09-03
+2025-07-30 02:30:00.979 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-09-04 - 2019-11-03
+2025-07-30 02:30:06.180 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-11-04 - 2020-01-03
+2025-07-30 02:30:11.382 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-01-04 - 2020-03-04
+2025-07-30 02:30:16.588 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-03-05 - 2020-05-04
+2025-07-30 02:30:21.791 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-05-05 - 2020-07-04
+2025-07-30 02:30:27.082 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-07-05 - 2020-09-03
+2025-07-30 02:30:32.281 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-09-04 - 2020-11-03
+2025-07-30 02:30:38.350 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-11-04 - 2021-01-03
+2025-07-30 02:30:44.281 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-01-04 - 2021-03-05
+2025-07-30 02:30:50.181 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-03-06 - 2021-05-05
+2025-07-30 02:30:56.172 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-05-06 - 2021-07-05
+2025-07-30 02:31:02.077 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-07-06 - 2021-09-04
+2025-07-30 02:31:08.184 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-09-05 - 2021-11-04
+2025-07-30 02:31:14.252 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-11-05 - 2022-01-04
+2025-07-30 02:31:20.176 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-01-05 - 2022-03-06
+2025-07-30 02:31:26.190 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-03-07 - 2022-05-06
+2025-07-30 02:31:32.221 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-05-07 - 2022-07-06
+2025-07-30 02:31:38.368 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-07-07 - 2022-09-05
+2025-07-30 02:31:44.685 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-09-06 - 2022-11-05
+2025-07-30 02:31:50.694 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-11-06 - 2023-01-05
+2025-07-30 02:31:56.857 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-01-06 - 2023-03-07
+2025-07-30 02:32:02.995 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-03-08 - 2023-05-07
+2025-07-30 02:32:09.636 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-05-08 - 2023-07-07
+2025-07-30 02:32:15.687 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-07-08 - 2023-09-06
+2025-07-30 02:32:21.730 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-09-07 - 2023-11-06
+2025-07-30 02:32:27.802 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-11-07 - 2024-01-06
+2025-07-30 02:32:33.828 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-01-07 - 2024-03-07
+2025-07-30 02:32:39.780 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-03-08 - 2024-05-07
+2025-07-30 02:32:45.786 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-05-08 - 2024-07-07
+2025-07-30 02:32:51.805 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-07-08 - 2024-09-06
+2025-07-30 02:32:58.736 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-09-07 - 2024-11-06
+2025-07-30 02:33:04.809 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-11-07 - 2025-01-06
+2025-07-30 02:33:12.209 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2025-01-07 - 2025-03-08
+2025-07-30 02:33:18.321 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2025-03-09 - 2025-05-08
+2025-07-30 02:33:24.494 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2025-05-09 - 2025-07-08
+2025-07-30 02:33:30.438 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2025-07-09 - 2025-07-30
+2025-07-30 02:33:35.733 | INFO     | src.data_fetcher:fetch_data:111 - ✔ AQI Data saved to `aqi_data_2016-2025.csv`
+2025-07-30 02:33:35.742 | INFO     | __main__:main:35 - Data download completed...
+2025-07-30 02:33:35.742 | INFO     | __main__:main:37 - Data Loading & Cleaning...
+2025-07-30 02:33:35.853 | INFO     | src.data_cleaner:clean_data:84 - 
+Data Quality Report:  
+Total rows: 39726
+Total columns: 10
+2025-07-30 02:33:35.855 | INFO     | src.data_cleaner:clean_data:85 - 
+Missing values after cleaning:  
+timestamp    0
+aqi          0
+no           0
+pm2_5        0
+pm10         0
+co           0
+no2          0
+so2          0
+o3           0
+nh3          0
+dtype: int64
+2025-07-30 02:33:35.855 | INFO     | src.data_cleaner:clean_data:86 - 
+Data types: 
+timestamp    datetime64[ns]
+aqi                 float64
+no                  float64
+pm2_5               float64
+pm10                float64
+co                  float64
+no2                 float64
+so2                 float64
+o3                  float64
+nh3                 float64
+dtype: object
+2025-07-30 02:33:35.856 | INFO     | __main__:main:41 - Data Loading & Cleaning Completed.
+2025-07-30 02:33:35.856 | INFO     | __main__:main:43 - Feature Engineering...
+2025-07-30 02:33:35.982 | INFO     | __main__:main:46 - Feature Engineering Completed.
+2025-07-30 02:33:35.982 | INFO     | __main__:main:48 - Feature Selection...
+2025-07-30 02:33:35.982 | INFO     | __main__:main:50 - Performing correlation analysis...
+2025-07-30 02:33:36.015 | INFO     | __main__:main:53 - 
+Dropped highly correlated features: 
+['pm2_5', 'pm10', 'nh3', 'aqi_above_3_count_24h']
+2025-07-30 02:33:36.015 | INFO     | __main__:main:54 - Correlation analysis completed.
+2025-07-30 02:33:36.015 | INFO     | __main__:main:58 - Feature importance analysis...
+2025-07-30 02:33:40.329 | INFO     | __main__:main:61 - Top feature importances: 
+co                      0.196506
+aqi_rolling_mean_24h    0.167322
+so2                     0.115501
+no2                     0.111194
+aqi_rolling_max_24h     0.079575
+pm2_5_pm10_ratio        0.073205
+o3                      0.069013
+aqi_trend               0.044506
+hour                    0.034928
+season                  0.030884
+month                   0.023862
+day                     0.020244
+no                      0.019998
+weekday                 0.013262
+dtype: float64
+2025-07-30 02:33:40.329 | INFO     | __main__:main:62 - Feature importance analysis completed.
+2025-07-30 02:33:40.329 | INFO     | __main__:main:65 - Splitting data into train, validation, and test sets...
+2025-07-30 02:33:40.332 | INFO     | __main__:main:68 - 
+Train shape: 
+(27808, 20)
+ Val shape: (5959, 20)
+ Test shape: (5959, 20)
+2025-07-30 02:33:40.332 | INFO     | __main__:main:69 - Data splitting completed.
+2025-07-30 02:33:40.332 | INFO     | __main__:main:72 - Saving features to CSV files...
+2025-07-30 02:33:40.734 | INFO     | __main__:main:76 - Features saved successfully.

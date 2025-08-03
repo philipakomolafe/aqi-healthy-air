@@ -7654,3 +7654,39 @@ Train shape:
 2025-08-02 02:26:49.506 | INFO     | __main__:main:69 - Data splitting completed.
 2025-08-02 02:26:49.506 | INFO     | __main__:main:72 - Saving features to CSV files...
 2025-08-02 02:26:49.898 | INFO     | __main__:main:76 - Features saved successfully.
+2025-08-03 00:55:40.328 | INFO     | src.utils:read_processed_data:56 - Data read successfully from data/processed/train/aqi_train_data_v1.csv
+2025-08-03 00:55:40.337 | INFO     | src.utils:read_processed_data:56 - Data read successfully from data/processed/val/aqi_val_data_v1.csv
+2025-08-03 00:55:40.346 | INFO     | src.utils:read_processed_data:56 - Data read successfully from data/processed/test/aqi_test_data_v1.csv
+2025-08-03 00:55:40.346 | INFO     | __main__:main:56 - Running training instance begins...
+2025-08-03 00:55:40.346 | INFO     | src.train:train_model:25 - Training model...
+2025-08-03 00:56:22.564 | INFO     | src.train:train_model:122 - 
+Fitted Features: Index(['no', 'pm2_5', 'pm10', 'co', 'no2', 'so2', 'o3', 'nh3', 'hour', 'day',
+       'month', 'weekday', 'season', 'pm2_5_pm10_ratio',
+       'aqi_rolling_mean_24h', 'aqi_rolling_max_24h', 'aqi_above_3_count_24h',
+       'aqi_trend'],
+      dtype='object')
+Target used: aqi
+2025-08-03 00:56:22.564 | INFO     | src.train:train_model:123 - Fitting models...
+2025-08-03 00:56:27.636 | ERROR    | __main__:run:35 - Error encountered: 
+All the 50 fits failed.
+It is very likely that your model is misconfigured.
+You can try to debug the error by setting error_score='raise'.
+
+Below are more details about the failures:
+--------------------------------------------------------------------------------
+50 fits failed with the following error:
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/sklearn/model_selection/_validation.py", line 859, in _fit_and_score
+    estimator.fit(X_train, y_train, **fit_params)
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/sklearn/svm/_base.py", line 207, in fit
+    y = self._validate_targets(y)
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/sklearn/svm/_base.py", line 747, in _validate_targets
+    check_classification_targets(y)
+  File "/opt/hostedtoolcache/Python/3.10.18/x64/lib/python3.10/site-packages/sklearn/utils/multiclass.py", line 221, in check_classification_targets
+    raise ValueError(
+ValueError: Unknown label type: continuous. Maybe you are trying to fit a classifier, which expects discrete classes on a regression target with continuous values.
+
+2025-08-03 00:56:27.636 | INFO     | __main__:main:62 - Saving Model to Model Registry...
+2025-08-03 00:56:27.636 | SUCCESS  | __main__:main:63 - Training instance complete...

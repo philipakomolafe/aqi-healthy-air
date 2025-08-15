@@ -305,6 +305,10 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
     X_val = val_data.drop(columns=drop_cols)
     y_val = val_data['aqi']
 
+    # Adjust Target to represent "categorized data"
+    y_train = y_train.astype(int)
+    y_val = y_val.astype(int)
+
     # Get number of classes and features for deep learning models
     num_classes = len(np.unique(np.concatenate([y_train, y_val])))
     num_features = X_train.shape[1]

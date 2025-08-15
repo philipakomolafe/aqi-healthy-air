@@ -145,38 +145,70 @@ def fetch_current_data(config):
         return f"Other Errors occurred -> {e}"
 
 
-def select_best_model(model_directory: Path, weight=(0.6, 0.4)) -> tuple[str, float, float, float]:
-    """Select the best model based off the weighted sum of the Balanced accuracy and Macro ROC-AUC values..."""
-    best_model_name = None
+def select_best_model(model_directory: Path, weight=(0.6, 0.4)) -> tuple[str, float, float, float, str]:
+    """
+    Select the best model based off the weighted sum of the Balanced accuracy and Macro ROC-AUC values.
+    Handles both classical ML models (.pkl) and deep learning models (directories with keras_model.h5).
+    """
+    best_model_path = None
     best_roc = -1
     best_acc = -1
     best_score = -1
+    best_model_type = None
 
-    # Define search pattern
-    pattern = re.compile(r"acc_(\d+\.\d+)_roc_(\d+\.\d+)\.pkl")
-    # Iterate through all files in the directory
-    for file in os.listdir(model_directory):
-        match = pattern.search(file)
-        if match:
-            acc = float(match.group(1))
-            roc = float(match.group(2))
+    # Define search patterns for both classical and deep learning models
+    classical_pattern = re.compile(r"(\w+)_acc_(\d+\.\d+)_roc_(\d+\.\d+)\.pkl")
+    dl_pattern = re.compile(r"(\w+)_acc_(\d+\.\d+)_roc_(\d+\.\d+)")
 
-            # weighted sum of balanced accuracy and macro ROC
-            w1, w2 = weight
-            score = (w1 * roc) + (w2 * acc)
+    # Iterate through all files and directories
+    for item in os.listdir(model_directory):
+        item_path = os.path.join(model_directory, item)
+        
+        if os.path.isfile(item_path) and item.endswith('.pkl'):
+            # Classical ML model
+            match = classical_pattern.search(item)
+            if match:
+                model_name = match.group(1)
+                acc = float(match.group(2))
+                roc = float(match.group(3))
+                
+                # Weighted sum of balanced accuracy and macro ROC
+                w1, w2 = weight
+                score = (w1 * roc) + (w2 * acc)
+                
+                if score > best_score:
+                    best_score = score
+                    best_model_path = item_path
+                    best_acc = acc
+                    best_roc = roc
+                    best_model_type = 'classical'
+                    
+        elif os.path.isdir(item_path):
+            # Check if it's a deep learning model directory
+            keras_model_path = os.path.join(item_path, 'keras_model.h5')
+            metadata_path = os.path.join(item_path, 'metadata.pkl')
+            
+            if os.path.exists(keras_model_path) and os.path.exists(metadata_path):
+                # Deep learning model directory
+                match = dl_pattern.search(item)
+                if match:
+                    model_name = match.group(1)
+                    acc = float(match.group(2))
+                    roc = float(match.group(3))
+                    
+                    # Weighted sum of balanced accuracy and macro ROC
+                    w1, w2 = weight
+                    score = (w1 * roc) + (w2 * acc)
+                    
+                    if score > best_score:
+                        best_score = score
+                        best_model_path = item_path  # Return directory path for DL models
+                        best_acc = acc
+                        best_roc = roc
+                        best_model_type = 'deep_learning'
 
-            if score > best_score:
-                best_score = score
-                best_model_name = os.path.join(model_directory, file)
-                best_acc = acc
-                best_roc = roc
-
-    return best_model_name, best_acc, best_roc, best_score
-
+    return best_model_path, best_acc, best_roc, best_score, best_model_type
 
 
 if __name__ == "__main__":
-    # config = config_loader()
-    # print(fetch_current_data(config))
-
     pass

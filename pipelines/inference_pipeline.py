@@ -49,13 +49,13 @@ class PredictionOutput(BaseModel):
 # Defining callable to run the Inference Pipeline..
 def create_app():
     # Define the model path from the config.
-    model_path, acc, roc, weighted_score = select_best_model(os.path.join(project_root, config['model_registry']['model_path'])) 
+    model_path, acc, roc, weighted_score, model_type = select_best_model(os.path.join(project_root, config['model_registry']['model_path'])) 
     if not model_path:
         log.error("No model found in the model registry. Please train a model first.")
         raise HTTPException(status_code=500, detail="No model found in the model registry. Please train a mode first..")
 
     # Instantiate the model loader.
-    model = load_model(model_path=model_path, log=log)   # type: ignore
+    model = load_model(model_path, model_type, log)   # type: ignore
     log.info(f"\nBest Model metadata:\nNumber of features: {model.n_features_in_}\nBalanced accuracy: {acc}\nROC AUC: {roc}\nWeighted Score: {weighted_score}\nModel Path: {model_path}")
     log.success("Model ready for inference...")
 

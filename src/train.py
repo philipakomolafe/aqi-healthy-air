@@ -172,7 +172,7 @@ class DeepLearningWrapper:
             return np.full(len(X) - self.sequence_length, self.classes_[0])
         
         # Predict
-        predictions = self.model.predict(X_seq, verbose=0)
+        predictions = self.model.predict(X_seq, verbose=1)
         return np.argmax(predictions, axis=1)
     
     def predict_proba(self, X):
@@ -191,7 +191,7 @@ class DeepLearningWrapper:
             return np.full((len(X) - self.sequence_length, num_classes), 1/num_classes)
         
         # Predict probabilities
-        return self.model.predict(X_seq, verbose=0)
+        return self.model.predict(X_seq, verbose=1)
     
     def save_model(self, base_path, model_name, accuracy, roc_auc):
         """Save deep learning model with proper format."""

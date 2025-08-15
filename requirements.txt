@@ -13,3 +13,4 @@ neptune-client
 python-dotenv
 sweetviz
 streamlit
+tensorflow

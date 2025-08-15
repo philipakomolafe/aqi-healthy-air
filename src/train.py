@@ -108,7 +108,7 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
                 }
 
     # Define RandomizedSearchCV for hyperparameter tuning.
-    # For selecting the number of iterations (n_iter) - we selected 84% of the sample space..
+    # For selecting the number of iterations (n_iter) 
     svc_search = model_selection.RandomizedSearchCV(svc(), svc_params, scoring=scoring, refit="f1", n_iter=10, cv=tscv, n_jobs=-1, verbose=2)
     sleep(10)
     knn_search = model_selection.RandomizedSearchCV(knn(), knn_params, scoring=scoring, refit='f1', n_iter=10, cv=tscv, n_jobs=-1, verbose=2)

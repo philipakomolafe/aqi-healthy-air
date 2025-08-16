@@ -114,12 +114,14 @@ def create_hybrid_model(input_shape, num_classes, gru_units=32, lstm_units=32, d
 class DeepLearningWrapper:
     """Wrapper to make Keras models compatible with sklearn metrics."""
     
-    def __init__(self, model, scaler=None, sequence_length=24):
+    def __init__(self, model, scaler=None, sequence_length=24, neptune_run=None):
         self.model = model
         self.scaler = scaler
         self.sequence_length = sequence_length
         self.classes_ = None
         self.model_name = None
+        self.neptune_run = neptune_run  # Add Neptune run for logging
+        self.training_history = None  # Store training history
 
     def fit(self, X, y):
         # Scale features if scaler provided
@@ -145,99 +147,62 @@ class DeepLearningWrapper:
         early_stopping = EarlyStopping(patience=10, restore_best_weights=True)
         reduce_lr = ReduceLROnPlateau(patience=5, factor=0.5, min_lr=1e-6)
         
+        # Add Neptune callback if run is provided
+        callbacks = [early_stopping, reduce_lr]
+        
+        if self.neptune_run:
+            # Create custom Neptune callback
+            class NeptuneCallback(tf.keras.callbacks.Callback):
+                def __init__(self, run, model_name):
+                    super().__init__()
+                    self.run = run
+                    self.model_name = model_name
+                
+                def on_epoch_end(self, epoch, logs=None):
+                    if logs:
+                        # Log training metrics for each epoch
+                        for metric, value in logs.items():
+                            self.run[f"{self.model_name}/train/{metric}"].log(value)
+            
+            callbacks.append(NeptuneCallback(self.neptune_run, self.model_name))
+        
         # Train model
-        self.model.fit(
+        history = self.model.fit(
             X_seq, y_categorical,
             epochs=100,
             batch_size=32,
             validation_split=0.3,
-            callbacks=[early_stopping, reduce_lr],
+            callbacks=callbacks,
             verbose=1   
         )
         
+        # Store training history
+        self.training_history = history.history
+        
+        # Log final training summary to Neptune
+        if self.neptune_run and self.training_history:
+            self._log_training_summary()
+        
         return self
     
-    def predict(self, X):
-        # Scale features if scaler provided
-        if self.scaler:
-            X_scaled = self.scaler.transform(X)
-        else:
-            X_scaled = X
-            
-        # Create sequences
-        X_seq, _ = create_sequences(X_scaled, np.zeros(len(X)), self.sequence_length)
+    def _log_training_summary(self):
+        """Log training summary metrics to Neptune."""
+        if not self.training_history or not self.neptune_run:
+            return
         
-        if len(X_seq) == 0:
-            # If not enough data for sequences, return predictions based on available classes
-            return np.full(len(X) - self.sequence_length, self.classes_[0])
-        
-        # Predict
-        predictions = self.model.predict(X_seq, verbose=1)
-        return np.argmax(predictions, axis=1)
-    
-    def predict_proba(self, X):
-        # Scale features if scaler provided
-        if self.scaler:
-            X_scaled = self.scaler.transform(X)
-        else:
-            X_scaled = X
-            
-        # Create sequences
-        X_seq, _ = create_sequences(X_scaled, np.zeros(len(X)), self.sequence_length)
-        
-        if len(X_seq) == 0:
-            # Return uniform probabilities if not enough data
-            num_classes = len(self.classes_)
-            return np.full((len(X) - self.sequence_length, num_classes), 1/num_classes)
-        
-        # Predict probabilities
-        return self.model.predict(X_seq, verbose=1)
-    
-    def save_model(self, base_path, model_name, accuracy, roc_auc):
-        """Save deep learning model with proper format."""
-        # Create directory structure
-        model_dir = os.path.join(base_path, f"{model_name}_acc_{accuracy:.3f}_roc_{roc_auc:.3f}")
-        os.makedirs(model_dir, exist_ok=True)
-        
-        # Save Keras model
-        keras_model_path = os.path.join(model_dir, "keras_model.h5")
-        self.model.save(keras_model_path)
-        
-        # Save scaler and metadata as pickle
-        metadata = {
-            'scaler': self.scaler,
-            'sequence_length': self.sequence_length,
-            'classes_': self.classes_,
-            'model_name': model_name
+        # Log final metrics
+        final_metrics = {
+            f"{self.model_name}/final/train_loss": self.training_history['loss'][-1],
+            f"{self.model_name}/final/train_accuracy": self.training_history['accuracy'][-1],
+            f"{self.model_name}/final/val_loss": self.training_history['val_loss'][-1],
+            f"{self.model_name}/final/val_accuracy": self.training_history['val_accuracy'][-1],
+            f"{self.model_name}/epochs_trained": len(self.training_history['loss']),
+            f"{self.model_name}/best_val_loss": min(self.training_history['val_loss']),
+            f"{self.model_name}/best_val_accuracy": max(self.training_history['val_accuracy'])
         }
-        metadata_path = os.path.join(model_dir, "metadata.pkl")
-        joblib.dump(metadata, metadata_path)
         
-        return model_dir
-    
-    @classmethod
-    def load_model(cls, model_dir):
-        """Load deep learning model from directory."""
-        from tensorflow.keras.models import load_model
-        
-        # Load Keras model
-        keras_model_path = os.path.join(model_dir, "keras_model.h5")
-        keras_model = load_model(keras_model_path)
-        
-        # Load metadata
-        metadata_path = os.path.join(model_dir, "metadata.pkl")
-        metadata = joblib.load(metadata_path)
-        
-        # Recreate wrapper
-        wrapper = cls(
-            keras_model, 
-            metadata['scaler'], 
-            metadata['sequence_length']
-        )
-        wrapper.classes_ = metadata['classes_']
-        wrapper.model_name = metadata['model_name']
-        
-        return wrapper
+        for metric, value in final_metrics.items():
+            self.neptune_run[metric] = value
 
 def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
     """
@@ -321,26 +286,25 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
     rf = lambda: ensemble.RandomForestClassifier()
     xgb = lambda: xgboost.XGBClassifier(use_label_encoder=False, eval_metric='mlogloss')
 
-
-    # Deep Learning models
+    # Deep Learning models - Pass Neptune run for logging
     def create_gru_wrapper():
         scaler = StandardScaler()
         model = create_gru_model((sequence_length, num_features), num_classes)
-        wrapper = DeepLearningWrapper(model, scaler, sequence_length)
+        wrapper = DeepLearningWrapper(model, scaler, sequence_length, neptune_run=run)
         wrapper.model_name = 'gru'  # Set model name
         return wrapper
 
     def create_lstm_wrapper():
         scaler = StandardScaler()
         model = create_lstm_model((sequence_length, num_features), num_classes)
-        wrapper = DeepLearningWrapper(model, scaler, sequence_length)
+        wrapper = DeepLearningWrapper(model, scaler, sequence_length, neptune_run=run)
         wrapper.model_name = 'lstm'  # Set model name
         return wrapper
 
     def create_hybrid_wrapper():
         scaler = StandardScaler()
         model = create_hybrid_model((sequence_length, num_features), num_classes)
-        wrapper = DeepLearningWrapper(model, scaler, sequence_length)
+        wrapper = DeepLearningWrapper(model, scaler, sequence_length, neptune_run=run)
         wrapper.model_name = 'hybrid'  # Set model name
         return wrapper
 
@@ -376,10 +340,17 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
         log.info(f'Fitting {name.upper()} model...')
         search.fit(X_train, y_train)
         classical_models.append(search.best_estimator_)
+        
+        # Log classical ML CV results to Neptune
+        cv_results = search.cv_results_
+        best_score = search.best_score_
+        run[f"{name}/best_cv_f1_score"] = best_score
+        run[f"{name}/best_params"] = str(search.best_params_)
+        
         sleep(5)
 
     # Train Deep Learning models
-    log.info("Training Deep Learning models...")
+    log.info("Training Deep Learning models with epoch-by-epoch logging...")
     dl_models = []
     dl_names = ['gru', 'lstm', 'hybrid']
     
@@ -387,6 +358,7 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
         log.info(f'Training {name.upper()} model...')
         try:
             model = create_model()
+            # The fit method will now log epoch-by-epoch metrics automatically
             model.fit(X_train.values, y_train.values)
             dl_models.append(model)
         except Exception as e:
@@ -464,27 +436,34 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
                 # Log the metrics
                 log.info(f"{model_name} - Accuracy: {accuracy:.3f}, F1: {f1:.3f}, Recall: {recall:.3f}, Precision: {precision:.3f}, ROC AUC: {roc_auc:.3f}")
 
-                # Log metrics to Neptune
+                # Log final validation metrics to Neptune
                 log_metrics(run, {
-                    f"{model_name}_accuracy": float(accuracy),
-                    f"{model_name}_f1": float(f1),
-                    f"{model_name}_recall": float(recall),
-                    f"{model_name}_precision": float(precision),
-                    f"{model_name}_roc_auc": float(roc_auc)
+                    f"{model_name}/validation/accuracy": float(accuracy),
+                    f"{model_name}/validation/f1": float(f1),
+                    f"{model_name}/validation/recall": float(recall),
+                    f"{model_name}/validation/precision": float(precision),
+                    f"{model_name}/validation/roc_auc": float(roc_auc)
                 })
 
                 # Save the models
                 if model_name in ['gru', 'lstm', 'hybrid']:
                     # Save deep learning model in proper format
-                    model_path = model.save_model(
+                    model_path, zip_path = model.save_model(
                         os.path.join(os.path.dirname(os.path.dirname(__file__)), config['model_registry']['model_path']), 
                         model_name, 
                         accuracy, 
                         roc_auc
                     )
                     log.info(f"Deep learning model saved to: {model_path}")
-                    # Upload model directory to Neptune
-                    log_model(run, model_path, alias=model_name)
+                    log.info(f"Deep learning model zip created: {zip_path}")
+                    
+                    # Upload zipped model to Neptune (Neptune can handle zip files)
+                    try:
+                        log_model(run, zip_path, alias=f"{model_name}_model")
+                        log.info(f"Deep learning model {model_name} logged to Neptune successfully")
+                    except Exception as e:
+                        log.warning(f"Failed to log {model_name} model to Neptune: {str(e)}")
+                        log.warning(f"Model files are located at: {zip_path}")
                 else:
                     # Save classical ML model as pickle
                     model_path = os.path.join(
@@ -494,6 +473,7 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
                     )
                     
                     # For classical models, remove unnecessary attributes
+                    # This help reduce model size or weight (in MB) so it could be deployment compartible.
                     for attr in ['X_train_', 'y_train_', "oob_score_", 'oob_decision_function']:
                         if hasattr(model, attr):
                             delattr(model, attr)
@@ -502,7 +482,7 @@ def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
                     joblib.dump(model, model_path)
                     log.info(f"Classical ML model saved to: {model_path}")
                     # Upload model to Neptune
-                    log_model(run, model_path, alias=model_name)
+                    log_model(run, model_path, alias=f"{model_name}_model")
 
         except Exception as e:
             log.error(f"Error evaluating {model_name}: {str(e)}")

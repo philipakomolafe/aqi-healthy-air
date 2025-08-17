@@ -290,7 +290,7 @@ def create_app():
             # Plot with dark theme
             plt.style.use('dark_background')
             fig, ax = plt.subplots(figsize=(12, 6))
-            ax.plot(timestamps, y_true, label='Actual AQI', color='#23272F', linewidth=2)
+            ax.plot(timestamps, y_true, label='Actual AQI', color='#00FF7F', linewidth=2)
             ax.plot(timestamps, y_pred, label=f'Predicted AQI ({model_type})', color="#EEF0F4", 
                    linestyle="None", marker='o', markersize=4)
 

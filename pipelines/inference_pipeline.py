@@ -92,7 +92,11 @@ def create_explainer(model, model_type, sample_data, log):
     try:
         if model_type == 'classical':
             # For classical ML models, try different explainers
-            if hasattr(model, 'tree_') or 'RandomForest' in str(type(model)) or 'XGB' in str(type(model)):
+            # Check model type and create appropriate explainer
+            model_name = str(type(model).__name__).lower()
+            
+            if any(tree_model in model_name for tree_model in ['randomforest', 'xgb', 'gradient', 'decision']):
+                log.info("Using TreeExplainer for tree-based model")
                 return shap.TreeExplainer(model)
             else:
                 # For SVM, KNN, etc., use KernelExplainer with sample data

@@ -1,4 +1,5 @@
 # Ignore config files
+analysis.py
 # config.yaml
 # config/
 # *.env

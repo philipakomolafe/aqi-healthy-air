@@ -156,6 +156,7 @@ def create_app():
     log.success("Model ready for inference...")
 
     # Load sample data for SHAP explainer
+    
     try:
         test_path = os.path.join(project_root, 'data', 'processed', 'test', 'aqi_test_data_v1.csv')
         sample_df = read_processed_data(test_path, log).head(200)  # Use sample for explainer
@@ -164,6 +165,7 @@ def create_app():
         
         # Create SHAP explainer
         explainer = create_explainer(model, model_type, sample_features.values, log)
+        log.success(f"Model explainer created: {explainer}")
     except Exception as e:
         log.warning(f"Could not load sample data for SHAP: {str(e)}")
         explainer = None

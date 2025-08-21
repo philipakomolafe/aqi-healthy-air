@@ -162,7 +162,7 @@ def convert_aqi_to_class(aqi_values: np.ndarray) -> np.ndarray:
 def get_predictions(model_path: str, X_test: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
     """Get predictions from model"""
     try:
-        model, model_type = auto_detect_and_load_model(model_path)
+        model, model_type = auto_detect_and_load_model(model_path, log)
         
         if model_path.endswith('.pkl'):
             # Classical ML model

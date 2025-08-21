@@ -1,5 +1,5 @@
 # Ignore config files
-analysis.py
+# analysis.py
 # config.yaml
 # config/
 # *.env
@@ -19,7 +19,13 @@ analysis.py
 # logs/pipeline.log
 
 # # Ignore Python cache and virtual environments
-# __pycache__/
-# *.pyc
+__pycache__/
+*.pyc
 # venv/
 # .env/
+
+# Remove __pycache__ directories
+for /d /r . %d in (__pycache__) do @if exist "%d" rd /s /q "%d"
+
+# Remove .pyc files
+del /s *.pyc

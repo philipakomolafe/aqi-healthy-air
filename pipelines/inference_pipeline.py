@@ -90,28 +90,66 @@ def make_prediction(model, model_type, features, log):
 def create_explainer(model, model_type, sample_data, log):
     """Create appropriate SHAP explainer based on model type."""
     try:
+        log.info(f"Creating SHAP explainer for {model_type} model...")
+        log.info(f"Model type: {type(model)}")
+        log.info(f"Sample data shape: {sample_data.shape}")
+        
         if model_type == 'classical':
-            # For classical ML models, try different explainers
-            # Check model type and create appropriate explainer
+            # Get the actual model class name
             model_name = str(type(model).__name__).lower()
+            log.info(f"Classical model detected: {model_name}")
             
-            if any(tree_model in model_name for tree_model in ['randomforest', 'xgb', 'gradient', 'decision']):
+            # Try TreeExplainer first for tree-based models
+            if any(tree_model in model_name for tree_model in ['randomforest', 'xgb', 'gradient', 'decision', 'forest']):
                 log.info("Using TreeExplainer for tree-based model")
-                return shap.TreeExplainer(model)
+                explainer = shap.TreeExplainer(model)
+                log.success("TreeExplainer created successfully")
+                return explainer
+            
+            # For linear models, try LinearExplainer
+            elif any(linear_model in model_name for linear_model in ['linear', 'logistic', 'ridge', 'lasso']):
+                log.info("Using LinearExplainer for linear model")
+                explainer = shap.LinearExplainer(model, sample_data)
+                log.success("LinearExplainer created successfully")
+                return explainer
+            
+            # For other models (SVM, KNN, etc.), use KernelExplainer
             else:
-                # For SVM, KNN, etc., use KernelExplainer with sample data
-                return shap.KernelExplainer(model.predict, sample_data[:100])  # Use subset for efficiency
+                log.info(f"Using KernelExplainer for {model_name}")
+                # Create a wrapper function for prediction
+                def predict_fn(X):
+                    return model.predict_proba(X)[:, 1] if hasattr(model, 'predict_proba') else model.predict(X)
+                
+                explainer = shap.KernelExplainer(predict_fn, sample_data[:50])  # Use smaller sample
+                log.success("KernelExplainer created successfully")
+                return explainer
+                
         elif model_type == 'deep_learning':
-            # For deep learning models, use KernelExplainer or DeepExplainer
-            log.warning("SHAP explanation for deep learning models may be slow. Using KernelExplainer.")
-            return shap.KernelExplainer(model.predict, sample_data[:50])  # Smaller sample for DL
+            log.info("Creating explainer for deep learning model")
+            
+            # Create prediction function for deep learning
+            def predict_fn(X):
+                predictions = model.predict(X)
+                # Handle different output shapes
+                if len(predictions.shape) > 1 and predictions.shape[1] > 1:
+                    return predictions  # Multi-class probabilities
+                else:
+                    return predictions.flatten()  # Single output
+            
+            # Use smaller sample for efficiency
+            explainer = shap.KernelExplainer(predict_fn, sample_data[:30])
+            log.success("KernelExplainer created for deep learning model")
+            return explainer
+            
         else:
-            raise ValueError(f"Cannot create explainer for model type: {model_type}")
+            raise ValueError(f"Unknown model type: {model_type}")
             
     except Exception as e:
-        log.warning(f"Could not create SHAP explainer for {model_type} model: {str(e)}")
+        log.error(f"Failed to create SHAP explainer: {str(e)}")
+        log.error(f"Error type: {type(e).__name__}")
+        import traceback
+        log.error(f"Traceback: {traceback.format_exc()}")
         return None
-
 
 # Defining callable to run the Inference Pipeline..
 def create_app():
@@ -156,18 +194,32 @@ def create_app():
     log.success("Model ready for inference...")
 
     # Load sample data for SHAP explainer
-    
+    explainer = None  # Initialize as None
     try:
         test_path = os.path.join(project_root, 'data', 'processed', 'test', 'aqi_test_data_v1.csv')
-        sample_df = read_processed_data(test_path, log).head(200)  # Use sample for explainer
+        log.info(f"Loading sample data from: {test_path}")
+        
+        sample_df = read_processed_data(test_path, log).head(200)
+        log.info(f"Sample data loaded: {sample_df.shape}")
+        
+        # Apply feature engineering
         sample_features = feature_engineering(sample_df)
         sample_features = sample_features.drop(columns=['timestamp', 'aqi'], errors='ignore')
+        log.info(f"Sample features after engineering: {sample_features.shape}")
+        log.info(f"Feature columns: {list(sample_features.columns)}")
         
         # Create SHAP explainer
         explainer = create_explainer(model, model_type, sample_features.values, log)
-        log.success(f"Model explainer created: {explainer}")
+        
+        if explainer is not None:
+            log.success("SHAP explainer created successfully")
+        else:
+            log.warning("SHAP explainer creation failed - explanations will not be available")
+            
     except Exception as e:
-        log.warning(f"Could not load sample data for SHAP: {str(e)}")
+        log.error(f"Could not initialize SHAP explainer: {str(e)}")
+        import traceback
+        log.error(f"Traceback: {traceback.format_exc()}")
         explainer = None
 
     # Init App instance.
@@ -229,38 +281,54 @@ def create_app():
         Explain the model's AQI prediction for a given input.
         """
         if explainer is None:
-            raise HTTPException(status_code=503, detail="SHAP explainer not available for this model type")
+            error_msg = f"SHAP explainer not available for {model_type} model. This could be due to model compatibility issues or initialization failures."
+            log.warning(error_msg)
+            raise HTTPException(status_code=503, detail=error_msg)
         
         try:
+            log.info("Starting SHAP explanation...")
+            
             # Get the current AQI features
             data = fetch_current_data(config=config) 
             df = pd.DataFrame([data], index=[0])
+            log.info(f"Input data shape: {df.shape}")
 
             # Apply feature engineering
             features_eng = feature_engineering(df)
-
-            # Drop unnecessary columns
             features_eng = features_eng.drop(columns=['timestamp', 'aqi'], errors="ignore")
+            log.info(f"Engineered features shape: {features_eng.shape}")
+            log.info(f"Feature columns: {list(features_eng.columns)}")
             
-            # Calculate SHAP values
-            if model_type == 'classical' and hasattr(explainer, 'shap_values'):
-                # For tree-based models
+            # Calculate SHAP values based on explainer type
+            log.info(f"Explainer type: {type(explainer)}")
+            
+            if hasattr(explainer, 'shap_values'):
+                # For TreeExplainer and some others
+                log.info("Using explainer.shap_values() method")
                 shap_values = explainer.shap_values(features_eng.values)
                 if isinstance(shap_values, list):
                     shap_values = shap_values[0]  # Take first class for multi-class
             else:
-                # For other models
-                shap_values = explainer(features_eng.values)
-                if hasattr(shap_values, 'values'):
-                    shap_values = shap_values.values[0]
+                # For KernelExplainer and others
+                log.info("Using explainer() call method")
+                shap_result = explainer(features_eng.values)
+                if hasattr(shap_result, 'values'):
+                    shap_values = shap_result.values[0]
+                else:
+                    shap_values = shap_result
 
-            # Generate feature names
+            # Process SHAP values
             feature_names = list(features_eng.columns)
             
             if isinstance(shap_values, np.ndarray):
-                shap_vals = shap_values.flatten().tolist()
+                if len(shap_values.shape) > 1:
+                    shap_vals = shap_values[0].tolist() if shap_values.shape[0] == 1 else shap_values.flatten().tolist()
+                else:
+                    shap_vals = shap_values.tolist()
             else:
-                shap_vals = shap_values
+                shap_vals = [float(shap_values)] if np.isscalar(shap_values) else list(shap_values)
+
+            log.info(f"SHAP values calculated: {len(shap_vals)} values for {len(feature_names)} features")
 
             return JSONResponse({
                 "model_type": model_type,
@@ -268,10 +336,13 @@ def create_app():
                 "features": feature_names,
                 "shap_values": shap_vals,
                 "feature_values": features_eng.iloc[0].tolist(),
+                "explanation_method": type(explainer).__name__
             })
             
         except Exception as e:
             log.error(f"Error in SHAP explanation: {str(e)}")
+            import traceback
+            log.error(f"Traceback: {traceback.format_exc()}")
             raise HTTPException(status_code=500, detail=f"SHAP explanation failed: {str(e)}")
 
     @app.get('/aqi/plot', response_class=HTMLResponse)

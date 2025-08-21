@@ -1,4 +1,4 @@
-name: Daily EDA Report
+name: Daily EDA and Model Analysis Report
 
 on:
   schedule:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  run-eda:
+  run-eda-and-analysis:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,14 +20,195 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          pip install matplotlib seaborn plotly kaleido  # Ensure plotting libraries
+
+      - name: Create output directories
+        run: |
+          mkdir -p reports/eda
+          mkdir -p reports/analysis
+          mkdir -p best_models_analysis
 
       - name: Run EDA script
-        run: python eda_script.py
+        run: |
+          echo "Running EDA analysis..."
+          python eda_script.py
+        continue-on-error: true
 
-      - name: Upload EDA report
+      - name: Run Model Analysis
+        run: |
+          echo "Running best models analysis..."
+          python analysis.py
+        continue-on-error: true
+
+      - name: Generate combined report timestamp
+        run: |
+          echo "REPORT_DATE=$(date +'%Y-%m-%d_%H-%M-%S')" >> $GITHUB_ENV
+
+      - name: Create combined report structure
+        run: |
+          mkdir -p combined_report
+          
+          # Copy EDA report if exists
+          if [ -f "eda_report.html" ]; then
+            cp eda_report.html combined_report/
+            echo "✅ EDA report included" >> combined_report/report_status.txt
+          else
+            echo "❌ EDA report missing" >> combined_report/report_status.txt
+          fi
+          
+          # Copy analysis results if exists
+          if [ -d "best_models_analysis" ]; then
+            cp -r best_models_analysis combined_report/
+            echo "✅ Model analysis included" >> combined_report/report_status.txt
+          else
+            echo "❌ Model analysis missing" >> combined_report/report_status.txt
+          fi
+          
+          # Create summary file
+          echo "# AQI ML Pipeline Report - ${{ env.REPORT_DATE }}" > combined_report/README.md
+          echo "" >> combined_report/README.md
+          echo "## Contents:" >> combined_report/README.md
+          echo "- **EDA Report**: eda_report.html" >> combined_report/README.md
+          echo "- **Model Analysis**: best_models_analysis/" >> combined_report/README.md
+          echo "  - Confusion matrices" >> combined_report/README.md
+          echo "  - Performance comparisons" >> combined_report/README.md
+          echo "  - Results CSV" >> combined_report/README.md
+          echo "" >> combined_report/README.md
+          echo "## Status:" >> combined_report/README.md
+          cat combined_report/report_status.txt >> combined_report/README.md
+
+      - name: List generated files
+        run: |
+          echo "=== Generated Files ==="
+          find combined_report -type f -name "*.html" -o -name "*.png" -o -name "*.csv" -o -name "*.md" -o -name "*.txt" | head -20
+
+      - name: Upload EDA Report
         uses: actions/upload-artifact@v4
         with:
-          name: eda-report
-          path: eda_report.html
-          
+          name: eda-report-${{ env.REPORT_DATE }}
+          path: combined_report/eda_report.html
+          retention-days: 30
+        if: always()
+
+      - name: Upload Model Analysis Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-analysis-${{ env.REPORT_DATE }}
+          path: |
+            combined_report/best_models_analysis/
+            !combined_report/best_models_analysis/**/*.pkl
+            !combined_report/best_models_analysis/**/*.h5
+          retention-days: 30
+        if: always()
+
+      - name: Upload Combined Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: aqi-ml-report-${{ env.REPORT_DATE }}
+          path: combined_report/
+          retention-days: 30
+        if: always()
+
+      - name: Create Release (Weekly)
+        if: github.event.schedule == '0 1 * * 0'  # Only on Sundays
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: weekly-report-${{ env.REPORT_DATE }}
+          name: Weekly AQI ML Report - ${{ env.REPORT_DATE }}
+          body: |
+            ## Weekly AQI ML Pipeline Report
+            
+            **Generated**: ${{ env.REPORT_DATE }}
+            
+            ### Contents:
+            - 📊 **EDA Report**: Exploratory data analysis of AQI data
+            - 🤖 **Model Analysis**: Performance comparison of best models (KNN, SVC, RF, XGB, GRU, LSTM, Hybrid)
+            - 📈 **Visualizations**: Confusion matrices, ROC curves, performance charts
+            - 📋 **Results**: Detailed metrics in CSV format
+            
+            ### Model Categories Analyzed:
+            - **Classical ML**: KNN, SVC, Random Forest, XGBoost
+            - **Deep Learning**: GRU, LSTM, Hybrid models
+            
+            Download the artifacts to view the complete analysis.
+          files: combined_report/**/*
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment on latest PR (if exists)
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const fs = require('fs');
+            
+            // Get latest PR
+            const prs = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              sort: 'updated',
+              direction: 'desc',
+              per_page: 1
+            });
+            
+            if (prs.data.length > 0) {
+              const pr = prs.data[0];
+              
+              // Read status file
+              let status = "Report generation completed";
+              try {
+                status = fs.readFileSync('combined_report/report_status.txt', 'utf8');
+              } catch (e) {
+                status = "Could not read report status";
+              }
+              
+              const comment = `## 🤖 Automated AQI ML Analysis Report
+              
+              **Generated**: \`${{ env.REPORT_DATE }}\`
+              
+              ### Status:
+              \`\`\`
+              ${status}
+              \`\`\`
+              
+              ### Available Artifacts:
+              - 📊 EDA Report
+              - 🤖 Model Analysis Results  
+              - 📈 Performance Visualizations
+              
+              Check the [Actions tab](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) to download the reports.`;
+              
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: pr.number,
+                body: comment
+              });
+            }
+
+      - name: Notify on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = "🚨 Daily AQI ML Analysis Failed";
+            const body = `
+            **Failed at**: \`${{ env.REPORT_DATE }}\`
+            **Workflow**: Daily EDA and Model Analysis
+            **Run**: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            
+            Please check the logs for details.
+            `;
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['bug', 'automation']
+            });

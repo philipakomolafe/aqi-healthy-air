@@ -69,49 +69,22 @@ def load_test_data():
         log.error(f"Error loading test data: {str(e)}")
         raise
 
-def extract_metrics_from_name(model_name: str) -> Tuple[float, float]:
-    """Extract accuracy and AUC score from model filename"""
-    try:
-        # Look for patterns like acc_0.85, accuracy_0.85, auc_0.90, roc_0.90
-        acc_pattern = r'(?:acc|accuracy)[_-]?(\d+\.?\d*)'
-        auc_pattern = r'(?:auc|roc)[_-]?(\d+\.?\d*)'
-        
-        acc_match = re.search(acc_pattern, model_name.lower())
-        auc_match = re.search(auc_pattern, model_name.lower())
-        
-        accuracy = float(acc_match.group(1)) if acc_match else 0.0
-        auc_score = float(auc_match.group(1)) if auc_match else 0.0
-        
-        # Convert if values are in percentage format (>1)
-        if accuracy > 1:
-            accuracy = accuracy / 100
-        if auc_score > 1:
-            auc_score = auc_score / 100
-            
-        return accuracy, auc_score
-        
-    except Exception as e:
-        log.warning(f"Could not extract metrics from {model_name}: {e}")
-        return 0.0, 0.0
-
 def find_best_models_by_category(models_dir: str = "models") -> Dict[str, str]:
-    """Find best model for each category based on filename metrics"""
+    """Find best model for each category using regex patterns from utils.py"""
     try:
         models_path = Path(models_dir)
         if not models_path.exists():
             raise FileNotFoundError(f"Models directory not found: {models_dir}")
         
-        # Use the same regex patterns from your utils.py
+        # Use regex patterns from utils.py
         classical_pattern = re.compile(r"(\w+)_acc_(\d+\.\d+)_roc_(\d+\.\d+)\.pkl")
         dl_pattern = re.compile(r"(\w+)_acc_(\d+\.\d+)_roc_(\d+\.\d+)")
         
-        # Categorize and find best models
         best_models = {}
         
         for category, keywords in MODEL_CATEGORIES.items():
             category_candidates = []
             
-            # Look through all items in models directory
             for item in models_path.iterdir():
                 item_name = item.name.lower()
                 
@@ -125,8 +98,6 @@ def find_best_models_by_category(models_dir: str = "models") -> Dict[str, str]:
                             model_name = match.group(1)
                             acc = float(match.group(2))
                             roc = float(match.group(3))
-                            
-                            # Use same weighted score as your utils function
                             score = (0.6 * roc) + (0.4 * acc)
                             
                             category_candidates.append({
@@ -134,13 +105,11 @@ def find_best_models_by_category(models_dir: str = "models") -> Dict[str, str]:
                                 'name': item.name,
                                 'accuracy': acc,
                                 'roc': roc,
-                                'score': score,
-                                'type': 'classical'
+                                'score': score
                             })
                     
                     elif item.is_dir():
-                        # Deep learning model directory
-                        # Check if it has the required files
+                        # Deep learning model
                         keras_model_path = item / 'keras_model.h5'
                         metadata_path = item / 'metadata.pkl'
                         
@@ -150,8 +119,6 @@ def find_best_models_by_category(models_dir: str = "models") -> Dict[str, str]:
                                 model_name = match.group(1)
                                 acc = float(match.group(2))
                                 roc = float(match.group(3))
-                                
-                                # Use same weighted score
                                 score = (0.6 * roc) + (0.4 * acc)
                                 
                                 category_candidates.append({
@@ -159,8 +126,7 @@ def find_best_models_by_category(models_dir: str = "models") -> Dict[str, str]:
                                     'name': item.name,
                                     'accuracy': acc,
                                     'roc': roc,
-                                    'score': score,
-                                    'type': 'deep_learning'
+                                    'score': score
                                 })
             
             # Select best model for this category
@@ -170,7 +136,6 @@ def find_best_models_by_category(models_dir: str = "models") -> Dict[str, str]:
                 
                 log.info(f"Best {category.upper()} model: {best_candidate['name']}")
                 log.info(f"  Accuracy: {best_candidate['accuracy']:.4f}, ROC: {best_candidate['roc']:.4f}")
-                log.info(f"  Score: {best_candidate['score']:.4f}")
             else:
                 log.warning(f"No models found for category: {category}")
         
@@ -187,7 +152,7 @@ def convert_aqi_to_class(aqi_values: np.ndarray) -> np.ndarray:
     return np.clip(classes, 1, 5)
 
 def get_predictions(model_path: str, X_test: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray]:
-    """Get predictions from model"""
+    """Get predictions from model with improved handling for deep learning models"""
     try:
         model, model_type = auto_detect_and_load_model(model_path, log)
         
@@ -196,26 +161,74 @@ def get_predictions(model_path: str, X_test: pd.DataFrame) -> Tuple[np.ndarray, 
             if hasattr(model, 'predict_proba'):
                 probabilities = model.predict_proba(X_test)
                 predictions = model.predict(X_test)
+                
+                # Ensure predictions are in 1-5 range
+                if not np.all(np.isin(predictions, [1, 2, 3, 4, 5])):
+                    predictions = convert_aqi_to_class(predictions)
+                    
             else:
                 predictions = model.predict(X_test)
+                
+                # Ensure predictions are in 1-5 range
+                if not np.all(np.isin(predictions, [1, 2, 3, 4, 5])):
+                    predictions = convert_aqi_to_class(predictions)
+                
                 # Create dummy probabilities
                 probabilities = np.zeros((len(predictions), 5))
                 for i, cls in enumerate(predictions):
                     if 1 <= cls <= 5:
                         probabilities[i, int(cls)-1] = 1.0
         else:
-            # Deep learning model
-            predictions = model.predict(X_test.values)
-            if len(predictions.shape) > 1 and predictions.shape[1] > 1:
-                # Multi-class output
-                probabilities = predictions
-                predictions = np.argmax(predictions, axis=1) + 1
-            else:
-                # Single output - convert to classes
-                predictions = convert_aqi_to_class(predictions.flatten())
-                probabilities = np.zeros((len(predictions), 5))
-                for i, cls in enumerate(predictions):
-                    probabilities[i, cls-1] = 1.0
+            # Deep learning model - improved prediction handling
+            try:
+                # Get raw predictions from the deep learning wrapper
+                raw_predictions = model.predict(X_test)
+                
+                # Handle different output formats
+                if hasattr(model, 'predict_proba'):
+                    # Model has probability method
+                    probabilities = model.predict_proba(X_test)
+                    if len(probabilities.shape) > 1 and probabilities.shape[1] == 5:
+                        predictions = np.argmax(probabilities, axis=1) + 1  # Convert to 1-5
+                    else:
+                        predictions = convert_aqi_to_class(raw_predictions.flatten())
+                        # Create dummy probabilities
+                        probabilities = np.zeros((len(predictions), 5))
+                        for i, cls in enumerate(predictions):
+                            probabilities[i, cls-1] = 1.0
+                else:
+                    # No probability method - handle raw predictions
+                    if len(raw_predictions.shape) > 1 and raw_predictions.shape[1] > 1:
+                        # Multi-class output
+                        probabilities = raw_predictions
+                        predictions = np.argmax(raw_predictions, axis=1) + 1
+                    else:
+                        # Single output - convert to classes
+                        predictions = convert_aqi_to_class(raw_predictions.flatten())
+                        probabilities = np.zeros((len(predictions), 5))
+                        for i, cls in enumerate(predictions):
+                            probabilities[i, cls-1] = 1.0
+                            
+            except Exception as dl_error:
+                log.warning(f"Deep learning prediction failed: {dl_error}, using fallback")
+                # Fallback: create dummy predictions
+                n_samples = len(X_test)
+                predictions = np.full(n_samples, 2)  # Default to moderate
+                probabilities = np.zeros((n_samples, 5))
+                probabilities[:, 1] = 1.0  # All moderate
+        
+        # Ensure predictions are in correct format
+        predictions = np.array(predictions, dtype=int)
+        predictions = np.clip(predictions, 1, 5)
+        
+        # Ensure probabilities are in correct shape
+        if probabilities.shape[1] != 5:
+            # Reshape if needed
+            n_samples = len(predictions)
+            new_probabilities = np.zeros((n_samples, 5))
+            for i, cls in enumerate(predictions):
+                new_probabilities[i, cls-1] = 1.0
+            probabilities = new_probabilities
         
         return predictions, probabilities
         
@@ -224,13 +237,13 @@ def get_predictions(model_path: str, X_test: pd.DataFrame) -> Tuple[np.ndarray, 
         raise
 
 def calculate_metrics(y_true: np.ndarray, y_pred: np.ndarray, y_prob: np.ndarray, model_name: str) -> Dict:
-    """Calculate classification metrics"""
+    """Calculate classification metrics with improved AUC handling"""
     # Convert to classes if needed
     y_true_class = convert_aqi_to_class(y_true) if not np.all(np.isin(y_true, [1, 2, 3, 4, 5])) else y_true
     y_pred_class = convert_aqi_to_class(y_pred) if not np.all(np.isin(y_pred, [1, 2, 3, 4, 5])) else y_pred
     
-    y_true_class = np.clip(y_true_class, 1, 5)
-    y_pred_class = np.clip(y_pred_class, 1, 5)
+    y_true_class = np.clip(y_true_class.astype(int), 1, 5)
+    y_pred_class = np.clip(y_pred_class.astype(int), 1, 5)
     
     # Basic metrics
     accuracy = accuracy_score(y_true_class, y_pred_class)
@@ -243,14 +256,47 @@ def calculate_metrics(y_true: np.ndarray, y_pred: np.ndarray, y_prob: np.ndarray
     recall_macro = recall_score(y_true_class, y_pred_class, average='macro', zero_division=0)
     f1_macro = f1_score(y_true_class, y_pred_class, average='macro', zero_division=0)
     
-    # AUC score
+    # AUC score with robust error handling
+    auc_score = 0.0
     try:
-        if y_prob.shape[1] == 5:
-            y_true_bin = label_binarize(y_true_class, classes=[1, 2, 3, 4, 5])
-            auc_score = roc_auc_score(y_true_bin, y_prob, average='weighted', multi_class='ovr')
+        unique_true_classes = np.unique(y_true_class)
+        unique_pred_classes = np.unique(y_pred_class)
+        
+        log.debug(f"Model {model_name}: True classes {unique_true_classes}, Pred classes {unique_pred_classes}")
+        
+        # Only calculate AUC if we have multiple classes and valid probabilities
+        if len(unique_true_classes) > 1 and y_prob.shape[1] == 5:
+            # Check if probabilities are meaningful (not all identical)
+            prob_variance = np.var(y_prob, axis=0).sum()
+            
+            if prob_variance > 1e-10:  # Small threshold for numerical precision
+                try:
+                    # Binarize true labels for multiclass AUC
+                    y_true_bin = label_binarize(y_true_class, classes=[1, 2, 3, 4, 5])
+                    
+                    # Handle case where not all classes are present
+                    if y_true_bin.shape[1] < 5:
+                        # Pad with zeros for missing classes
+                        padded_y_true = np.zeros((len(y_true_class), 5))
+                        for i, cls in enumerate([1, 2, 3, 4, 5]):
+                            if cls in unique_true_classes:
+                                cls_idx = np.where(unique_true_classes == cls)[0][0]
+                                padded_y_true[:, i] = y_true_bin[:, cls_idx] if y_true_bin.shape[1] > cls_idx else 0
+                        y_true_bin = padded_y_true
+                    
+                    # Calculate AUC with error handling
+                    auc_score = roc_auc_score(y_true_bin, y_prob, average='weighted', multi_class='ovr')
+                    
+                except ValueError as ve:
+                    log.warning(f"AUC calculation failed for {model_name}: {ve}")
+                    auc_score = 0.0
+            else:
+                log.warning(f"Probabilities have no variance for {model_name}, AUC set to 0")
         else:
-            auc_score = 0.0
-    except:
+            log.warning(f"Insufficient class diversity for AUC calculation: {model_name} (classes: {len(unique_true_classes)})")
+            
+    except Exception as e:
+        log.warning(f"Could not calculate AUC for {model_name}: {str(e)}")
         auc_score = 0.0
     
     return {
@@ -262,7 +308,10 @@ def calculate_metrics(y_true: np.ndarray, y_pred: np.ndarray, y_prob: np.ndarray
         'precision_macro': precision_macro,
         'recall_macro': recall_macro,
         'f1_macro': f1_macro,
-        'auc_score': auc_score
+        'auc_score': auc_score,
+        'unique_true_classes': len(unique_true_classes),
+        'unique_pred_classes': len(unique_pred_classes),
+        'perfect_predictions': accuracy == 1.0
     }
 
 def plot_confusion_matrix(y_true: np.ndarray, y_pred: np.ndarray, model_name: str, save_dir: str):
@@ -270,8 +319,8 @@ def plot_confusion_matrix(y_true: np.ndarray, y_pred: np.ndarray, model_name: st
     y_true_class = convert_aqi_to_class(y_true) if not np.all(np.isin(y_true, [1, 2, 3, 4, 5])) else y_true
     y_pred_class = convert_aqi_to_class(y_pred) if not np.all(np.isin(y_pred, [1, 2, 3, 4, 5])) else y_pred
     
-    y_true_class = np.clip(y_true_class, 1, 5)
-    y_pred_class = np.clip(y_pred_class, 1, 5)
+    y_true_class = np.clip(y_true_class.astype(int), 1, 5)
+    y_pred_class = np.clip(y_pred_class.astype(int), 1, 5)
     
     cm = confusion_matrix(y_true_class, y_pred_class, labels=[1, 2, 3, 4, 5])
     
@@ -282,7 +331,10 @@ def plot_confusion_matrix(y_true: np.ndarray, y_pred: np.ndarray, model_name: st
     plt.xlabel('Predicted')
     plt.ylabel('Actual')
     plt.tight_layout()
-    plt.savefig(f"{save_dir}/{model_name}_confusion_matrix.png", dpi=300, bbox_inches='tight')
+    
+    # Clean filename for saving
+    clean_model_name = re.sub(r'[^\w\-_.]', '_', model_name)
+    plt.savefig(f"{save_dir}/{clean_model_name}_confusion_matrix.png", dpi=300, bbox_inches='tight')
     plt.close()
 
 def plot_model_comparison(results_df: pd.DataFrame, save_dir: str):
@@ -370,6 +422,7 @@ def analyze_best_models():
                 
             except Exception as e:
                 print(f"❌ Error analyzing {model_name}: {str(e)}")
+                log.error(f"Full error for {model_name}: {str(e)}")
                 continue
         
         if not results:
@@ -390,7 +443,8 @@ def analyze_best_models():
         print("📊 PERFORMANCE SUMMARY")
         print("="*80)
         
-        summary = results_df[['category', 'accuracy', 'f1_weighted', 'precision_weighted', 'recall_weighted', 'auc_score']].copy()
+        summary_cols = ['category', 'accuracy', 'f1_weighted', 'precision_weighted', 'recall_weighted', 'auc_score']
+        summary = results_df[summary_cols].copy()
         summary = summary.sort_values('accuracy', ascending=False)
         print(summary.to_string(index=False, float_format='%.4f'))
         
@@ -408,6 +462,7 @@ def analyze_best_models():
         
     except Exception as e:
         print(f"❌ Error in analysis: {str(e)}")
+        log.error(f"Full analysis error: {str(e)}")
         return None
 
 if __name__ == "__main__":

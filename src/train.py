@@ -7,6 +7,7 @@ from time import sleep
 import pandas as pd
 import joblib
 import os
+from pathlib import Path
 from typing import Tuple, Union 
 from sklearn.base import BaseEstimator
 import xgboost
@@ -144,8 +145,8 @@ class DeepLearningWrapper:
         y_categorical = to_categorical(y_seq, num_classes=num_classes)
         
         # Define callbacks
-        early_stopping = EarlyStopping(patience=10, restore_best_weights=True)
-        reduce_lr = ReduceLROnPlateau(patience=5, factor=0.5, min_lr=1e-6)
+        early_stopping = EarlyStopping(patience=15, restore_best_weights=True)
+        reduce_lr = ReduceLROnPlateau(patience=5, factor=0.65, min_lr=1e-6)
         
         # Add Neptune callback if run is provided
         callbacks = [early_stopping, reduce_lr]
@@ -203,7 +204,250 @@ class DeepLearningWrapper:
         
         for metric, value in final_metrics.items():
             self.neptune_run[metric] = value
+    
+    @classmethod
+    def load_model(cls, model_path: str):
+        """
+        Load a deep learning model from directory.
+        
+        Args:
+            model_path: Path to model directory
+            
+        Returns:
+            DeepLearningWrapper instance with loaded model
+        """
+        try:
+            model_path = Path(model_path) if isinstance(model_path, str) else model_path
 
+            # Look in for the keras model.
+            keras_model_path = os.path.join(model_path, 'keras_model.h5')
+            if not keras_model_path.exists():
+                # Try alternative names
+                for alt_name in ['model.h5', 'model.keras', 'saved_model.pb']:
+                    alt_path = os.path.join(model_path, alt_name)
+                    if alt_path.exists():
+                        keras_model_path = alt_path
+                        break
+                else:
+                    # Try loading directory as SavedModel
+                    if (model_path / 'saved_model.pb').exists():
+                        keras_model = tf.keras.models.load_model(str(model_path))
+                    else:
+                        raise FileNotFoundError(f"No Keras model found in {model_path}")
+            else:
+                keras_model = tf.keras.models.load_model(str(keras_model_path))
+            
+            # Load metadata if available
+            metadata_path = model_path / 'metadata.pkl'
+            if metadata_path.exists():
+                with open(metadata_path, 'rb') as f:
+                    metadata = joblib.load(f)
+                
+                scaler = metadata.get('scaler')
+                sequence_length = metadata.get('sequence_length', 24)
+                model_name = metadata.get('model_name', 'unknown')
+            else:
+                scaler = None
+                sequence_length = 24
+                model_name = model_path.name
+            
+            # Create wrapper instance
+            wrapper = cls(keras_model, scaler, sequence_length)
+            wrapper.model_name = model_name
+            
+            # Set classes if available in metadata
+            if metadata_path.exists() and 'classes_' in metadata:
+                wrapper.classes_ = metadata['classes_']
+            
+            return wrapper
+        except Exception as e:
+            raise Exception(f"Error loading deep learning model from {model_path}: {str(e)}")
+
+
+    @classmethod
+    def load_from_zip(cls, zip_path: str):
+        """
+        Load a deep learning model from zip file.
+        
+        Args:
+            zip_path: Path to zip file
+            
+        Returns:
+            DeepLearningWrapper instance with loaded model
+        """
+        import tempfile
+        import zipfile
+        import shutil
+
+        try:
+            # Create temporary directory
+            temp_dir = tempfile.mkdtemp()
+            
+            try:
+                # Extract zip file
+                with zipfile.ZipFile(zip_path, 'r') as zipf:
+                    zipf.extractall(temp_dir)
+                
+                # Load from extracted directory
+                wrapper = cls.load_model(temp_dir)
+                return wrapper
+                
+            finally:
+                # Clean up temporary directory
+                shutil.rmtree(temp_dir, ignore_errors=True)
+            
+        except Exception as e:
+            raise Exception(f"Error loading deep learning model from zip {zip_path}: {str(e)}")
+    
+    def save_model(self, save_dir: str, model_name: str, accuracy: float, roc_auc:float):
+        """
+        Save the deep learning model to directory and create zip.
+        
+        Args:
+            save_dir: Directory to save model
+            model_name: Name of the model
+            accuracy: Model accuracy
+            roc_auc: Model ROC AUC score
+            
+        Returns:
+            Tuple of (model_directory_path, zip_file_path)
+        """
+        try:
+            # Create model directory
+            model_dir_name = f"{model_name}_acc_{accuracy:.3f}_roc_{roc_auc:.3f}"
+            model_dir_path = os.path.join(save_dir, model_dir_name)
+            os.makedirs(model_dir_path, exist_ok=True)
+            
+            # Save Keras model
+            keras_model_path = os.path.join(model_dir_path, 'keras_model.h5')
+            self.model.save(keras_model_path)
+            
+            # Save metadata
+            metadata = {
+                'model_name': model_name,
+                'scaler': self.scaler,
+                'sequence_length': self.sequence_length,
+                'classes_': self.classes_,
+                'accuracy': accuracy,
+                'roc_auc': roc_auc,
+                'training_history': self.training_history
+            }
+            
+            metadata_path = os.path.join(model_dir_path, 'metadata.pkl')
+            with open(metadata_path, 'wb') as f:
+                joblib.dump(metadata, f)
+            
+            # Create zip file
+            zip_path = f"{model_dir_path}.zip"
+            with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+                for root, _, files in os.walk(model_dir_path):
+                    for file in files:
+                        file_path = os.path.join(root, file)
+                        arcname = os.path.relpath(file_path, save_dir)
+                        zipf.write(file_path, arcname)
+            
+            return model_dir_path, zip_path
+     
+        except Exception as e:
+            raise Exception(f"Error saving deep learning model: {str(e)}")
+
+    
+    def predict(self, X):
+        """Make predictions using the loaded model"""
+        if self.model is None:
+            raise ValueError("Model not loaded")
+
+        # Ensure input is numpy array before parsing.
+        if isintance(X, pd.DataFrame):
+            X = X.values
+
+        # Scale input features if scaler is available
+        if self.saler is not None:
+            X_scaled = self.scaler.transform(X)
+        else:
+            X_scaled = X
+
+        # Create sequences for prediction
+        if len(X_scaled) >= self.sequence_length:
+            X_seq, _ = create_sequences(X_scaled, np.zeros(len(X_scaled)), self.sequence_length)
+            if len(X_seq) > 0:
+                predictions = self.model.predict(X_seq)
+                
+                # Handle different output formats
+                if len(predictions.shape) > 1 and predictions.shape[1] > 1:
+                    # Multi-class output - get class predictions
+                    predicted_classes = np.argmax(predictions, axis=1)
+                else:
+                    # Single output - convert to classes
+                    predicted_classes = self._convert_to_classes(predictions.flatten())
+                
+                return predicted_classes
+            else:
+                # Not enough data for sequences, return dummy prediction
+                return np.array([2])  # Default to class 2 (moderate)
+        else:
+            # Not enough data for sequences
+            return np.array([2] * len(X_scaled))
+
+
+    def predict_proba(self, X):
+        """Get prediction probabilities"""
+        if self.model is None:
+            raise ValueError("Model not loaded")
+        
+        # Ensure input is numpy array
+        if isinstance(X, pd.DataFrame):
+            X = X.values
+        
+        # Scale features if scaler is available
+        if self.scaler is not None:
+            X_scaled = self.scaler.transform(X)
+        else:
+            X_scaled = X
+        
+        # Create sequences for prediction
+        if len(X_scaled) >= self.sequence_length:
+            X_seq, _ = create_sequences(X_scaled, np.zeros(len(X_scaled)), self.sequence_length)
+            if len(X_seq) > 0:
+                predictions = self.model.predict(X_seq)
+                
+                # Handle different output formats
+                if len(predictions.shape) > 1 and predictions.shape[1] > 1:
+                    # Multi-class probabilities
+                    return predictions
+                else:
+                    # Single output - create dummy probabilities
+                    predicted_classes = self._convert_to_classes(predictions.flatten())
+                    prob_matrix = np.zeros((len(predicted_classes), 5))
+                    for i, cls in enumerate(predicted_classes):
+                        prob_matrix[i, cls] = 1.0
+                    return prob_matrix
+            else:
+                # Not enough data, return dummy probabilities
+                prob_matrix = np.zeros((1, 5))
+                prob_matrix[0, 1] = 1.0  # Default to class 2 (moderate)
+                return prob_matrix
+        else:
+            # Not enough data for sequences
+            prob_matrix = np.zeros((len(X_scaled), 5))
+            prob_matrix[:, 1] = 1.0  # Default to class 2 (moderate)
+            return prob_matrix
+
+        
+    def _convert_to_classes(self, predictions):
+        """Convert continuous predictions to AQI classes (0-4)"""
+        # Define the AQI breakpoints for our use case.
+        bins = [0, 50, 100, 150, 200, float('inf')]
+        classes = np.digitize(predictions, bins) - 1  # Subtract 1 inorder to adjust to the (0-4) range
+        return np.clip(classes, 0, 4)
+
+
+
+
+
+
+
+# NOTE: Define the model training function. 
 def train_model(train_data: pd.DataFrame, val_data: pd.DataFrame, log, config):
     """
     Train the model using the training and validation data.

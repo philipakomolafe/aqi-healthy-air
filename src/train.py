@@ -5,6 +5,9 @@
 import numpy as np
 from time import sleep
 import pandas as pd
+import tempfile
+import zipfile
+import shutil
 import joblib
 import os
 from pathlib import Path
@@ -275,9 +278,6 @@ class DeepLearningWrapper:
         Returns:
             DeepLearningWrapper instance with loaded model
         """
-        import tempfile
-        import zipfile
-        import shutil
 
         try:
             # Create temporary directory
@@ -358,11 +358,11 @@ class DeepLearningWrapper:
             raise ValueError("Model not loaded")
 
         # Ensure input is numpy array before parsing.
-        if isintance(X, pd.DataFrame):
+        if isinstance(X, pd.DataFrame):
             X = X.values
 
         # Scale input features if scaler is available
-        if self.saler is not None:
+        if self.scaler is not None:
             X_scaled = self.scaler.transform(X)
         else:
             X_scaled = X

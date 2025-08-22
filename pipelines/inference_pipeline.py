@@ -106,13 +106,6 @@ def create_explainer(model, model_type, sample_data, log):
                 log.success("TreeExplainer created successfully")
                 return explainer
             
-            # For linear models, try LinearExplainer
-            elif any(linear_model in model_name for linear_model in ['linear', 'logistic', 'ridge', 'lasso']):
-                log.info("Using LinearExplainer for linear model")
-                explainer = shap.LinearExplainer(model, sample_data)
-                log.success("LinearExplainer created successfully")
-                return explainer
-            
             # For other models (SVM, KNN, etc.), use KernelExplainer
             else:
                 log.info(f"Using KernelExplainer for {model_name}")

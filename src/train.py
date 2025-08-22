@@ -233,7 +233,7 @@ class DeepLearningWrapper:
                         break
                 else:
                     # Try loading directory as SavedModel
-                    if (model_path / 'saved_model.pb').exists():
+                    if (model_path/'saved_model.pb').exists():
                         keras_model = tf.keras.models.load_model(str(model_path))
                     else:
                         raise FileNotFoundError(f"No Keras model found in {model_path}")
@@ -241,14 +241,13 @@ class DeepLearningWrapper:
                 keras_model = tf.keras.models.load_model(str(keras_model_path))
             
             # Load metadata if available
-            metadata_path = model_path / 'metadata.pkl'
+            metadata_path = os.path.join(model_path, 'metadata.pkl')
             if metadata_path.exists():
                 with open(metadata_path, 'rb') as f:
                     metadata = joblib.load(f)
                 
                 scaler = metadata.get('scaler')
                 sequence_length = metadata.get('sequence_length', 24)
-                model_name = metadata.get('model_name', 'unknown')
             else:
                 scaler = None
                 sequence_length = 24
@@ -435,11 +434,11 @@ class DeepLearningWrapper:
 
         
     def _convert_to_classes(self, predictions):
-        """Convert continuous predictions to AQI classes (0-4)"""
+        """Convert continuous predictions to AQI classes (1-5)"""
         # Define the AQI breakpoints for our use case.
         bins = [0, 50, 100, 150, 200, float('inf')]
-        classes = np.digitize(predictions, bins) - 1  # Subtract 1 inorder to adjust to the (0-4) range
-        return np.clip(classes, 0, 4)
+        classes = np.digitize(predictions, bins)
+        return np.clip(classes, 1, 5)
 
 
 

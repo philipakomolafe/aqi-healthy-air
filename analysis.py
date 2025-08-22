@@ -101,49 +101,76 @@ def find_best_models_by_category(models_dir: str = "models") -> Dict[str, str]:
         if not models_path.exists():
             raise FileNotFoundError(f"Models directory not found: {models_dir}")
         
-        # Find all model files and directories
-        all_model_paths = []
-        
-        # Classical ML models (.pkl files)
-        pkl_files = list(models_path.glob("*.pkl"))
-        all_model_paths.extend([str(p) for p in pkl_files])
-        
-        # Deep learning models (directories)
-        for item in models_path.iterdir():
-            if item.is_dir() and not item.name.startswith('.'):
-                if any(item.glob("*.h5")) or any(item.glob("keras_model.h5")):
-                    all_model_paths.append(str(item))
-        
-        log.info(f"Found {len(all_model_paths)} total models")
+        # Use the same regex patterns from your utils.py
+        classical_pattern = re.compile(r"(\w+)_acc_(\d+\.\d+)_roc_(\d+\.\d+)\.pkl")
+        dl_pattern = re.compile(r"(\w+)_acc_(\d+\.\d+)_roc_(\d+\.\d+)")
         
         # Categorize and find best models
         best_models = {}
         
         for category, keywords in MODEL_CATEGORIES.items():
-            category_models = []
+            category_candidates = []
             
-            for model_path in all_model_paths:
-                model_name = Path(model_path).stem.lower()
+            # Look through all items in models directory
+            for item in models_path.iterdir():
+                item_name = item.name.lower()
                 
-                # Check if model belongs to this category
-                if any(keyword in model_name for keyword in keywords):
-                    accuracy, auc_score = extract_metrics_from_name(model_name)
-                    category_models.append({
-                        'path': model_path,
-                        'name': Path(model_path).stem,
-                        'accuracy': accuracy,
-                        'auc_score': auc_score,
-                        'combined_score': accuracy + auc_score  # Simple combined metric
-                    })
+                # Check if this item belongs to current category
+                if any(keyword in item_name for keyword in keywords):
+                    
+                    if item.is_file() and item.suffix == '.pkl':
+                        # Classical ML model
+                        match = classical_pattern.search(item.name)
+                        if match:
+                            model_name = match.group(1)
+                            acc = float(match.group(2))
+                            roc = float(match.group(3))
+                            
+                            # Use same weighted score as your utils function
+                            score = (0.6 * roc) + (0.4 * acc)
+                            
+                            category_candidates.append({
+                                'path': str(item),
+                                'name': item.name,
+                                'accuracy': acc,
+                                'roc': roc,
+                                'score': score,
+                                'type': 'classical'
+                            })
+                    
+                    elif item.is_dir():
+                        # Deep learning model directory
+                        # Check if it has the required files
+                        keras_model_path = item / 'keras_model.h5'
+                        metadata_path = item / 'metadata.pkl'
+                        
+                        if keras_model_path.exists() and metadata_path.exists():
+                            match = dl_pattern.search(item.name)
+                            if match:
+                                model_name = match.group(1)
+                                acc = float(match.group(2))
+                                roc = float(match.group(3))
+                                
+                                # Use same weighted score
+                                score = (0.6 * roc) + (0.4 * acc)
+                                
+                                category_candidates.append({
+                                    'path': str(item),
+                                    'name': item.name,
+                                    'accuracy': acc,
+                                    'roc': roc,
+                                    'score': score,
+                                    'type': 'deep_learning'
+                                })
             
-            if category_models:
-                # Sort by combined score (accuracy + auc)
-                category_models.sort(key=lambda x: x['combined_score'], reverse=True)
-                best_model = category_models[0]
-                best_models[category] = best_model['path']
+            # Select best model for this category
+            if category_candidates:
+                best_candidate = max(category_candidates, key=lambda x: x['score'])
+                best_models[category] = best_candidate['path']
                 
-                log.info(f"Best {category.upper()} model: {best_model['name']}")
-                log.info(f"  Accuracy: {best_model['accuracy']:.4f}, AUC: {best_model['auc_score']:.4f}")
+                log.info(f"Best {category.upper()} model: {best_candidate['name']}")
+                log.info(f"  Accuracy: {best_candidate['accuracy']:.4f}, ROC: {best_candidate['roc']:.4f}")
+                log.info(f"  Score: {best_candidate['score']:.4f}")
             else:
                 log.warning(f"No models found for category: {category}")
         

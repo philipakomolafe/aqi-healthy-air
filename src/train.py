@@ -221,37 +221,45 @@ class DeepLearningWrapper:
         """
         try:
             model_path = Path(model_path) if isinstance(model_path, str) else model_path
-
-            # Look in for the keras model.
-            keras_model_path = os.path.join(model_path, 'keras_model.h5')
-            if not keras_model_path.exists():
-                # Try alternative names
-                for alt_name in ['model.h5', 'model.keras', 'saved_model.pb']:
-                    alt_path = os.path.join(model_path, alt_name)
-                    if alt_path.exists():
-                        keras_model_path = alt_path
-                        break
-                else:
-                    # Try loading directory as SavedModel
-                    if (model_path/'saved_model.pb').exists():
-                        keras_model = tf.keras.models.load_model(str(model_path))
-                    else:
-                        raise FileNotFoundError(f"No Keras model found in {model_path}")
-            else:
+        
+            # Initialize variables
+            keras_model = None
+            
+            # Look for the keras model file
+            keras_model_path = model_path / 'keras_model.h5'
+            
+            if keras_model_path.exists():
+                # Load the h5 model
                 keras_model = tf.keras.models.load_model(str(keras_model_path))
+            else:
+                # Try alternative names
+                for alt_name in ['model.h5', 'model.keras']:
+                    alt_path = model_path / alt_name
+                    if alt_path.exists():
+                        keras_model = tf.keras.models.load_model(str(alt_path))
+                        break
+                
+                # If no h5/keras files found, try SavedModel format
+                if keras_model is None and (model_path / 'saved_model.pb').exists():
+                    keras_model = tf.keras.models.load_model(str(model_path))
+                
+                # If still no model found, raise error
+                if keras_model is None:
+                    raise FileNotFoundError(f"No Keras model found in {model_path}")
             
             # Load metadata if available
-            metadata_path = os.path.join(model_path, 'metadata.pkl')
+            metadata_path = model_path / 'metadata.pkl'
+            scaler = None
+            sequence_length = 24
+            model_name = model_path.name
+            
             if metadata_path.exists():
                 with open(metadata_path, 'rb') as f:
                     metadata = joblib.load(f)
                 
                 scaler = metadata.get('scaler')
                 sequence_length = metadata.get('sequence_length', 24)
-            else:
-                scaler = None
-                sequence_length = 24
-                model_name = model_path.name
+                model_name = metadata.get('model_name', model_path.name)
             
             # Create wrapper instance
             wrapper = cls(keras_model, scaler, sequence_length)
@@ -262,6 +270,7 @@ class DeepLearningWrapper:
                 wrapper.classes_ = metadata['classes_']
             
             return wrapper
+            
         except Exception as e:
             raise Exception(f"Error loading deep learning model from {model_path}: {str(e)}")
 

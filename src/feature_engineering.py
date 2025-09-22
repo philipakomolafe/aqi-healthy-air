@@ -14,6 +14,7 @@ def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
 
     # 1. Time-based features
     if 'timestamp' in df.columns:
+        df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
         df['hour'] = df['timestamp'].dt.hour
         df['day'] = df['timestamp'].dt.day
         df['month'] = df['timestamp'].dt.month

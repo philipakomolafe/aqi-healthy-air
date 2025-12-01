@@ -251,3 +251,134 @@ Train shape:
 2025-11-30 02:30:57.669 | INFO     | __main__:main:69 - Data splitting completed.
 2025-11-30 02:30:57.669 | INFO     | __main__:main:72 - Saving features to CSV files...
 2025-11-30 02:30:58.089 | INFO     | __main__:main:76 - Features saved successfully.
+2025-12-01 02:34:03.652 | INFO     | __main__:main:29 - Starting feature pipeline...
+2025-12-01 02:34:03.654 | INFO     | __main__:main:33 - Data downloading from API...
+2025-12-01 02:34:03.988 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-01-01 - 2016-03-01
+2025-12-01 02:34:09.297 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-03-02 - 2016-05-01
+2025-12-01 02:34:14.596 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-05-02 - 2016-07-01
+2025-12-01 02:34:19.891 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-07-02 - 2016-08-31
+2025-12-01 02:34:25.049 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-09-01 - 2016-10-31
+2025-12-01 02:34:30.191 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2016-11-01 - 2016-12-31
+2025-12-01 02:34:35.329 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-01-01 - 2017-03-02
+2025-12-01 02:34:40.470 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-03-03 - 2017-05-02
+2025-12-01 02:34:45.613 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-05-03 - 2017-07-02
+2025-12-01 02:34:50.756 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-07-03 - 2017-09-01
+2025-12-01 02:34:55.916 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-09-02 - 2017-11-01
+2025-12-01 02:35:01.054 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2017-11-02 - 2018-01-01
+2025-12-01 02:35:06.193 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-01-02 - 2018-03-03
+2025-12-01 02:35:11.337 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-03-04 - 2018-05-03
+2025-12-01 02:35:16.481 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-05-04 - 2018-07-03
+2025-12-01 02:35:21.639 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-07-04 - 2018-09-02
+2025-12-01 02:35:26.796 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-09-03 - 2018-11-02
+2025-12-01 02:35:31.933 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2018-11-03 - 2019-01-02
+2025-12-01 02:35:37.091 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-01-03 - 2019-03-04
+2025-12-01 02:35:42.231 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-03-05 - 2019-05-04
+2025-12-01 02:35:47.388 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-05-05 - 2019-07-04
+2025-12-01 02:35:52.537 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-07-05 - 2019-09-03
+2025-12-01 02:35:57.676 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-09-04 - 2019-11-03
+2025-12-01 02:36:02.833 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2019-11-04 - 2020-01-03
+2025-12-01 02:36:07.973 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-01-04 - 2020-03-04
+2025-12-01 02:36:13.138 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-03-05 - 2020-05-04
+2025-12-01 02:36:18.282 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-05-05 - 2020-07-04
+2025-12-01 02:36:23.502 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-07-05 - 2020-09-03
+2025-12-01 02:36:28.639 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-09-04 - 2020-11-03
+2025-12-01 02:36:34.488 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2020-11-04 - 2021-01-03
+2025-12-01 02:36:40.092 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-01-04 - 2021-03-05
+2025-12-01 02:36:45.795 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-03-06 - 2021-05-05
+2025-12-01 02:36:51.416 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-05-06 - 2021-07-05
+2025-12-01 02:36:57.149 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-07-06 - 2021-09-04
+2025-12-01 02:37:02.761 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-09-05 - 2021-11-04
+2025-12-01 02:37:08.539 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2021-11-05 - 2022-01-04
+2025-12-01 02:37:14.178 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-01-05 - 2022-03-06
+2025-12-01 02:37:19.906 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-03-07 - 2022-05-06
+2025-12-01 02:37:25.580 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-05-07 - 2022-07-06
+2025-12-01 02:37:31.226 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-07-07 - 2022-09-05
+2025-12-01 02:37:37.008 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-09-06 - 2022-11-05
+2025-12-01 02:37:42.678 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2022-11-06 - 2023-01-05
+2025-12-01 02:37:48.581 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-01-06 - 2023-03-07
+2025-12-01 02:37:54.266 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-03-08 - 2023-05-07
+2025-12-01 02:37:59.936 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-05-08 - 2023-07-07
+2025-12-01 02:38:05.651 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-07-08 - 2023-09-06
+2025-12-01 02:38:11.399 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-09-07 - 2023-11-06
+2025-12-01 02:38:17.145 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2023-11-07 - 2024-01-06
+2025-12-01 02:38:22.795 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-01-07 - 2024-03-07
+2025-12-01 02:38:28.429 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-03-08 - 2024-05-07
+2025-12-01 02:38:34.884 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-05-08 - 2024-07-07
+2025-12-01 02:38:40.511 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-07-08 - 2024-09-06
+2025-12-01 02:38:46.202 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-09-07 - 2024-11-06
+2025-12-01 02:38:51.844 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2024-11-07 - 2025-01-06
+2025-12-01 02:38:57.512 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2025-01-07 - 2025-03-08
+2025-12-01 02:39:03.287 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2025-03-09 - 2025-05-08
+2025-12-01 02:39:08.998 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2025-05-09 - 2025-07-08
+2025-12-01 02:39:14.986 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2025-07-09 - 2025-09-07
+2025-12-01 02:39:20.757 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2025-09-08 - 2025-11-07
+2025-12-01 02:39:26.764 | INFO     | src.data_fetcher:fetch_data:90 - ✅ Data pulled for 2025-11-08 - 2025-12-01
+2025-12-01 02:39:32.087 | INFO     | src.data_fetcher:fetch_data:111 - ✔ AQI Data saved to `aqi_data_2016-2025.csv`
+2025-12-01 02:39:32.096 | INFO     | __main__:main:35 - Data download completed...
+2025-12-01 02:39:32.096 | INFO     | __main__:main:37 - Data Loading & Cleaning...
+2025-12-01 02:39:32.225 | INFO     | src.data_cleaner:clean_data:84 - 
+Data Quality Report:  
+Total rows: 42656
+Total columns: 10
+2025-12-01 02:39:32.226 | INFO     | src.data_cleaner:clean_data:85 - 
+Missing values after cleaning:  
+timestamp    0
+aqi          0
+no           0
+pm2_5        0
+pm10         0
+co           0
+no2          0
+so2          0
+o3           0
+nh3          0
+dtype: int64
+2025-12-01 02:39:32.227 | INFO     | src.data_cleaner:clean_data:86 - 
+Data types: 
+timestamp    datetime64[ns]
+aqi                 float64
+no                  float64
+pm2_5               float64
+pm10                float64
+co                  float64
+no2                 float64
+so2                 float64
+o3                  float64
+nh3                 float64
+dtype: object
+2025-12-01 02:39:32.227 | INFO     | __main__:main:41 - Data Loading & Cleaning Completed.
+2025-12-01 02:39:32.227 | INFO     | __main__:main:43 - Feature Engineering...
+2025-12-01 02:39:32.361 | INFO     | __main__:main:46 - Feature Engineering Completed.
+2025-12-01 02:39:32.362 | INFO     | __main__:main:48 - Feature Selection...
+2025-12-01 02:39:32.362 | INFO     | __main__:main:50 - Performing correlation analysis...
+2025-12-01 02:39:32.403 | INFO     | __main__:main:53 - 
+Dropped highly correlated features: 
+['pm2_5', 'pm10', 'nh3', 'aqi_above_3_count_24h']
+2025-12-01 02:39:32.403 | INFO     | __main__:main:54 - Correlation analysis completed.
+2025-12-01 02:39:32.403 | INFO     | __main__:main:58 - Feature importance analysis...
+2025-12-01 02:39:36.431 | INFO     | __main__:main:61 - Top feature importances: 
+co                      0.192784
+aqi_rolling_mean_24h    0.159122
+so2                     0.122991
+no2                     0.110857
+aqi_rolling_max_24h     0.082863
+o3                      0.076037
+pm2_5_pm10_ratio        0.073161
+aqi_trend               0.041180
+hour                    0.034023
+season                  0.031139
+month                   0.022951
+no                      0.020198
+day                     0.019680
+weekday                 0.013015
+dtype: float64
+2025-12-01 02:39:36.431 | INFO     | __main__:main:62 - Feature importance analysis completed.
+2025-12-01 02:39:36.431 | INFO     | __main__:main:65 - Splitting data into train, validation, and test sets...
+2025-12-01 02:39:36.438 | INFO     | __main__:main:68 - 
+Train shape: 
+(29859, 20)
+ Val shape: (6398, 20)
+ Test shape: (6399, 20)
+2025-12-01 02:39:36.439 | INFO     | __main__:main:69 - Data splitting completed.
+2025-12-01 02:39:36.439 | INFO     | __main__:main:72 - Saving features to CSV files...
+2025-12-01 02:39:36.885 | INFO     | __main__:main:76 - Features saved successfully.

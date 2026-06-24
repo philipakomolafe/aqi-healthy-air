@@ -268,6 +268,44 @@ def create_app():
             log.error(f"Error in online prediction: {str(e)}")
             raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
 
+    @app.get('/aqi/farmers', response_model=PredictionOutput)
+    def farmers_predict():
+        """
+        AQI prediction with comprehensive plant health information for farmers.
+        """
+        try:
+            # Get the current AQI features
+            aqi_features = fetch_current_data(config=config)
+            df = pd.DataFrame([aqi_features], index=[0])
+            
+            # Apply feature engineering
+            feature_eng = feature_engineering(df)
+            
+            # Drop unnecessary columns
+            features = feature_eng.drop(columns=['timestamp', 'aqi'], errors='ignore')
+            
+            # Make prediction using the loaded model
+            prediction, prediction_proba = make_prediction(model, model_type, features.values, log)
+
+            # Postprocess predictions with plant health information
+            postprocessed = postprocess_predictions(prediction, include_plant_health=True)
+            
+            return {
+                'location': "Akure, Nigeria",
+                'predicted_aqi': int(prediction[0]),
+                'advice': postprocessed.iloc[0]['aqi_category'],
+                'color': postprocessed.iloc[0]['aqi_health_color'],
+                "timestamp": datetime.utcnow(),
+                'model_info': {
+                    'model_name': model_info.get('model_name', 'Unknown'),
+                    'model_type': model_type,
+                    'confidence': float(np.max(prediction_proba[0])) if prediction_proba is not None else None
+                }
+            }
+        except Exception as e:
+            log.error(f"Error in farmers prediction: {str(e)}")
+            raise HTTPException(status_code=500, detail=f"Farmers prediction failed: {str(e)}")
+
     @app.get('/aqi/explain', response_class=JSONResponse)
     def explain_prediction():
         """

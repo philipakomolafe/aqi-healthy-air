@@ -11648,3 +11648,33 @@ Train shape:
 2026-08-29 07:02:04.757 | INFO     | __main__:main:69 - Data splitting completed.
 2026-08-29 07:02:04.757 | INFO     | __main__:main:72 - Saving features to CSV files...
 2026-08-29 07:02:05.202 | INFO     | __main__:main:76 - Features saved successfully.
+2026-08-30 01:57:16.096 | INFO     | src.utils:read_processed_data:56 - Data read successfully from data/processed/train/aqi_train_data_v1.csv
+2026-08-30 01:57:16.106 | INFO     | src.utils:read_processed_data:56 - Data read successfully from data/processed/val/aqi_val_data_v1.csv
+2026-08-30 01:57:16.116 | INFO     | src.utils:read_processed_data:56 - Data read successfully from data/processed/test/aqi_test_data_v1.csv
+2026-08-30 01:57:16.116 | INFO     | __main__:main:56 - Running training instance begins...
+2026-08-30 01:57:16.116 | INFO     | src.train:train_model:463 - Training model...
+2026-08-30 01:58:16.530 | ERROR    | __main__:run:35 - Error encountered: 
+[95m
+----NeptuneConnectionLostException---------------------------------------------------------
+[0m
+The connection to the Neptune server was lost.
+If you are using the asynchronous (default) connection mode, Neptune continues to locally track your metadata and continuously tries to re-establish a connection to the Neptune servers.
+If the connection is not re-established, you can upload your data later with the Neptune Command Line Interface tool:
+    [95mneptune sync -p workspace_name/project_name[0m
+
+What should I do?
+    - Check if your computer is connected to the internet.
+    - If your connection is unstable, consider working in offline mode:
+        [96mrun = neptune.init_run(mode="offline")[0m
+
+You can find detailed instructions on the following doc pages:
+    - https://docs-legacy.neptune.ai/api/connection_modes/#offline-mode
+    - https://docs-legacy.neptune.ai/api/neptune_sync/
+
+You may also want to check the following docs page:
+    - https://docs-legacy.neptune.ai/api/connection_modes/#connectivity-issues
+
+[92mNeed help?[0m-> https://docs-legacy.neptune.ai/getting_help
+
+2026-08-30 01:58:16.530 | INFO     | __main__:main:62 - Saving Model to Model Registry...
+2026-08-30 01:58:16.531 | SUCCESS  | __main__:main:63 - Training instance complete...

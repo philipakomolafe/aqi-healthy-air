@@ -63,7 +63,6 @@ def read_processed_data(path: str, log) -> pd.DataFrame:
         return pd.DataFrame()
 
 # TODO: Define the prefect orchestration utilities..
-
 def categorize_aqi(aqi: float):
     if aqi <= 0:
         return "Invalid Air Quality Index (AQI) value. Please check the data source."
@@ -79,6 +78,7 @@ def categorize_aqi(aqi: float):
         return "Very Poor: Stay indoors with windows closed. Use HEPA filters. Avoid physical activity outside."
     else:
         return "Hazardous: Remain indoors. Use air purifiers. Seek medical attention if symptoms worsen." 
+
 
 def color_aqi(aqi: float):
     if aqi <= 0:
@@ -96,13 +96,21 @@ def color_aqi(aqi: float):
     else:
         return "Pale"
 
+
 def postprocess_predictions(predictions: np.ndarray) -> pd.DataFrame:
     """
     postprocess the predictions for health related user-friendly AQI values.
+    
+    Args:
+        predictions: Array of AQI predictions
+    
+    Returns:
+        DataFrame with AQI categories, colors.
     """
     df = pd.DataFrame({"predicted_aqi": predictions})
     # categorize the AQI level as good, bad or e.t.c for health conscious population.
     df['aqi_category'] = df['predicted_aqi'].apply(categorize_aqi)
+    
     # Air quality health color to give patient deeper view on the AQI status..
     df['aqi_health_color'] = df['predicted_aqi'].apply(color_aqi) 
     return df
